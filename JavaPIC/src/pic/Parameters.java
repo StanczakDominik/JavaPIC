@@ -8,13 +8,16 @@ public class Parameters {
 	public static int gridPointNumber = 32;
 	public static double gridStep = gridSize/gridPointNumber;
 	
-	public static double boltzmannConstantJoulesOverKelvin=1.3807e-23;
-	public static double electronChargeC = 1.6022e-19;
+	public static double fieldErrorTolerance=1e-6;
+	
+	public static double boltzmannConstant=1.3807e-23;		// J/K
+	public static double electronCharge = 1.6022e-19;		// Coulombs
+	public static double epsilonZero= 8.854e-12;			// F/m
 	public static double joulesToKelvin(double energy)
 	{
 		//takes an energy in joules - average kinetic
 		//returns temperature in kelvin
 		
-		return energy/boltzmannConstantJoulesOverKelvin;
+		return energy/boltzmannConstant;
 	}
 }

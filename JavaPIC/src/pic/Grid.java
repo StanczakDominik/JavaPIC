@@ -19,7 +19,7 @@ public class Grid {
 	{
 		return (int)(Math.floor(position/gridStep));
 	}
-	
+		
 	public void update(Species[] listofspecies)
 	{
 		int index;
@@ -50,15 +50,51 @@ public class Grid {
 		}
 		
 		
-		
-		//fuck this im doing gauss seidel
-		//FastFourierTransformer transformer = new FastFourierTransformer();
-		//        self.freq=self.L*fftfreq(NG, self.dX)
-//        self.freq[0]=0.01
-//        self.pot = np.real(ifft(fft(self.density)[0:NG]/self.freq[0:NG]**2/4./pi**2/EPSILON0))
-//        self.efield = -np.gradient(self.pot)
-//        self.efield+=externalfield(self.X)
-		
+		//Gauss Seidel Method as used at particleincell.com
+		//I have used this once, a while ago, but used that
+		//version as a refresher
+		potential = new double[gridPointNumber];
+		int forwardIndex, backwardIndex;
+		double potentialTemporaryVariable, sum;
+		for (int iter=0; iter<20000; iter++)
+		{
+			for (int i =0; i<gridPointNumber-1; i++)
+			{
+				forwardIndex=i+1;
+				if(forwardIndex==gridPointNumber-1) forwardIndex=0;
+				backwardIndex=i-1;
+				if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
+				potentialTemporaryVariable = 0.5*(potential[i]/Parameters.epsilonZero)*gridStep*gridStep;
+				potentialTemporaryVariable += potential[forwardIndex] + potential[backwardIndex];
+				potential[i] += 1.4*(potentialTemporaryVariable-potential[i]);
+			}
+			
+			if (iter%25==0)
+			{
+				sum=0;
+				for (int i=1; i<gridPointNumber-1; i++)
+				{
+					forwardIndex=i+1;
+					if(forwardIndex==gridPointNumber-1) forwardIndex=0;
+					double res = potential[i]/Parameters.epsilonZero+(potential[i-1]-2*potential[i]+potential[forwardIndex])/(gridStep*gridStep);
+					sum+=res*res;
+				}
+				sum=Math.sqrt(sum/gridPointNumber);
+				if(sum<Parameters.fieldErrorTolerance) break;
+				
+			}
+		}
+		//eField calculation
+		for (int i =0; i<gridPointNumber-1; i++)
+		{
+			forwardIndex=i+1;
+			if(forwardIndex==gridPointNumber) forwardIndex=1;
+			backwardIndex=i-1;
+			if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
+			
+			eField[i]=(potential[backwardIndex]-potential[forwardIndex])/(2*gridStep);
+			
+		}
 	}
 	
 	public Grid() {
