@@ -48,7 +48,12 @@ public class Grid {
 				density[i]+=speciesDensity[i]*species.charge;
 			}
 		}
-//        self.freq=self.L*fftfreq(NG, self.dX)
+		
+		
+		
+		//fuck this im doing gauss seidel
+		//FastFourierTransformer transformer = new FastFourierTransformer();
+		//        self.freq=self.L*fftfreq(NG, self.dX)
 //        self.freq[0]=0.01
 //        self.pot = np.real(ifft(fft(self.density)[0:NG]/self.freq[0:NG]**2/4./pi**2/EPSILON0))
 //        self.efield = -np.gradient(self.pot)
