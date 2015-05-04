@@ -47,21 +47,30 @@ public class Species {
 	public void accelerate(double dt, Grid grid)
 	{
 		int index;
-		double field;
+		double field=0;
 		for (int i=0; i<numberOfParticles; i++)
 		{
 			index = grid.getIndexOnGrid(position[i]);
+			System.out.println(i + " " + index);
 			if (index<grid.gridPointNumber-1)
 			{	
-				//interpolate from left
-				field = (grid.gridPoints[index+1]-position[i])*grid.eField[i];
-				//interpolate from right
-				field += (position[i]-grid.gridPoints[index])*grid.eField[i+1];
+				try
+				{
+					//interpolate from left
+					field += (grid.gridPoints[index+1]-position[i])*grid.eField[i];
+					//interpolate from right
+					field += (position[i]-grid.gridPoints[index])*grid.eField[i+1];
+				}
+				catch(IndexOutOfBoundsException e)
+				{
+					System.err.println("Index out of bounds at acceleration. Index:" + index + ", index+1:" + (index+1)
+							+ ", position: " + position[i] + ",message:" + e.getMessage());
+				}
 			}
 			else
 			{
 				//interpolate from left
-				field = (-position[i])*grid.eField[grid.gridPointNumber-1];
+				field += (-position[i])*grid.eField[grid.gridPointNumber-1];
 				//interpolate from right
 				field += (grid.gridPoints[grid.gridPointNumber-1]-position[i])*grid.eField[0];
 			}

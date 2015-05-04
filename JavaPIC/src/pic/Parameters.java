@@ -26,7 +26,7 @@ public class Parameters {
 	public static int numberOfParticles=64;
 	
 	//grid parameters
-	public static double gridSize = 1e-3;
+	public static double gridSize = 1;//1e-3;
 	public static int gridPointNumber = 32;
 	public static double gridStep = gridSize/gridPointNumber;
 	public static double fieldErrorTolerance=1e-6;
