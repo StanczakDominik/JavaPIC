@@ -1,6 +1,7 @@
 package pic;
 
 import java.awt.Color;
+import java.util.Vector;
 
 public class Species {
 	//Class containing information for a set of particles
@@ -13,15 +14,16 @@ public class Species {
 	
 	String name;
 	Color color;
-	long numberOfParticles;
+	int numberOfParticles;
 	double mass;
 	double charge;
 	double[] position;
 	double[] velocity;
 	
-	double[] plotPositions;
-	double[] plotVelocities;
-	double[] plotTemperatures;
+	//historical data for plotting
+	Vector<double[]> plotPositions;
+	Vector<double[]> plotVelocities;
+	Vector<Double> plotTemperatures = new Vector<Double>();
 	
 	public void move(double dt, Grid grid)
 	{
@@ -86,11 +88,23 @@ public class Species {
 		move(Parameters.timeStep, grid);
 		//TODO: gather trajectory data
 		//TODO: gather velocity data
+		
 		//TODO: gather temperature data
+		plotTemperatures.addElement((Double)temperature());
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public Species(String nameI, Color colorI, int numberOfParticlesI, double massI, double chargeI, double[] positionI, double[] velocityI)
+	{
+		name=nameI;
+		color=colorI;
+		numberOfParticles=numberOfParticlesI;
+		mass=massI;
+		charge=chargeI;
+		position=positionI;
+		velocity=velocityI;
+		plotTemperatures.addElement((Double)temperature());
+		//plotTemperatures.addElement(temperature());
+		//plotPositions
 	}
 
 }
