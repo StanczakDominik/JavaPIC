@@ -46,9 +46,9 @@ public class Grid {
 			for(int i=0; i<gridPointNumber; i++)
 			{
 				density[i]+=speciesDensity[i]*species.charge;
+				System.out.println(density[i]);
 			}
 		}
-		
 		
 		//Gauss Seidel Method as used at particleincell.com
 		//I have used this once, a while ago, but used that
@@ -93,12 +93,14 @@ public class Grid {
 			if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
 			
 			eField[i]=(potential[backwardIndex]-potential[forwardIndex])/(2*gridStep);
+			//DEBUG
+			//eField[i]=1;
 			
 		}
 	}
 	
 	public Grid() {
-		gridPoints = new double[gridPointNumber];
+		gridPoints = Parameters.uniformPositions(gridPointNumber, 0, gridSize, 0);
 		eField = new double[gridPointNumber];
 		density = new double[gridPointNumber];
 		frequencies = new double[gridPointNumber];

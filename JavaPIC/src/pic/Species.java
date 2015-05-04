@@ -40,6 +40,10 @@ public class Species {
 			//howManyPushes = floor (-2/3) = -1
 			//particle gets pushed forward by 1*3=3, to +1
 			double howManyPushesNeeded=Math.floor(position[i]/grid.gridSize);
+			//if(howManyPushesNeeded!=0)
+			//{
+			//	System.out.println(howManyPushesNeeded);
+			//}
 			position[i]-=howManyPushesNeeded*grid.gridSize;
 		}
 	}
@@ -51,19 +55,29 @@ public class Species {
 		for (int i=0; i<numberOfParticles; i++)
 		{
 			index = grid.getIndexOnGrid(position[i]);
-			System.out.println(i + " " + index);
+			//System.out.println(i + " " + index);
 			if (index<grid.gridPointNumber-1)
 			{	
+				//System.out.println("Index" + grid.gridPoints[index+1] + "position" + position[i]);// + "efield" + grid.eField[i]);				
 				try
 				{
 					//interpolate from left
-					field += (grid.gridPoints[index+1]-position[i])*grid.eField[i];
+					field += (grid.gridPoints[index+1]-position[i])*grid.eField[index];
 					//interpolate from right
-					field += (position[i]-grid.gridPoints[index])*grid.eField[i+1];
 				}
 				catch(IndexOutOfBoundsException e)
 				{
-					System.err.println("Index out of bounds at acceleration. Index:" + index + ", index+1:" + (index+1)
+					System.err.println("First line: index out of bounds at acceleration. Index:" + index + ", index+1:" + (index+1)
+							+ ", position: " + position[i] + ",message:" + e.getMessage());
+				}
+				try
+				{
+					//interpolate from right
+					field += (position[i]-grid.gridPoints[index])*grid.eField[index+1];
+				}
+				catch(IndexOutOfBoundsException e)
+				{
+					System.err.println("Second line: index out of bounds at acceleration. Index:" + index + ", index+1:" + (index+1)
 							+ ", position: " + position[i] + ",message:" + e.getMessage());
 				}
 			}
@@ -76,6 +90,7 @@ public class Species {
 			}
 			velocity[i]+=field*dt/mass*charge/grid.gridStep; //time charge for field;
 											//over mass for accel; over gridstep from interpolation
+			System.out.print(velocity[i] + " ");
 		}
 	}
 	
@@ -96,9 +111,12 @@ public class Species {
 		accelerate(Parameters.timeStep, grid);
 		move(Parameters.timeStep, grid);
 		//TODO: gather trajectory data
+		//plotPositions.addElement(position);
 		//TODO: gather velocity data
+		//plotPositions.addElement(velocity);
 		
 		//TODO: gather temperature data
+		//System.out.println(temperature());
 		plotTemperatures.addElement((Double)temperature());
 	}
 
