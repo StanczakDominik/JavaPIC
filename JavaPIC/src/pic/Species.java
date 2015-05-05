@@ -52,6 +52,7 @@ public class Species {
 	{
 		int index;
 		double field=0;
+		System.out.println("Velocity");
 		for (int i=0; i<numberOfParticles; i++)
 		{
 			index = grid.getIndexOnGrid(position[i]);
@@ -92,6 +93,7 @@ public class Species {
 											//over mass for accel; over gridstep from interpolation
 			System.out.print(velocity[i] + " ");
 		}
+		System.out.println("");
 	}
 	
 	public double temperature()

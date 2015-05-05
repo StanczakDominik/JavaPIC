@@ -46,7 +46,7 @@ public class Grid {
 			for(int i=0; i<gridPointNumber; i++)
 			{
 				density[i]+=speciesDensity[i]*species.charge;
-				System.out.println(density[i]);
+				//System.out.println(density[i]);
 			}
 		}
 		
@@ -84,7 +84,14 @@ public class Grid {
 				
 			}
 		}
+		System.out.println("Potential");
+		for (int i =0; i<gridPointNumber-1; i++)
+		{
+			System.out.print(potential[i] + " ");
+		}
+		System.out.println("");
 		//eField calculation
+		System.out.println("Field");
 		for (int i =0; i<gridPointNumber-1; i++)
 		{
 			forwardIndex=i+1;
@@ -93,10 +100,11 @@ public class Grid {
 			if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
 			
 			eField[i]=(potential[backwardIndex]-potential[forwardIndex])/(2*gridStep);
+			System.out.print(eField[i] + " ");
 			//DEBUG
 			//eField[i]=1;
-			
 		}
+		System.out.println("");
 	}
 	
 	public Grid() {
