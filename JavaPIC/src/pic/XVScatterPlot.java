@@ -1,16 +1,10 @@
 package pic;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.XYChart;
-import javafx.stage.Stage;
-
 public class XVScatterPlot extends Application { 
 
-	public XYChart.Series series1;
-	public XYChart.Series series2;
+	private XYChart.Series series1;
+	private XYChart.Series series2;
+	
 	
 	public void update(Species[] listOfSpecies)
 	{
