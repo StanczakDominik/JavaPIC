@@ -21,6 +21,10 @@ public class MainSimulation {
 		Species electrons = new Species("Electrons", Color.GREEN, Parameters.numberOfParticles, Parameters.electronRestMass, -Parameters.electronCharge, electronPositions, electronVelocities);
 		listOfSpecies[0]=protons;
 		listOfSpecies[1]=electrons;
+		for (int i=0; i<Parameters.numberOfParticles; i++)
+		{
+			//System.out.println(protons.position[i]);
+		}
 		
 		Parameters.checkParameters();
 

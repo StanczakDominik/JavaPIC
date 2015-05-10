@@ -8,7 +8,7 @@ public class Grid {
 	double[] gridPoints;
 	public double gridSize = Parameters.gridSize;
 	public int gridPointNumber = Parameters.gridPointNumber;
-	public double gridStep = gridSize/(gridPointNumber-1);
+	public double gridStep = (double)gridSize/(gridPointNumber-1);
 	
 	double[] eField;
 	double[] density;
@@ -42,56 +42,88 @@ public class Grid {
 					speciesDensity[index]+=1-(species.position[i]-gridPoints[index])/gridStep;
 					speciesDensity[0]+=(species.position[i]-gridPoints[index])/gridStep;
 				}
+				System.out.println("speciesDensity " + speciesDensity[index]);
 			}
 			for(int i=0; i<gridPointNumber; i++)
 			{
 				density[i]+=speciesDensity[i]*species.charge;
+					System.out.println("density at " + i + ": " + density[i]);
 				//System.out.println(density[i]);
 			}
 		}
 		
-		//Gauss Seidel Method as used at particleincell.com
-		//I have used this once, a while ago, but used that
-		//version as a refresher
+		//Gauss Seidel Method
 		potential = new double[gridPointNumber];
 		int forwardIndex, backwardIndex;
 		double potentialTemporaryVariable, sum;
-		for (int iter=0; iter<20000; iter++)
+		for (int iter=0; iter<400; iter++)
 		{
-			for (int i =0; i<gridPointNumber-1; i++)
+			for (int i =0; i<gridPointNumber; i++)
 			{
 				forwardIndex=i+1;
-				if(forwardIndex==gridPointNumber-1) forwardIndex=0;
+				if(forwardIndex==gridPointNumber) forwardIndex=0;
 				backwardIndex=i-1;
-				if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
-				potentialTemporaryVariable = 0.5*(potential[i]/Parameters.epsilonZero)*gridStep*gridStep;
-				potentialTemporaryVariable += potential[forwardIndex] + potential[backwardIndex];
-				potential[i] += 1.4*(potentialTemporaryVariable-potential[i]);
-			}
+				if(backwardIndex==-1) backwardIndex=gridPointNumber-1;
+					//System.out.println("Forward index " + forwardIndex + ", backward index " + backwardIndex);
+				potentialTemporaryVariable = 0.5d*(density[i]/Parameters.epsilonZero)*gridStep*gridStep;
+					//System.out.println("PotentialTemporary at " + i + ": " + potentialTemporaryVariable);
+				potentialTemporaryVariable += 0.5d*(potential[forwardIndex] + potential[backwardIndex]);
+					//System.out.println("PotentialTemporary after add at " + i + ": " + potentialTemporaryVariable);
+				potential[i] += 1.4d*(potentialTemporaryVariable-potential[i]);
 			
-			if (iter%25==0)
+			}
+
+//			try {
+//				System.in.read();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
+			if ((iter%5==0) && (iter>0))
 			{
-				sum=0;
-				for (int i=1; i<gridPointNumber-1; i++)
+				System.out.println("Iteration " + iter);
+				//for (int i=0; i<gridPointNumber; i++)
+				//{
+				//	System.out.println("Potential at " + i + ": " + potential[i]);
+				//}
+				
+				sum=0d;
+				for (int i=1; i<gridPointNumber; i++)
 				{
 					forwardIndex=i+1;
-					if(forwardIndex==gridPointNumber-1) forwardIndex=0;
-					double res = potential[i]/Parameters.epsilonZero+(potential[i-1]-2*potential[i]+potential[forwardIndex])/(gridStep*gridStep);
+					if(forwardIndex==gridPointNumber) forwardIndex=0;
+						System.out.println("Density/e0 " + density[i]/Parameters.epsilonZero + "second term: " + (potential[i-1]-2*potential[i]+potential[forwardIndex])/(gridStep*gridStep));
+					double res = density[i]/Parameters.epsilonZero+(potential[i-1]-2*potential[i]+potential[forwardIndex])/(gridStep*gridStep);
 					sum+=res*res;
+					
 				}
-				sum=Math.sqrt(sum/gridPointNumber);
+				System.out.println("sum" + sum);
+				sum=Math.sqrt((double)(sum/(double)gridPointNumber));
+				System.out.println("Total field error estimated as " + sum);
 				if(sum<Parameters.fieldErrorTolerance) break;
 				
+				//try {
+				//	System.in.read();
+				//} catch (IOException e) {
+				//	// TODO Auto-generated catch block
+				//	e.printStackTrace();
+				//}
+				
+			}
+			if(iter==Parameters.fieldCalculationIterations-1)
+			{
+				System.out.println("MAY NOT HAVE CONVERGED");
 			}
 		}
-		System.out.println("Potential");
+		//System.out.println("Potential");
 		for (int i =0; i<gridPointNumber-1; i++)
 		{
-			System.out.print(potential[i] + " ");
+			//System.out.print(potential[i] + " ");
 		}
-		System.out.println("");
+		//System.out.println("");
 		//eField calculation
-		System.out.println("Field");
+		//System.out.println("Field");
 		for (int i =0; i<gridPointNumber-1; i++)
 		{
 			forwardIndex=i+1;
@@ -100,11 +132,11 @@ public class Grid {
 			if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
 			
 			eField[i]=(potential[backwardIndex]-potential[forwardIndex])/(2*gridStep);
-			System.out.print(eField[i] + " ");
+			//System.out.print(eField[i] + " ");
 			//DEBUG
 			//eField[i]=1;
 		}
-		System.out.println("");
+		//System.out.println("");
 	}
 	
 	public Grid() {
