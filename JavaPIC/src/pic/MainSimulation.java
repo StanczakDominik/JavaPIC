@@ -1,8 +1,7 @@
 package pic;
 
 import java.awt.Color;
-import javafx.application.Application;
-public class MainSimulation extends Application {
+public class MainSimulation{
 
 	public MainSimulation() {
 	}
@@ -11,7 +10,6 @@ public class MainSimulation extends Application {
 		System.out.println("Starting");
 		Grid grid = new Grid();
 		Species[] listOfSpecies = new Species[2];
-		XVPhasePlot plot;
 		
 		double[] velocities1=Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
 		double[] velocities2=Parameters.uniformVelocity(Parameters.numberOfParticles, -Parameters.initialVelocity);		
@@ -36,9 +34,6 @@ public class MainSimulation extends Application {
 				listOfSpecies[i].step(grid);
 			}
 			grid.update(listOfSpecies);
-			plot = new XVPhasePlot();
-			plot.update(listOfSpecies);
-			plot.launch();
 			
 		}
 		System.out.println("Finished");

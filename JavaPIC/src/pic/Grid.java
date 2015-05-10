@@ -123,7 +123,7 @@ public class Grid {
 			}
 			if(iter==Parameters.fieldCalculationIterations-1)
 			{
-				System.out.println("MAY NOT HAVE CONVERGED");
+				if(Parameters.printFields) System.out.println("MAY NOT HAVE CONVERGED");
 			}
 		}
 		//System.out.println("Potential");
@@ -142,7 +142,7 @@ public class Grid {
 			if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
 			
 			eField[i]=(potential[backwardIndex]-potential[forwardIndex])/(2*gridStep);
-			System.out.println(i + "\t" + potential[i] + "\t" + eField[i]);
+			if(Parameters.printFields) System.out.println(i + "\t" + potential[i] + "\t" + eField[i]);
 			//DEBUG
 			//eField[i]=1;
 		}

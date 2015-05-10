@@ -18,6 +18,11 @@ public class Parameters {
 		
 		return energy/boltzmannConstant;
 	}
+	//debug booleans
+	
+	public static boolean printFields = false;
+	public static boolean printIterations = false;
+	
 	
 	//simulation parameters
 	public static double timeStep = 1e-1d;
