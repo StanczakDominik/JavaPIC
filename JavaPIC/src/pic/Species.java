@@ -27,6 +27,10 @@ public class Species {
 	
 	public void move(double dt, Grid grid)
 	{
+
+		double max=0;
+		double min = 1e9;
+		double sum=0;
 		for (int i=0; i<numberOfParticles; i++)
 		{
 			position[i] += velocity[i]*dt; //move particle
@@ -46,56 +50,67 @@ public class Species {
 			//	System.out.println(howManyPushesNeeded);
 			//}
 			position[i]+=howManyPushesNeeded*grid.gridSize;
-			
+
+			sum+=position[i];
 			//positions[i]-=(positions[i]%gridSize)*gridSize;Math.floor(positions[i]/gridSize)*gridSize;
+			if((position[i])>max)
+			{
+				max = (position[i]);
+			}
+			if((position[i])<min)
+			{
+				min = (position[i]);
+			}
 		}
+		System.out.println("Position: average " + sum/numberOfParticles + " max " + max + " min " + min);
+
 	}
 	
 	public void accelerate(double dt, Grid grid)
 	{
 		int index;
-		double field=0;
+		double max=0;
+		double min = 1e9;
+		double sum=0;
+		double field;
 		//System.out.println("Velocity");
 		for (int i=0; i<numberOfParticles; i++)
 		{
+			field=0d;
 			index = grid.getIndexOnGrid(position[i]);
 			//System.out.println(i + " " + index);
 			if (index<grid.gridPointNumber-1)
 			{	
-				//System.out.println("Index" + grid.gridPoints[index+1] + "position" + position[i]);// + "efield" + grid.eField[i]);				
-				try
-				{
 					//interpolate from left
 					field += (grid.gridPoints[index+1]-position[i])*grid.eField[index];
 					//interpolate from right
-				}
-				catch(IndexOutOfBoundsException e)
-				{
-					System.err.println("First line: index out of bounds at acceleration. Index:" + index + ", index+1:" + (index+1)
-							+ ", position: " + position[i] + ",message:" + e.getMessage());
-				}
-				try
-				{
+
 					//interpolate from right
 					field += (position[i]-grid.gridPoints[index])*grid.eField[index+1];
-				}
-				catch(IndexOutOfBoundsException e)
-				{
-					System.err.println("Second line: index out of bounds at acceleration. Index:" + index + ", index+1:" + (index+1)
-							+ ", position: " + position[i] + ",message:" + e.getMessage());
-				}
 			}
 			else
 			{
 				//interpolate from left
-				field += (-position[i])*grid.eField[grid.gridPointNumber-1];
+				field += (grid.gridSize-position[i])*grid.eField[grid.gridPointNumber-1];
 				//interpolate from right
 				field += (grid.gridPoints[grid.gridPointNumber-1]-position[i])*grid.eField[0];
 			}
-			velocity[i]+=field*dt*Parameters.chargeToMassRatio/grid.gridStep; //time charge for field;
+			field/=grid.gridStep;
+			velocity[i]+=field*dt*Parameters.chargeToMassRatio; //time charge for field;
+			sum+=velocity[i];
+			if(Math.abs(velocity[i])>max)
+			{
+				max = Math.abs(velocity[i]);
+			}
+			if(Math.abs(velocity[i])<min)
+			{
+				min = Math.abs(velocity[i]);
+			}
 											//over mass for accel; over gridstep from interpolation
 			//System.out.print(velocity[i] + " ");
 		}
+
+		System.out.println("Velocity: average " + sum/numberOfParticles + " max " + max + " min " + min);
 		//System.out.println("");
 	}
 	
@@ -124,7 +139,7 @@ public class Species {
 		//System.out.println(temperature());
 		plotTemperatures.addElement((Double)temperature());
 	}
-
+	//TODO: remove useless parameters
 	public Species(String nameI, Color colorI, int numberOfParticlesI, double massI, double chargeI, double[] positionI, double[] velocityI)
 	{
 		name=nameI;

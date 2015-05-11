@@ -17,18 +17,16 @@ public class XVPlotPanel extends JPanel {
 		super();
 		this.engine=engine;
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		g=getGraphics();
 	}
 	int[] positions1, positions2, velocities1, velocities2;
-	int radius = 2;
+	public int radius = 2;
 	
 	double minX=0;
 	double maxX=Parameters.gridSize;
-	double minV=-20d*Parameters.initialVelocity;
-	double maxV=20d*Parameters.initialVelocity;
+	double minV=-Parameters.plotMaxVMultiplier*Parameters.initialVelocity;
+	double maxV=Parameters.plotMaxVMultiplier*Parameters.initialVelocity;
 	Graphics g;
-	public XVPlotPanel() {
-		g=getGraphics();
-	}
 	
 	public void update(SimulationEngine engine)
 	{
