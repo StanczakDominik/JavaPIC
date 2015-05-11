@@ -1,7 +1,8 @@
 package pic;
 
-import java.awt.Color;
-
+import java.awt.*;
+import java.io.IOException;
+import javax.swing.*;
 public class SimulationEngine {
 
 	Grid grid = new Grid();
@@ -25,9 +26,9 @@ public class SimulationEngine {
 		listOfSpecies[1]=beam2;
 		grid.update(listOfSpecies);
 		
-		plot = new SimulationFrame(this);
+/*		plot = new SimulationFrame(this);
 		plot.createPlot();
-		plot.phasePlot.update(this);
+		plot.phasePlot.update(this);*/
 	}
 	
 	public void step()
@@ -41,11 +42,31 @@ public class SimulationEngine {
 	
 	public static void main(String[] args)
 	{
+		JFrame frame = new JFrame();
+		frame.setSize(500, 500);
 		SimulationEngine engine = new SimulationEngine();
+		XVPlotPanel phasePlot = new XVPlotPanel(engine);
+		frame.add(phasePlot);
+		phasePlot.setSize(new Dimension(500, 500));
+		phasePlot.update(engine);
+		phasePlot.setVisible(true);
+		frame.setTitle("WELL MET");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+
+
 		for(int t=0; t<Parameters.iterations; t++)
-		{	
+		{
 			if(Parameters.printIterations) System.out.println("Iteration " + t);
-			engine.step();			
+			engine.step();
+			phasePlot.update(engine);
+			try {
+				System.in.read();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		frame.setVisible(false);
 	}
 }

@@ -26,7 +26,7 @@ public class Parameters {
 	
 	//simulation parameters
 	public static double timeStep = 1e-1d;
-	public static int iterations = 100;
+	public static int iterations = 1000;
 	public static int cellParticleDensity = 100;
 	
 	public static double plasmaFrequency=1d;
