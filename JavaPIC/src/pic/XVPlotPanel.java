@@ -2,9 +2,6 @@ package pic;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.LayoutManager;
-
 import javax.swing.*;
 
 
@@ -38,7 +35,6 @@ public class XVPlotPanel extends JPanel {
 		this.engine=engine;
 
 		for (int i = 0; i < Parameters.numberOfParticles; i++) {
-			//System.out.println(listOfSpecies[0].position[i]);
 			positions1[i] = (int) (engine.listOfSpecies[0].position[i] / maxX * getWidth());
 			positions2[i] = (int) (engine.listOfSpecies[1].position[i] / maxX * getWidth());
 			velocities1[i] = (int) ((engine.listOfSpecies[0].velocity[i] / (maxV - minV)+0.5) * getHeight());
@@ -48,13 +44,9 @@ public class XVPlotPanel extends JPanel {
 	}
 
 	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
 		g.setColor(Color.white);
 		g.clearRect(0, 0, getWidth(), getHeight());
 		for (int i =0; i<Parameters.numberOfParticles; i++) {
-		//for (int i = 0; i < Parameters.numberOfParticles; i+=(int)(Parameters.numberOfParticles/10000d)) {
-//		for (int i = 0; i < 10; i++) {
-			//System.out.println(positions1[i] + " " + velocities1[1]);
 			g.setColor(Color.RED);
 			g.fillOval(positions1[i] - radius, velocities1[i] - radius, 2 * radius, 2 * radius);
 			g.setColor(Color.BLUE);

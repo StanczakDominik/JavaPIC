@@ -2,7 +2,6 @@ package pic;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.Arrays;
 import javax.swing.*;
 public class SimulationEngine {
 
@@ -16,21 +15,15 @@ public class SimulationEngine {
 	public SimulationEngine()
 	{
 		velocities1=Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
-		velocities2=Parameters.uniformVelocity(Parameters.numberOfParticles, -Parameters.initialVelocity);		
-		//positions1=Parameters.cosinePosition(Parameters.numberOfParticles, Parameters.perturbationAmplitude);
-		//positions2=Parameters.cosinePosition(Parameters.numberOfParticles, -Parameters.perturbationAmplitude);
+		velocities2=Parameters.uniformVelocity(Parameters.numberOfParticles, -Parameters.initialVelocity);
 		positions1=Parameters.randomPosition(Parameters.numberOfParticles, Parameters.perturbationAmplitude);
 		positions2=Parameters.randomPosition(Parameters.numberOfParticles, -Parameters.perturbationAmplitude);
-		beam1 = new Species("Beam 1", Color.RED, Parameters.numberOfParticles, Parameters.protonRestMass, Parameters.charge, positions1, velocities1);
-		beam2 = new Species("Beam 2", Color.GREEN, Parameters.numberOfParticles, Parameters.electronRestMass, Parameters.charge, positions2, velocities2);
+		beam1 = new Species(Parameters.numberOfParticles, Parameters.charge, positions1, velocities1);
+		beam2 = new Species(Parameters.numberOfParticles, Parameters.charge, positions2, velocities2);
 		
 		listOfSpecies[0]=beam1;
 		listOfSpecies[1]=beam2;
 		grid.update(listOfSpecies);
-		
-/*		plot = new SimulationFrame(this);
-		plot.createPlot();
-		plot.phasePlot.update(this);*/
 	}
 
 
@@ -78,6 +71,7 @@ public class SimulationEngine {
 			phasePlot.update(engine);
 			fieldPlot.update(engine);
 
+			//TODO: Replace with animation
 			try {
 				System.in.read();
 			} catch (IOException e) {
