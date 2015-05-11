@@ -39,12 +39,15 @@ public class Species {
 			//suppose position = -2
 			//howManyPushes = floor (-2/3) = -1
 			//particle gets pushed forward by 1*3=3, to +1
-			double howManyPushesNeeded=Math.floor(position[i]/grid.gridSize);
+			int howManyPushesNeeded=(int)-Math.floor(position[i]/grid.gridSize);
+			//System.out.println("Position " + position[i] + " Pushes " + howManyPushesNeeded);
 			//if(howManyPushesNeeded!=0)
 			//{
 			//	System.out.println(howManyPushesNeeded);
 			//}
-			position[i]-=howManyPushesNeeded*grid.gridSize;
+			position[i]+=howManyPushesNeeded*grid.gridSize;
+			
+			//positions[i]-=(positions[i]%gridSize)*gridSize;Math.floor(positions[i]/gridSize)*gridSize;
 		}
 	}
 	
@@ -89,7 +92,7 @@ public class Species {
 				//interpolate from right
 				field += (grid.gridPoints[grid.gridPointNumber-1]-position[i])*grid.eField[0];
 			}
-			velocity[i]+=field*dt/mass*charge/grid.gridStep; //time charge for field;
+			velocity[i]+=field*dt*Parameters.chargeToMassRatio/grid.gridStep; //time charge for field;
 											//over mass for accel; over gridstep from interpolation
 			//System.out.print(velocity[i] + " ");
 		}
