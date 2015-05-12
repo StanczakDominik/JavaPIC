@@ -12,6 +12,8 @@ public class SimulationEngine {
 	double[] velocities2;
 	double[] positions1;
 	double[] positions2;
+
+	public Thread t;
 	public SimulationEngine()
 	{
 		velocities1=Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
@@ -35,16 +37,14 @@ public class SimulationEngine {
 		}
 		grid.update(listOfSpecies);
 	}
-	
+
 	public static void main(String[] args)
 	{
 		SimulationEngine engine = new SimulationEngine();
 
 		JFrame frame = new JFrame();
 		frame.setSize(1000, 1000);
-
-		GridLayout layout = new GridLayout(2,1);
-		frame.setLayout(layout);
+		frame.setLayout(new GridLayout(2, 1));
 
 		XVPlotPanel phasePlot = new XVPlotPanel(engine);
 		frame.add(phasePlot);
@@ -62,7 +62,6 @@ public class SimulationEngine {
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
-
 		for(int t=0; t<Parameters.iterations; t++)
 		{
 			if(Parameters.printIterations) System.out.println("Iteration " + t);
@@ -71,12 +70,6 @@ public class SimulationEngine {
 			phasePlot.update(engine);
 			fieldPlot.update(engine);
 
-			//TODO: Replace with animation
-			try {
-				System.in.read();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 		frame.setVisible(false);
 	}
