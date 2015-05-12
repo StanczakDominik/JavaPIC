@@ -48,7 +48,7 @@ public class Species {
 				min = (position[i]);
 			}
 		}
-		System.out.println("Position: average " + sum/numberOfParticles + " max " + max + " min " + min);
+		if(Parameters.printMovement) System.out.println("Position: average " + sum/numberOfParticles + " max " + max + " min " + min);
 
 	}
 	
@@ -92,7 +92,7 @@ public class Species {
 			}
 		}
 
-		System.out.println("Velocity: average " + sum/numberOfParticles + " max " + max + " min " + min);
+		if(Parameters.printMovement) System.out.println("Velocity: average " + sum/numberOfParticles + " max " + max + " min " + min);
 	}
 	
 	public void step(Grid grid)

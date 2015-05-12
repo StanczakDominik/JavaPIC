@@ -74,12 +74,12 @@ public class Grid {
 
 			if (((iter>0) && (iter%Parameters.fieldCalculationStep==0) && (maxChange<Parameters.fieldErrorTolerance)) || (iter==Parameters.fieldCalculationIterations))
 			{
-				System.out.println("iteration " + iter + " " + maxChange + " converged");
+				if(Parameters.printGridConvergence) System.out.println("iteration " + iter + " " + maxChange + " converged");
 				break;
 			}
 			if(iter==Parameters.fieldCalculationIterations)
 			{
-				System.out.println("May not have converged!");
+				if(Parameters.printGridConvergence) System.out.println("May not have converged!");
 			}
 		}
 		for (int i =0; i<gridPointNumber; i++)
