@@ -41,7 +41,9 @@ public class SimulationEngine {
 	public static void main(String[] args)
 	{
 		SimulationEngine engine = new SimulationEngine();
-
+		//TODO: move these to a GUI class
+		//TODO: get a separate thread for GUI
+		//TODO: use SwingWorker and so on
 		JFrame frame = new JFrame();
 		frame.setSize(1000, 1000);
 		frame.setLayout(new GridLayout(2, 1));
@@ -52,7 +54,8 @@ public class SimulationEngine {
 		phasePlot.update(engine);
 		phasePlot.setVisible(true);
 
-		FieldPlot fieldPlot = new FieldPlot(engine);
+//		FieldPlot fieldPlot = new FieldPlot(engine);
+		FieldJFreeChartPlot fieldPlot = new FieldJFreeChartPlot(engine);
 		frame.add(fieldPlot);
 		fieldPlot.setSize(new Dimension(1000, 500));
 		fieldPlot.update(engine);

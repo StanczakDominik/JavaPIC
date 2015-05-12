@@ -9,6 +9,8 @@ public class Parameters {
 	
 	public static boolean printFields = false;
 	public static boolean printIterations = false;
+	public static boolean printMovement = false;
+	public static boolean printGridConvergence = false;
 	
 	
 	//simulation parameters
