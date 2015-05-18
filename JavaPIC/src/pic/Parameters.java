@@ -27,9 +27,11 @@ public class Parameters {
 	public static int gridPointNumber = 64;
 	public static double gridStep = gridSize/((double)(gridPointNumber));
 	
-	public static double fieldErrorTolerance=1e-9;
-	public static int fieldCalculationIterations=25000;
+	public static double fieldErrorTolerance=1e-10;
+	public static int fieldCalculationIterations=35000;
 	public static int fieldCalculationStep=100;
+
+	public static double fieldPlotMaximumValue=1d;
 
 	//species parameters
 	public static double chargeToMassRatio = -1d;

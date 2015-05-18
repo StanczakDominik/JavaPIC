@@ -1,7 +1,9 @@
 package pic;
 
 import org.jfree.chart.*;
+import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -26,8 +28,8 @@ public class FieldJFreeChartPlot extends JPanel implements Runnable {
     private Scanner sc;
     private XYDataset xyDataset;
     private XYSeriesCollection xySeriesCollection;
-    JFreeChart lineGraph;
-
+    private JFreeChart lineGraph;
+    private ValueAxis xAxis, yAxis;
     private ChartPanel panel;
 
     private SimulationEngine engine;
@@ -58,10 +60,19 @@ public class FieldJFreeChartPlot extends JPanel implements Runnable {
         xySeriesCollection = new XYSeriesCollection(dataSetDensity);
         xySeriesCollection.addSeries(dataSetPotential);
         xySeriesCollection.addSeries(dataSetField);
-        //TODO: set xlim constant, ylim growing as needed
-        lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, false); //this should make a legend but doesn't work right now
+        lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
-        chartPanel.setPreferredSize(new Dimension(getWidth(), getHeight()));
+        chartPanel.setPreferredSize(new Dimension(getWidth(), (int)(0.95*getHeight())));
+
+        XYPlot xyPlot = (XYPlot) lineGraph.getPlot();
+        xAxis=xyPlot.getDomainAxis();
+        xAxis.setLowerBound(0);
+        xAxis.setUpperBound(Parameters.gridSize);
+        yAxis=xyPlot.getRangeAxis();
+        yAxis.setLowerBound(-Parameters.fieldPlotMaximumValue);
+        yAxis.setUpperBound(Parameters.fieldPlotMaximumValue);
+
+
         add(chartPanel);
         chartPanel.setVisible(true);
         setVisible(true);
