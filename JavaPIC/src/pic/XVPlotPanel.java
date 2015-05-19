@@ -45,7 +45,7 @@ public class XVPlotPanel extends JPanel  {
 		g.setColor(Color.white);
 		g.clearRect(0, 0, getWidth(), getHeight());
 		for (int i =0; i<Parameters.numberOfParticles; i++) {
-			g.setColor(Color.RED);
+			g.setColor(Color.BLUE);
 			g.fillOval(positions1[i] - radius, velocities1[i] - radius, 2 * radius, 2 * radius);
 			g.setColor(Color.BLUE);
 			g.fillOval(positions2[i] - radius, velocities2[i] - radius, 2 * radius, 2 * radius);

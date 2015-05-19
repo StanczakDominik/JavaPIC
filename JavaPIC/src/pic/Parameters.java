@@ -14,10 +14,10 @@ public class Parameters {
 	
 	
 	//simulation parameters
-	public static double timeStep = 1e-2d;
+	public static double timeStep = 5e-2d;
 	public static int iterations = 3000;
-	public static int cellParticleDensity = 60;
-	public static double plotMaxVMultiplier=10d;
+	public static int cellParticleDensity = 20;
+	public static double plotMaxVMultiplier=5d;
 	public static double fieldPlotSize=1d;
 	//TODO: add scaling to fieldPlot?
 	public static double fieldFieldScale;
@@ -28,7 +28,7 @@ public class Parameters {
 	public static double gridStep = gridSize/((double)(gridPointNumber));
 	
 	public static double fieldErrorTolerance=1e-10;
-	public static int fieldCalculationIterations=35000;
+	public static int fieldCalculationIterations=50000;
 	public static int fieldCalculationStep=100;
 
 	public static double fieldPlotMaximumValue=1d;

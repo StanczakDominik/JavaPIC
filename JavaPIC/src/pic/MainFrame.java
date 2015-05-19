@@ -5,11 +5,13 @@ import java.awt.*;
 
 public class MainFrame {
 
-    private XVPlotPanel phasePlot;
+//    private XVPlotPanel phasePlot;
+    private XVJFreeChartPlot phasePlot;
     private SimulationEngine engine;
     private FieldJFreeChartPlot fieldPlot;
     public MainFrame()
     {
+        System.out.println(Parameters.numberOfParticles);
         engine = new SimulationEngine();
         //TODO: get a separate thread for GUI
         //TODO: use SwingWorker and so on
@@ -17,7 +19,8 @@ public class MainFrame {
         frame.setSize(1000, 1000);
         frame.setLayout(new GridLayout(2, 1));
 
-        phasePlot = new XVPlotPanel(engine);
+        phasePlot = new XVJFreeChartPlot(engine);
+//        phasePlot = new XVPlotPanel(engine);
         frame.add(phasePlot);
         phasePlot.setSize(new Dimension(1000, 500));
         phasePlot.update(engine);
@@ -34,16 +37,8 @@ public class MainFrame {
         frame.setVisible(true);
     }
 
-    public XVPlotPanel getPhasePlot() {
-        return phasePlot;
-    }
-
     public SimulationEngine getEngine() {
         return engine;
-    }
-
-    public FieldJFreeChartPlot getFieldPlot() {
-        return fieldPlot;
     }
 
     public void updatePlots(SimulationEngine data)
