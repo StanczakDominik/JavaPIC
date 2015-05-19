@@ -13,7 +13,6 @@ public class SimulationEngine {
 	double[] positions1;
 	double[] positions2;
 
-	public Thread t;
 	public SimulationEngine()
 	{
 		velocities1=Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
@@ -36,44 +35,5 @@ public class SimulationEngine {
 			listOfSpecies[i].step(grid);
 		}
 		grid.update(listOfSpecies);
-	}
-
-	public static void main(String[] args)
-	{
-		SimulationEngine engine = new SimulationEngine();
-		//TODO: move these to a GUI class
-		//TODO: get a separate thread for GUI
-		//TODO: use SwingWorker and so on
-		JFrame frame = new JFrame();
-		frame.setSize(1000, 1000);
-		frame.setLayout(new GridLayout(2, 1));
-
-		XVPlotPanel phasePlot = new XVPlotPanel(engine);
-		frame.add(phasePlot);
-		phasePlot.setSize(new Dimension(1000, 500));
-		phasePlot.update(engine);
-		phasePlot.setVisible(true);
-
-//		FieldPlot fieldPlot = new FieldPlot(engine);
-		FieldJFreeChartPlot fieldPlot = new FieldJFreeChartPlot(engine);
-		frame.add(fieldPlot);
-		fieldPlot.setSize(new Dimension(1000, 500));
-		fieldPlot.update(engine);
-		fieldPlot.setVisible(true);
-
-		frame.setTitle("Plots. Density - red, potential - blue, field - green");
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-
-		for(int t=0; t<Parameters.iterations; t++)
-		{
-			if(Parameters.printIterations) System.out.println("Iteration " + t);
-			engine.step();
-
-			phasePlot.update(engine);
-			fieldPlot.update(engine);
-
-		}
-		frame.setVisible(false);
 	}
 }

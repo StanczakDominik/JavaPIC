@@ -46,8 +46,6 @@ public class FieldJFreeChartPlot extends JPanel implements Runnable {
             dataSetPotential.add(engine.grid.gridPoints[i], engine.grid.potential[i]);
             dataSetField.add(engine.grid.gridPoints[i], engine.grid.eField[i]);
         }
-
-        //TODO: add legend
     }
 
     public FieldJFreeChartPlot(SimulationEngine engine)
