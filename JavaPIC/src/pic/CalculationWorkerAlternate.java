@@ -24,17 +24,18 @@ public class CalculationWorkerAlternate extends SwingWorker<Void, SimulationEngi
     {
         while(!isCancelled()){
             engine.step();
-//            publish(engine);
-            frame.updatePlots(engine);
+            publish(engine);
+//            frame.updatePlots(engine);
         }
         return null;
     }
 
-//    protected void process(List<SimulationEngine> engines)
-//    {
-//        SimulationEngine lastEngine = engines.get(engines.size()-1);
-//        frame.updatePlots(lastEngine);
-//    }
+    protected void process(List<SimulationEngine> engines)
+    {
+        System.out.println(engines.size());
+        SimulationEngine lastEngine = engines.get(engines.size()-1);
+        frame.updatePlots(lastEngine);
+    }
 //    protected void done()
 //   {
 //        frame.updatePlots(engine);

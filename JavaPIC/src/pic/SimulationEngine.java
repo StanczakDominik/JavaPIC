@@ -6,25 +6,26 @@ import javax.swing.*;
 public class SimulationEngine {
 
 	Grid grid = new Grid();
-	Species beam1, beam2;
 	Species[] listOfSpecies = new Species[2];
-	double[] velocities1;
-	double[] velocities2;
-	double[] positions1;
-	double[] positions2;
+	double[] velocities1=Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
+	double[] velocities2=Parameters.uniformVelocity(Parameters.numberOfParticles, -Parameters.initialVelocity);
+	double[] positions1=Parameters.randomPosition(Parameters.numberOfParticles, Parameters.perturbationAmplitude);
+	double[] positions2=Parameters.randomPosition(Parameters.numberOfParticles, -Parameters.perturbationAmplitude);
+	Species beam1 = new Species(Parameters.numberOfParticles, Parameters.charge, positions1, velocities1);
+	Species beam2 = new Species(Parameters.numberOfParticles, Parameters.charge, positions2, velocities2);
 
 	public SimulationEngine()
 	{
-		velocities1=Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
-		velocities2=Parameters.uniformVelocity(Parameters.numberOfParticles, -Parameters.initialVelocity);
-		positions1=Parameters.randomPosition(Parameters.numberOfParticles, Parameters.perturbationAmplitude);
-		positions2=Parameters.randomPosition(Parameters.numberOfParticles, -Parameters.perturbationAmplitude);
-		beam1 = new Species(Parameters.numberOfParticles, Parameters.charge, positions1, velocities1);
-		beam2 = new Species(Parameters.numberOfParticles, Parameters.charge, positions2, velocities2);
-		
 		listOfSpecies[0]=beam1;
 		listOfSpecies[1]=beam2;
 		grid.update(listOfSpecies);
+	}
+
+	public SimulationEngine(SimulationEngine source)
+	{
+		listOfSpecies[0]=source.listOfSpecies[0];
+		listOfSpecies[1]=source.listOfSpecies[1];
+		grid=source.grid;
 	}
 
 

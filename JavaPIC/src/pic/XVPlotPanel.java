@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 
-public class XVPlotPanel extends JPanel implements Runnable {
+public class XVPlotPanel extends JPanel  {
 
 	SimulationEngine engine;
 	
@@ -14,8 +14,6 @@ public class XVPlotPanel extends JPanel implements Runnable {
 		this.engine=engine;
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		g=getGraphics();
-		t = new Thread(this);
-		t.start();
 	}
 	int[] positions1, positions2, velocities1, velocities2;
 	public int radius = 2;
@@ -25,7 +23,6 @@ public class XVPlotPanel extends JPanel implements Runnable {
 	double minV=-Parameters.plotMaxVMultiplier*Parameters.initialVelocity;
 	double maxV=Parameters.plotMaxVMultiplier*Parameters.initialVelocity;
 	Graphics g;
-	public Thread t;
 	public void update(SimulationEngine engine)
 	{
 
@@ -41,6 +38,7 @@ public class XVPlotPanel extends JPanel implements Runnable {
 			velocities1[i] = (int) ((engine.listOfSpecies[0].velocity[i] / (maxV - minV)+0.5) * getHeight());
 			velocities2[i] = (int) ((engine.listOfSpecies[1].velocity[i] / (maxV - minV)+0.5) * getHeight());
 		}
+		repaint();
 	}
 
 	protected void paintComponent(Graphics g) {
@@ -55,13 +53,13 @@ public class XVPlotPanel extends JPanel implements Runnable {
 		}
 	}
 
-	@Override
-	public void run() {
-		while(true)
-		{
-			repaint();
-			try{Thread.sleep(30);} catch (InterruptedException e) {return;}
-		}
-	}
+//	@Override
+//	public void run() {
+//		while(true)
+//		{
+//			repaint();
+//			try{Thread.sleep(30);} catch (InterruptedException e) {return;}
+//		}
+//	}
 }
 

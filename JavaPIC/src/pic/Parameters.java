@@ -14,7 +14,7 @@ public class Parameters {
 	
 	
 	//simulation parameters
-	public static double timeStep = 5e-2d;
+	public static double timeStep = 1e-2d;
 	public static int iterations = 3000;
 	public static int cellParticleDensity = 60;
 	public static double plotMaxVMultiplier=10d;

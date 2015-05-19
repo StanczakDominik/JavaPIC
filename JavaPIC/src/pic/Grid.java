@@ -101,4 +101,12 @@ public class Grid {
 		potential = new double[gridPointNumber];
 	}
 
+	public Grid(Grid source)
+	{
+		gridPoints = source.gridPoints;
+		eField = source.eField;
+		density = source.density;
+		potential = source.potential;
+	}
+
 }

@@ -108,5 +108,12 @@ public class Species {
 		position=positionI;
 		velocity=velocityI;
 	}
+	public Species(Species source)
+	{
+		charge=source.charge;
+		numberOfParticles=source.numberOfParticles;
+		position=source.position;
+		velocity=source.velocity;
+	}
 
 }

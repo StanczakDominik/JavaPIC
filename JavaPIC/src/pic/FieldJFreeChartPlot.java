@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class FieldJFreeChartPlot extends JPanel implements Runnable {
+public class FieldJFreeChartPlot extends JPanel {
     private XYSeries dataSetDensity, dataSetPotential, dataSetField;
     private double x, y;
     private File file;
@@ -46,6 +46,7 @@ public class FieldJFreeChartPlot extends JPanel implements Runnable {
             dataSetPotential.add(engine.grid.gridPoints[i], engine.grid.potential[i]);
             dataSetField.add(engine.grid.gridPoints[i], engine.grid.eField[i]);
         }
+        repaint();
     }
 
     public FieldJFreeChartPlot(SimulationEngine engine)
@@ -76,13 +77,13 @@ public class FieldJFreeChartPlot extends JPanel implements Runnable {
         setVisible(true);
     }
 
-    @Override
-    public void run() {
-        repaint();
-        try {
-            Thread.sleep(30);
-        } catch (InterruptedException e) {
-            return;
-        }
-    }
+//    @Override
+//    public void run() {
+//        repaint();
+//        try {
+//            Thread.sleep(30);
+//        } catch (InterruptedException e) {
+//            return;
+//        }
+//    }
 }
