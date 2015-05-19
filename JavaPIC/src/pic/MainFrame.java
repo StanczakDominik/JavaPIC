@@ -46,17 +46,17 @@ public class MainFrame {
         return fieldPlot;
     }
 
+    public void updatePlots(SimulationEngine data)
+    {
+        phasePlot.update(data);
+        fieldPlot.update(data);
+    }
+
     public static void main(String[] args)
     {
         MainFrame mainFrame = new MainFrame();
-        for(int t=0; t<Parameters.iterations; t++)
-        {
-            if(Parameters.printIterations) System.out.println("Iteration " + t);
-            mainFrame.getEngine().step();
-
-            mainFrame.getPhasePlot().update(mainFrame.getEngine());
-            mainFrame.getFieldPlot().update(mainFrame.getEngine());
-        }
+        CalculationWorkerAlternate worker = new CalculationWorkerAlternate(mainFrame);
+        worker.execute();
     }
 
 }
