@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class MainFrame {
 
-//    private XVPlotPanel phasePlot;
-    private XVJFreeChartPlot phasePlot;
+    private XVPlotPanel phasePlot;
+//    private XVJFreeChartPlot phasePlot;
     private SimulationEngine engine;
     private FieldJFreeChartPlot fieldPlot;
     public MainFrame()
@@ -19,8 +19,8 @@ public class MainFrame {
         frame.setSize(1000, 1000);
         frame.setLayout(new GridLayout(2, 1));
 
-        phasePlot = new XVJFreeChartPlot(engine);
-//        phasePlot = new XVPlotPanel(engine);
+//        phasePlot = new XVJFreeChartPlot(engine);
+        phasePlot = new XVPlotPanel(engine);
         frame.add(phasePlot);
         phasePlot.setSize(new Dimension(1000, 500));
         phasePlot.update(engine);
@@ -41,17 +41,28 @@ public class MainFrame {
         return engine;
     }
 
+    public void setEngine(SimulationEngine engine) {
+        this.engine = engine;
+    }
+
     public void updatePlots(SimulationEngine data)
     {
         phasePlot.update(data);
         fieldPlot.update(data);
     }
 
+//    public static void main(String[] args)
+//    {
+//        MainFrame mainFrame = new MainFrame();
+//        CalculationWorkerAlternate worker = new CalculationWorkerAlternate(mainFrame);
+//        worker.execute();
+//    }
+
     public static void main(String[] args)
     {
         MainFrame mainFrame = new MainFrame();
-        CalculationWorkerAlternate worker = new CalculationWorkerAlternate(mainFrame);
-        worker.execute();
+        CalculationLoop loop = new CalculationLoop(mainFrame);
+        loop.start();
     }
 
 }

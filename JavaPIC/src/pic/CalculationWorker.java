@@ -4,6 +4,7 @@ import org.apache.commons.lang.SerializationUtils;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Dominik on 2015-05-19.
@@ -12,7 +13,6 @@ public class CalculationWorker extends SwingWorker<SimulationEngine, Void> {
 
     private SimulationEngine engine;
     private MainFrame frame;
-    private boolean running = false;
 
     public CalculationWorker(MainFrame frame)
     {
@@ -25,8 +25,16 @@ public class CalculationWorker extends SwingWorker<SimulationEngine, Void> {
         engine.step();
         return engine;
     }
+
     protected void done()
     {
-        frame.updatePlots(engine);
+        System.out.println("Finished");
+        try {
+            frame.updatePlots(get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
