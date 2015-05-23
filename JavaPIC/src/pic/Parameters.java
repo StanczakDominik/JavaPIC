@@ -19,7 +19,6 @@ public class Parameters {
 	public static int cellParticleDensity = 20;
 	public static double plotMaxVMultiplier=5d;
 	public static double fieldPlotSize=1d;
-	//TODO: add scaling to fieldPlot?
 	public static double fieldFieldScale;
 	public static double fieldDensityScale;
 	//grid parameters
