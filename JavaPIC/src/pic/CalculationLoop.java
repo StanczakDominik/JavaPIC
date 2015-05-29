@@ -42,6 +42,7 @@ public class CalculationLoop {
             @Override
             protected void done()
             {
+                frame.iteration+=1;
                 try {
                     frame.updatePlots(get());
                 } catch (InterruptedException e) {

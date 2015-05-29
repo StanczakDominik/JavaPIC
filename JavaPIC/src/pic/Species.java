@@ -17,6 +17,9 @@ public class Species {
 	double[] position;
 	double[] velocity;
 
+	double oldVelocity;
+	double totalKineticEnergy;
+
 	public void move(double dt, Grid grid)
 	{
 
@@ -59,6 +62,7 @@ public class Species {
 		double min = 1e9;
 		double sum=0;
 		double field;
+		totalKineticEnergy=0;
 		for (int i=0; i<numberOfParticles; i++)
 		{
 			field=0d;
@@ -80,15 +84,18 @@ public class Species {
 				field += (grid.gridPoints[grid.gridPointNumber-1]-position[i])*grid.eField[0];
 			}
 			field/=grid.gridStep;
+			oldVelocity=velocity[i];
 			velocity[i]+=field*dt*Parameters.chargeToMassRatio;
+			//TODO: Does this need a mass term?
+			totalKineticEnergy+=oldVelocity*0.5*velocity[i]/Parameters.chargeToMassRatio*Parameters.charge;
 			sum+=velocity[i];
-			if(Math.abs(velocity[i])>max)
-			{
-				max = Math.abs(velocity[i]);
-			}
-			if(Math.abs(velocity[i])<min)
-			{
-				min = Math.abs(velocity[i]);
+			if(Parameters.printMovement) {
+				if (Math.abs(velocity[i]) > max) {
+					max = Math.abs(velocity[i]);
+				}
+				if (Math.abs(velocity[i]) < min) {
+					min = Math.abs(velocity[i]);
+				}
 			}
 		}
 

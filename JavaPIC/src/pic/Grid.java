@@ -8,6 +8,8 @@ public class Grid {
 	double[] eField;
 	double[] density;
 	double[] potential;
+	double oldField;
+	double totalFieldEnergy;
 	
 	public int getIndexOnGrid(double position)
 	{
@@ -18,6 +20,7 @@ public class Grid {
 	{
 		int index;
 		density = new double[gridPointNumber];
+		totalFieldEnergy = 0;
 		double[] speciesDensity;
 		
 		//calculate density
@@ -88,8 +91,10 @@ public class Grid {
 			if(forwardIndex==gridPointNumber) forwardIndex=1;
 			backwardIndex=i-1;
 			if(backwardIndex==-1) backwardIndex=gridPointNumber-2;
-			
+//			oldField=eField[i];
 			eField[i]=(potential[backwardIndex]-potential[forwardIndex])/(2d*gridStep);
+//			totalFieldEnergy+=oldField*0.5*Parameters.epsilonZero*eField[i];
+			totalFieldEnergy+=0.5*potential[i]*density[i]*gridStep;
 			if(Parameters.printFields) System.out.println(i + "\t" + potential[i] + "\t" + eField[i]);
 		}
 	}
