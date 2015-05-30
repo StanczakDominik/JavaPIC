@@ -2,6 +2,7 @@ package pic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame {
 
@@ -12,7 +13,6 @@ public class MainFrame {
     protected int iteration = 0;
     public MainFrame()
     {
-        System.out.println(Parameters.numberOfParticles);
         engine = new SimulationEngine();
         JFrame frame = new JFrame();
         frame.setSize(1000, 1000);
@@ -60,8 +60,37 @@ public class MainFrame {
     public static void main(String[] args)
     {
         MainFrame mainFrame = new MainFrame();
+        //ten fragment kodu odpowiada za ca³¹ symulacjê
+        //czy calculationloop jest do przerobienia?
         CalculationLoop loop = new CalculationLoop(mainFrame);
         loop.start();
+        ///
+
+        //Zrobiony na szybko schemat zatrzymywania
+
+        while(true) {
+
+            //reaguje na enter w konsoli
+            try {
+                System.in.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //ta linijka zatrzymuje animacjê - takie pause
+            loop.stop();
+
+            try {
+                System.in.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //mo¿na j¹ na bie¿¹co z powrotem puœciæ
+            loop.start();
+            //restartu jeszcze nie mam
+        }
+
     }
 
 }

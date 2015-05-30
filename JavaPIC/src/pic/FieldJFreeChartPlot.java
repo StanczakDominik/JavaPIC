@@ -27,16 +27,10 @@ public class FieldJFreeChartPlot extends JPanel {
     private File file;
     private Scanner sc;
     private XYDataset xyDataset;
-    private XYSeriesCollection xySeriesCollection;
-    private JFreeChart lineGraph;
-    private ValueAxis xAxis, yAxis;
     private ChartPanel panel;
-
-    private SimulationEngine engine;
 
     public void update(SimulationEngine engine)
     {
-        this.engine = engine;
         dataSetPotential.clear();
         dataSetDensity.clear();
         dataSetField.clear();
@@ -56,18 +50,18 @@ public class FieldJFreeChartPlot extends JPanel {
         dataSetPotential = new XYSeries("Potential");
         dataSetField = new XYSeries("Field");
         update(engine);
-        xySeriesCollection = new XYSeriesCollection(dataSetDensity);
+        XYSeriesCollection xySeriesCollection = new XYSeriesCollection(dataSetDensity);
         xySeriesCollection.addSeries(dataSetPotential);
         xySeriesCollection.addSeries(dataSetField);
-        lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        JFreeChart lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int)(0.95*getHeight())));
 
         XYPlot xyPlot = (XYPlot) lineGraph.getPlot();
-        xAxis=xyPlot.getDomainAxis();
+        ValueAxis xAxis = xyPlot.getDomainAxis();
         xAxis.setLowerBound(0);
         xAxis.setUpperBound(Parameters.gridSize);
-        yAxis=xyPlot.getRangeAxis();
+        ValueAxis yAxis = xyPlot.getRangeAxis();
         yAxis.setLowerBound(-Parameters.fieldPlotMaximumValue);
         yAxis.setUpperBound(Parameters.fieldPlotMaximumValue);
 

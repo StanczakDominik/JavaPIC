@@ -28,15 +28,11 @@ public class EnergyPlot extends JPanel {
     private Scanner sc;
     private XYDataset xyDataset;
     private XYSeriesCollection xySeriesCollection;
-    private JFreeChart lineGraph;
     private ValueAxis xAxis, yAxis;
     private ChartPanel panel;
 
-    private SimulationEngine engine;
-
     public void update(SimulationEngine engine, int iteration)
     {
-        this.engine = engine;
         fieldEnergy.add(iteration*Parameters.timeStep, engine.grid.totalFieldEnergy);
         kineticEnergy1.add(iteration*Parameters.timeStep, engine.listOfSpecies[0].totalKineticEnergy);
         kineticEnergy2.add(iteration*Parameters.timeStep, engine.listOfSpecies[1].totalKineticEnergy);
@@ -56,7 +52,7 @@ public class EnergyPlot extends JPanel {
         xySeriesCollection.addSeries(kineticEnergy1);
         xySeriesCollection.addSeries(kineticEnergy2);
         xySeriesCollection.addSeries(totalEnergy);
-        lineGraph = ChartFactory.createXYLineChart("Energies", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        JFreeChart lineGraph = ChartFactory.createXYLineChart("Energies", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int)(0.95*getHeight())));
 
