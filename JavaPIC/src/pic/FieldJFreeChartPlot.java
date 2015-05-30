@@ -21,10 +21,11 @@ import java.io.IOException;
  * zale¿noœci od po³o¿enia na siatce
  * Oparty na JFreeCharcie
  * Metoda update czyœci zbiory danych i wype³nia je obecnymi
+ * Metoda saveChartAsPng zapisuje wykres fazowy do pliku FieldJFreeChart#.png, gdzie # jest numerem zdjêcia
  */
 
 class FieldJFreeChartPlot extends JPanel {
-    JFreeChart lineGraph;
+    private JFreeChart lineGraph;
     private XYSeries dataSetDensity, dataSetPotential, dataSetField;
     private int snapshotsTaken = 0;
 

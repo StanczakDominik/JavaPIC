@@ -19,9 +19,10 @@ import java.io.IOException;
  * Nale¿y zauwa¿yæ, ¿e model PIC przez u¿yte przybli¿enia nawet nie powinien zachowywaæ energii tak, jak robi to np.
  * algorytm leapfrog (który zachowuje j¹ w 100% przez swoj¹ symetriê czasow¹).
  * Generalnie wszystko dzia³a podobnie jak w FieldPlocie.
+ * Metoda saveChartAsPng zapisuje wykres fazowy do pliku EnergyPlot#.png, gdzie # jest numerem zdjêcia
  */
 class EnergyPlot extends JPanel {
-    JFreeChart lineGraph;
+    private JFreeChart lineGraph;
     private XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
     private int snapshotsTaken = 0;
 

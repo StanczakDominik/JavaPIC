@@ -8,6 +8,16 @@ import java.io.File;
 import java.io.IOException;
 
 
+/**
+ * Autor: Dominik
+ * Klasa odpowiadaj¹ca za wykres fazowy - na osi poziomej znajduj¹ siê po³o¿enia, na osi pionowej - prêdkoœci
+ * <p>
+ * Metoda update aktualizuje tablice po³o¿eñ i prêdkoœci, a nastêpnie odwo³uje siê do paintComponent
+ * Gdzie nastêpuje rysowanie kropek odpowiadaj¹cych cz¹stkom
+ * Metoda saveChartAsPng zapisuje wykres fazowy do pliku XVPlot#.png, gdzie # jest numerem zdjêcia
+ * Rozmiar wykresu zale¿y od rozmiaru okienka
+ */
+
 class XVPlotPanel extends JPanel {
 
 	private int N;

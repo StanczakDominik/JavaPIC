@@ -107,7 +107,7 @@ class MainFrame {
         energyPlot.update(data, iteration);
     }
 
-    public void takeSnapshots() {
+    private void takeSnapshots() {
         fieldPlot.saveChartAsPng();
         energyPlot.saveChartAsPng();
         phasePlot.saveChartAsPng();
