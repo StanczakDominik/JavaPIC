@@ -3,15 +3,12 @@ package pic;
 import javax.swing.*;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by Dominik on 2015-05-23.
- */
-public class CalculationLoop {
+class CalculationLoop {
 
-    protected SimulationEngine engine;
-    protected MainFrame frame;
-    SwingWorker worker;
-    protected boolean started=false;
+    private SimulationEngine engine;
+    private MainFrame frame;
+    private SwingWorker worker;
+    private boolean started = false;
 
     CalculationLoop(MainFrame frame)
     {
@@ -30,7 +27,7 @@ public class CalculationLoop {
         worker.cancel(true);
     }
 
-    void scheduleWorkerIteration() {
+    private void scheduleWorkerIteration() {
         final SimulationEngine runningEngine = engine;
         worker = new SwingWorker<SimulationEngine, Void>() {
             @Override
@@ -45,9 +42,7 @@ public class CalculationLoop {
                 frame.iteration+=1;
                 try {
                     frame.updatePlots(get());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
                 if(started)

@@ -1,6 +1,6 @@
 package pic;
 
-public class Parameters {
+class Parameters {
 	//"global variables" for the whole simulation
 	
 	//physical constants
@@ -43,13 +43,13 @@ public class Parameters {
 	public static double charge = gridSize/numberOfParticles;
 	public static double backgroundCharge = -2*charge;
 
-	static double[] uniformPositions(int numberOfParticles, double min, double max, double shift)
+	static double[] uniformPositions(int numberOfParticles, double max)
 	{
 		double[] locations = new double[numberOfParticles];
-		double dx = (max-min)/numberOfParticles;
+		double dx = max / numberOfParticles;
 		for (int i=0; i<numberOfParticles; i++)
 		{
-			locations[i]=(i+shift)*dx;
+			locations[i] = (i) * dx;
 		}
 		return locations;
 	}

@@ -1,50 +1,21 @@
 package pic;
 
-import org.jfree.chart.*;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
-public class FieldJFreeChartPlot extends JPanel {
+class FieldJFreeChartPlot extends JPanel {
     private XYSeries dataSetDensity, dataSetPotential, dataSetField;
-    private double x, y;
-    private File file;
-    private Scanner sc;
-    private XYDataset xyDataset;
-    private ChartPanel panel;
 
-    public void update(SimulationEngine engine)
-    {
-        dataSetPotential.clear();
-        dataSetDensity.clear();
-        dataSetField.clear();
-        for (int i=0; i<Parameters.gridPointNumber; i++)
-        {
-            dataSetDensity.add(engine.grid.gridPoints[i], engine.grid.density[i]);
-            dataSetPotential.add(engine.grid.gridPoints[i], engine.grid.potential[i]);
-            dataSetField.add(engine.grid.gridPoints[i], engine.grid.eField[i]);
-        }
-        repaint();
-    }
-
-    public FieldJFreeChartPlot(SimulationEngine engine)
-    {
+    public FieldJFreeChartPlot(SimulationEngine engine) {
         setSize(1000, 300);
         dataSetDensity = new XYSeries("Density");
         dataSetPotential = new XYSeries("Potential");
@@ -55,7 +26,7 @@ public class FieldJFreeChartPlot extends JPanel {
         xySeriesCollection.addSeries(dataSetField);
         JFreeChart lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
-        chartPanel.setPreferredSize(new Dimension(getWidth(), (int)(0.95*getHeight())));
+        chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
 
         XYPlot xyPlot = (XYPlot) lineGraph.getPlot();
         ValueAxis xAxis = xyPlot.getDomainAxis();
@@ -69,6 +40,20 @@ public class FieldJFreeChartPlot extends JPanel {
         add(chartPanel);
         chartPanel.setVisible(true);
         setVisible(true);
+    }
+
+    public void update(SimulationEngine engine)
+    {
+        dataSetPotential.clear();
+        dataSetDensity.clear();
+        dataSetField.clear();
+        for (int i=0; i<Parameters.gridPointNumber; i++)
+        {
+            dataSetDensity.add(engine.grid.gridPoints[i], engine.grid.density[i]);
+            dataSetPotential.add(engine.grid.gridPoints[i], engine.grid.potential[i]);
+            dataSetField.add(engine.grid.gridPoints[i], engine.grid.eField[i]);
+        }
+        repaint();
     }
 
 //    @Override

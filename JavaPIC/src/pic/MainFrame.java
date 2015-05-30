@@ -4,14 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class MainFrame {
+class MainFrame {
 
+    int iteration = 0;
     private XVPlotPanel phasePlot;
     private SimulationEngine engine;
     private FieldJFreeChartPlot fieldPlot;
     private EnergyPlot energyPlot;
-    protected int iteration = 0;
-    public MainFrame()
+
+    private MainFrame()
     {
         engine = new SimulationEngine();
         JFrame frame = new JFrame();
@@ -41,6 +42,44 @@ public class MainFrame {
         frame.setVisible(true);
     }
 
+    public static void main(String[] args) {
+        MainFrame mainFrame = new MainFrame();
+        //ten fragment kodu odpowiada za ca³¹ symulacjê
+        //czy calculationloop jest do przerobienia?
+        CalculationLoop loop = new CalculationLoop(mainFrame);
+        loop.start();
+        ///
+
+        //Zrobiony na szybko schemat zatrzymywania
+
+        //noinspection InfiniteLoopStatement
+        while (true) {
+
+            //reaguje na enter w konsoli
+            try {
+                //noinspection ResultOfMethodCallIgnored
+                System.in.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //ta linijka zatrzymuje animacjê - takie pause
+            loop.stop();
+
+            try {
+                //noinspection ResultOfMethodCallIgnored
+                System.in.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //mo¿na j¹ na bie¿¹co z powrotem puœciæ
+            loop.start();
+            //restartu jeszcze nie mam
+        }
+
+    }
+
     public SimulationEngine getEngine() {
         return engine;
     }
@@ -54,43 +93,6 @@ public class MainFrame {
         phasePlot.update(data);
         fieldPlot.update(data);
         energyPlot.update(data, iteration);
-    }
-
-
-    public static void main(String[] args)
-    {
-        MainFrame mainFrame = new MainFrame();
-        //ten fragment kodu odpowiada za ca³¹ symulacjê
-        //czy calculationloop jest do przerobienia?
-        CalculationLoop loop = new CalculationLoop(mainFrame);
-        loop.start();
-        ///
-
-        //Zrobiony na szybko schemat zatrzymywania
-
-        while(true) {
-
-            //reaguje na enter w konsoli
-            try {
-                System.in.read();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //ta linijka zatrzymuje animacjê - takie pause
-            loop.stop();
-
-            try {
-                System.in.read();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            //mo¿na j¹ na bie¿¹co z powrotem puœciæ
-            loop.start();
-            //restartu jeszcze nie mam
-        }
-
     }
 
 }
