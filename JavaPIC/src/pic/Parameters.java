@@ -17,7 +17,7 @@ class Parameters {
 	public static double timeStep = 3e-1d;
 	public static int iterations = 3000;
 	public static int cellParticleDensity = 20;
-	public static double plotMaxVMultiplier=5d;
+	public static double plotMaxVMultiplier = 25d;
 	public static double fieldPlotSize=1d;
 	public static double fieldFieldScale;
 	public static double fieldDensityScale;
@@ -36,7 +36,7 @@ class Parameters {
 	public static double chargeToMassRatio = -1d;
 	
 	public static int numberOfParticles=gridPointNumber*cellParticleDensity;
-	public static double initialVelocity = 0.5d;
+	public static double initialVelocity = 0.1d;
 	
 	public static double perturbationAmplitude=1e-4d;
 
