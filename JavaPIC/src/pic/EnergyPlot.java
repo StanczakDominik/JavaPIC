@@ -2,6 +2,7 @@ package pic;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
@@ -9,6 +10,8 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Autor: Dominik
@@ -18,7 +21,9 @@ import java.awt.*;
  * Generalnie wszystko dzia³a podobnie jak w FieldPlocie.
  */
 class EnergyPlot extends JPanel {
+    JFreeChart lineGraph;
     private XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
+    private int snapshotsTaken = 0;
 
     public EnergyPlot() {
         setSize(1000, 300);
@@ -31,7 +36,7 @@ class EnergyPlot extends JPanel {
         xySeriesCollection.addSeries(kineticEnergy1);
         xySeriesCollection.addSeries(kineticEnergy2);
         xySeriesCollection.addSeries(totalEnergy);
-        JFreeChart lineGraph = ChartFactory.createXYLineChart("Energies", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        lineGraph = ChartFactory.createXYLineChart("Energies", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
 
@@ -55,6 +60,17 @@ class EnergyPlot extends JPanel {
         kineticEnergy2.add(iteration * engine.parameters.timeStep, engine.listOfSpecies[1].totalKineticEnergy);
         totalEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy + engine.listOfSpecies[0].totalKineticEnergy + engine.listOfSpecies[1].totalKineticEnergy);
         repaint();
+    }
+
+    public void saveChartAsPng() {
+        try {
+            FileOutputStream output = new FileOutputStream("EnergyPlot" + snapshotsTaken + ".png");
+            ChartUtilities.writeChartAsPNG(output, lineGraph, 1000, 600);
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        snapshotsTaken++;
     }
 
 //    @Override

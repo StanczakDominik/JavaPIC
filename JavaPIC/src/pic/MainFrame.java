@@ -73,19 +73,25 @@ class MainFrame {
                 e.printStackTrace();
             }
 
-            //ta linijka zatrzymuje animacjê - takie pause
-            loop.stop();
 
-            try {
-                //noinspection ResultOfMethodCallIgnored
-                System.in.read();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //Robi screenshoty
+            mainFrame.takeSnapshots();
 
-            //mo¿na j¹ na bie¿¹co z powrotem puœciæ
-            loop.start();
-            //restartu jeszcze nie mam
+
+//          //Odkomentuj ten blok ¿eby przetestowaæ play\pause
+//            //ta linijka zatrzymuje animacjê - takie pause
+//            loop.stop();
+//
+//            try {
+//                //noinspection ResultOfMethodCallIgnored
+//                System.in.read();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            //mo¿na j¹ na bie¿¹co z powrotem puœciæ
+//            loop.start();
+//            //restartu jeszcze nie mam
         }
 
     }
@@ -99,6 +105,11 @@ class MainFrame {
         phasePlot.update(data);
         fieldPlot.update(data);
         energyPlot.update(data, iteration);
+    }
+
+    public void takeSnapshots() {
+        fieldPlot.saveChartAsPng();
+        energyPlot.saveChartAsPng();
     }
 
 }

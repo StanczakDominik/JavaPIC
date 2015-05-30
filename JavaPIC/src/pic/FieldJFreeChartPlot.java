@@ -2,6 +2,7 @@ package pic;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
@@ -11,6 +12,8 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Autor: Dominik
@@ -21,7 +24,9 @@ import java.awt.*;
  */
 
 class FieldJFreeChartPlot extends JPanel {
+    JFreeChart lineGraph;
     private XYSeries dataSetDensity, dataSetPotential, dataSetField;
+    private int snapshotsTaken = 0;
 
     public FieldJFreeChartPlot(SimulationEngine engine) {
         setSize(1000, 300);
@@ -32,7 +37,7 @@ class FieldJFreeChartPlot extends JPanel {
         XYSeriesCollection xySeriesCollection = new XYSeriesCollection(dataSetDensity);
         xySeriesCollection.addSeries(dataSetPotential);
         xySeriesCollection.addSeries(dataSetField);
-        JFreeChart lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        lineGraph = ChartFactory.createXYLineChart("Fields", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
 
@@ -43,7 +48,6 @@ class FieldJFreeChartPlot extends JPanel {
         ValueAxis yAxis = xyPlot.getRangeAxis();
         yAxis.setLowerBound(-Parameters.fieldPlotMaximumValue);
         yAxis.setUpperBound(Parameters.fieldPlotMaximumValue);
-
 
         add(chartPanel);
         chartPanel.setVisible(true);
@@ -62,6 +66,17 @@ class FieldJFreeChartPlot extends JPanel {
             dataSetField.add(engine.grid.gridPoints[i], engine.grid.eField[i]);
         }
         repaint();
+    }
+
+    public void saveChartAsPng() {
+        try {
+            FileOutputStream output = new FileOutputStream("FieldJFreeChartPlot" + snapshotsTaken + ".png");
+            ChartUtilities.writeChartAsPNG(output, lineGraph, 1000, 600);
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        snapshotsTaken++;
     }
 
 //    @Override
