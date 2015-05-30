@@ -6,6 +6,7 @@ import java.io.IOException;
 
 class MainFrame {
 
+    public Parameters parameters;
     int iteration = 0;
     private XVPlotPanel phasePlot;
     private SimulationEngine engine;
@@ -14,7 +15,13 @@ class MainFrame {
 
     private MainFrame()
     {
-        engine = new SimulationEngine();
+
+        //ma wbudowane defaultowe parametry
+        parameters = new Parameters();
+        //a tak bym to widzia³ przy restartowaniu z ró¿nymi parametrami:
+        //parameters = new Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,double fieldErrorTolerance);
+
+        engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
         frame.setSize(1000, 1000);
         frame.setLayout(new GridLayout(3, 1));

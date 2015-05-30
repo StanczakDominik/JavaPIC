@@ -1,20 +1,27 @@
 package pic;
 
 class Grid {
-	public double gridSize = Parameters.gridSize;
-	public int gridPointNumber = Parameters.gridPointNumber;
-	public double gridStep = Parameters.gridStep;
+	public double gridSize;
+	public int gridPointNumber;
+	public double gridStep;
+	Parameters parameters;
 	double[] gridPoints;
 	double[] eField;
 	double[] density;
 	double[] potential;
 	double totalFieldEnergy;
 
-	public Grid() {
+	public Grid(Parameters parameters) {
+		this.parameters = parameters;
+		gridSize = Parameters.gridSize;
+		gridPointNumber = parameters.gridPointNumber;
+		gridStep = parameters.gridStep;
 		gridPoints = Parameters.uniformPositions(gridPointNumber, gridSize);
 		eField = new double[gridPointNumber];
 		density = new double[gridPointNumber];
 		potential = new double[gridPointNumber];
+
+
 	}
 
 	public Grid(Grid source)
@@ -23,6 +30,7 @@ class Grid {
 		eField = source.eField;
 		density = source.density;
 		potential = source.potential;
+		parameters = source.parameters;
 	}
 
 	public int getIndexOnGrid(double position) {
@@ -54,7 +62,7 @@ class Grid {
 			}
 		}
 		for (int i = 0; i < gridPointNumber; i++) {
-			density[i] += Parameters.cellParticleDensity * Parameters.backgroundCharge;
+			density[i] += parameters.cellParticleDensity * parameters.backgroundCharge;
 		}
 		density[gridPointNumber - 1] += density[0];
 		density[0] = density[gridPointNumber - 1];
@@ -78,7 +86,7 @@ class Grid {
 				}
 			}
 
-			if (((iter > 0) && (iter % Parameters.fieldCalculationStep == 0) && (maxChange < Parameters.fieldErrorTolerance)) || (iter == Parameters.fieldCalculationIterations)) {
+			if (((iter > 0) && (iter % Parameters.fieldCalculationStep == 0) && (maxChange < parameters.fieldErrorTolerance)) || (iter == Parameters.fieldCalculationIterations)) {
 				if (Parameters.printGridConvergence)
 					System.out.println("iteration " + iter + " " + maxChange + " converged");
 				break;

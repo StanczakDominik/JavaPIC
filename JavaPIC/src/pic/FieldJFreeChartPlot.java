@@ -47,7 +47,7 @@ class FieldJFreeChartPlot extends JPanel {
         dataSetPotential.clear();
         dataSetDensity.clear();
         dataSetField.clear();
-        for (int i=0; i<Parameters.gridPointNumber; i++)
+        for (int i = 0; i < engine.grid.gridPointNumber; i++)
         {
             dataSetDensity.add(engine.grid.gridPoints[i], engine.grid.density[i]);
             dataSetPotential.add(engine.grid.gridPoints[i], engine.grid.potential[i]);

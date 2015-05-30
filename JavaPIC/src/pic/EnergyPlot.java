@@ -43,10 +43,10 @@ class EnergyPlot extends JPanel {
 
     public void update(SimulationEngine engine, int iteration)
     {
-        fieldEnergy.add(iteration*Parameters.timeStep, engine.grid.totalFieldEnergy);
-        kineticEnergy1.add(iteration*Parameters.timeStep, engine.listOfSpecies[0].totalKineticEnergy);
-        kineticEnergy2.add(iteration*Parameters.timeStep, engine.listOfSpecies[1].totalKineticEnergy);
-        totalEnergy.add(iteration*Parameters.timeStep, engine.grid.totalFieldEnergy + engine.listOfSpecies[0].totalKineticEnergy+engine.listOfSpecies[1].totalKineticEnergy);
+        fieldEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy);
+        kineticEnergy1.add(iteration * engine.parameters.timeStep, engine.listOfSpecies[0].totalKineticEnergy);
+        kineticEnergy2.add(iteration * engine.parameters.timeStep, engine.listOfSpecies[1].totalKineticEnergy);
+        totalEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy + engine.listOfSpecies[0].totalKineticEnergy + engine.listOfSpecies[1].totalKineticEnergy);
         repaint();
     }
 

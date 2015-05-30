@@ -13,15 +13,16 @@ class Species {
 	double charge;
 	double[] position;
 	double[] velocity;
-
+	Parameters parameters;
 	double totalKineticEnergy;
 
-	public Species(int numberOfParticlesI, double chargeI, double[] positionI, double[] velocityI)
+	public Species(int numberOfParticlesI, double chargeI, double[] positionI, double[] velocityI, Parameters parameters)
 	{
 		charge = chargeI;
 		numberOfParticles = numberOfParticlesI;
 		position = positionI;
 		velocity = velocityI;
+		this.parameters = parameters;
 	}
 
 	public Species(Species source) {
@@ -29,6 +30,7 @@ class Species {
 		numberOfParticles = source.numberOfParticles;
 		position = source.position;
 		velocity = source.velocity;
+		this.parameters = source.parameters;
 	}
 
 	private void move(double dt, Grid grid) {
@@ -93,7 +95,7 @@ class Species {
 			double oldVelocity = velocity[i];
 			velocity[i] += field * dt * Parameters.chargeToMassRatio;
 			//TODO: Does this need a mass term?
-			totalKineticEnergy += oldVelocity * 0.5 * velocity[i] / Parameters.chargeToMassRatio * Parameters.charge;
+			totalKineticEnergy += oldVelocity * 0.5 * velocity[i] / Parameters.chargeToMassRatio * parameters.charge;
 			sum += velocity[i];
 			if (Parameters.printMovement) {
 				if (Math.abs(velocity[i]) > max) {
@@ -112,8 +114,8 @@ class Species {
 	public void step(Grid grid)
 	{
 		//performs one simulation step for a species
-		accelerate(Parameters.timeStep, grid);
-		move(Parameters.timeStep, grid);
+		accelerate(parameters.timeStep, grid);
+		move(parameters.timeStep, grid);
 	}
 
 }
