@@ -10,10 +10,17 @@ import org.jfree.data.xy.XYSeriesCollection;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Autor: Dominik
+ * Klasa oparta na JFreeCharcie odpowiadaj¹ca za wykres energii symulacji
+ * Nale¿y zauwa¿yæ, ¿e model PIC przez u¿yte przybli¿enia nawet nie powinien zachowywaæ energii tak, jak robi to np.
+ * algorytm leapfrog (który zachowuje j¹ w 100% przez swoj¹ symetriê czasow¹).
+ * Generalnie wszystko dzia³a podobnie jak w FieldPlocie.
+ */
 class EnergyPlot extends JPanel {
     private XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
 
-    public EnergyPlot(SimulationEngine engine) {
+    public EnergyPlot() {
         setSize(1000, 300);
         fieldEnergy = new XYSeries("Field energy");
         kineticEnergy1 = new XYSeries("Species 1 kinetic energy");

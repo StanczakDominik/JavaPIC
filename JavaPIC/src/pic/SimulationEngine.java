@@ -1,5 +1,16 @@
 package pic;
 
+/**
+ * Autor: Dominik
+ * Klasa - silnik obliczeniowy. Zawiera jednowymiarow¹ siatkê Grid oraz dwa strumienie elektronów Species
+ * Odpowiada za ich inicjalizacjê z ustalonymi parametrami oraz odwo³uj¹c siê do metod klas Species i Grid
+ * wykonuje na nich obliczenia.
+ * <p>
+ * metody:
+ * konstruktor
+ * step - wykonuje po jednej iteracji tak obu Species, jak Gridu
+ */
+
 public class SimulationEngine {
 
 	public Parameters parameters;
@@ -22,13 +33,6 @@ public class SimulationEngine {
 		Species beam2 = new Species(parameters.numberOfParticles, parameters.charge, positions2, velocities2, parameters);
 		listOfSpecies[1] = beam2;
 		grid.update(listOfSpecies);
-	}
-
-	public SimulationEngine(SimulationEngine source)
-	{
-		listOfSpecies[0]=source.listOfSpecies[0];
-		listOfSpecies[1]=source.listOfSpecies[1];
-		grid=source.grid;
 	}
 
 

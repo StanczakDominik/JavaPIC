@@ -12,6 +12,14 @@ import org.jfree.data.xy.XYSeriesCollection;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Autor: Dominik
+ * Wykres pola elektrycznego, gêstoœci ³adunku oraz potencja³u (potencja³ ma tendencjê do bycia wysokim i znikania) w
+ * zale¿noœci od po³o¿enia na siatce
+ * Oparty na JFreeCharcie
+ * Metoda update czyœci zbiory danych i wype³nia je obecnymi
+ */
+
 class FieldJFreeChartPlot extends JPanel {
     private XYSeries dataSetDensity, dataSetPotential, dataSetField;
 

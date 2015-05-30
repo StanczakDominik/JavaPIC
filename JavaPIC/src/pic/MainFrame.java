@@ -4,9 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * Autor: jak dotπd Dominik ALE WEè SI  TU WPISZ OK? :)
+ * GUI o ktÛrym jeszcze chyba nie bÍdÍ wiele pisa≥. :D
+ */
 class MainFrame {
 
-    public Parameters parameters;
     int iteration = 0;
     private XVPlotPanel phasePlot;
     private SimulationEngine engine;
@@ -17,7 +20,7 @@ class MainFrame {
     {
 
         //ma wbudowane defaultowe parametry
-        parameters = new Parameters();
+        Parameters parameters = new Parameters();
         //a tak bym to widzia≥ przy restartowaniu z rÛønymi parametrami:
         //parameters = new Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,double fieldErrorTolerance);
 
@@ -38,7 +41,7 @@ class MainFrame {
         fieldPlot.update(engine);
         fieldPlot.setVisible(true);
 
-        energyPlot = new EnergyPlot(engine);
+        energyPlot = new EnergyPlot();
         frame.add(energyPlot);
         energyPlot.setSize(new Dimension(1500, 300));
         energyPlot.setVisible(true);
@@ -59,10 +62,12 @@ class MainFrame {
 
         //Zrobiony na szybko schemat zatrzymywania
 
+        //noinspection InfiniteLoopStatement
         while (true) {
 
             //reaguje na enter w konsoli
             try {
+                //noinspection ResultOfMethodCallIgnored
                 System.in.read();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -72,6 +77,7 @@ class MainFrame {
             loop.stop();
 
             try {
+                //noinspection ResultOfMethodCallIgnored
                 System.in.read();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -86,10 +92,6 @@ class MainFrame {
 
     public SimulationEngine getEngine() {
         return engine;
-    }
-
-    public void setEngine(SimulationEngine engine) {
-        this.engine = engine;
     }
 
     public void updatePlots(SimulationEngine data)

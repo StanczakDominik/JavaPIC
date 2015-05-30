@@ -1,15 +1,29 @@
 package pic;
 
+/**
+ * Autor: Dominik
+ * Klasa Grid odpowiada za jednowymiarow¹ siatkê, na której rozwi¹zywane s¹ jednowymiarowe równania Maxwella przy u¿yciu
+ * danych czastek (po³o¿eñ -> gêstoœci ³adunków)
+ * <p>
+ * Metoda update wykonuje miêcho obliczeniowe
+ * Gêstoœæ ³adunków jest obliczana na podstawie liniowej interpolacji (model CIC - Cloud In Cell. Cz¹stki maj¹ w tym
+ * modelu w przybli¿eniu trójk¹tny kszta³t).
+ * Potencja³ obliczany jest przy pomocy metody Gaussa-Seidela.
+ * Pole w komórce i obliczane jest jako minus gradient potencja³u, wykorzystuj¹c potencja³ w komórkach i+1, i-1
+ * (dziêki temu b³¹d obliczenia pola ~gridstep^2 zamiast ^1)
+ * <p>
+ * Metoda getIndexOnGrid zwraca pozycjê (indeks) danej cz¹stki na siatce)
+ */
 class Grid {
 	public double gridSize;
 	public int gridPointNumber;
 	public double gridStep;
-	Parameters parameters;
 	double[] gridPoints;
 	double[] eField;
 	double[] density;
 	double[] potential;
 	double totalFieldEnergy;
+	private Parameters parameters;
 
 	public Grid(Parameters parameters) {
 		this.parameters = parameters;
@@ -22,15 +36,6 @@ class Grid {
 		potential = new double[gridPointNumber];
 
 
-	}
-
-	public Grid(Grid source)
-	{
-		gridPoints = source.gridPoints;
-		eField = source.eField;
-		density = source.density;
-		potential = source.potential;
-		parameters = source.parameters;
 	}
 
 	public int getIndexOnGrid(double position) {

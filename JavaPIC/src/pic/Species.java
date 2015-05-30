@@ -1,5 +1,15 @@
 package pic;
 
+/**
+ * Autor: Dominik
+ * Klasa Species zawiera informacje o ka¿dym ze strumieni cz¹stek. Tu odbywa siê interpolacja pól do po³o¿eñ czastek
+ * oraz ich przyœpieszanie i przesuwanie.
+ * <p>
+ * Metody (bior¹ jako argument Grid - potrzebuje danych o polu)
+ * move przesuwa cz¹stki
+ * accelerate przyœpiesza je
+ * step ³¹czy oba powy¿sze
+ */
 class Species {
 	//Class containing information for a set of particles
 	//for example, we could have a set of protons and a set of electrons
@@ -13,8 +23,8 @@ class Species {
 	double charge;
 	double[] position;
 	double[] velocity;
-	Parameters parameters;
 	double totalKineticEnergy;
+	private Parameters parameters;
 
 	public Species(int numberOfParticlesI, double chargeI, double[] positionI, double[] velocityI, Parameters parameters)
 	{
@@ -23,14 +33,6 @@ class Species {
 		position = positionI;
 		velocity = velocityI;
 		this.parameters = parameters;
-	}
-
-	public Species(Species source) {
-		charge = source.charge;
-		numberOfParticles = source.numberOfParticles;
-		position = source.position;
-		velocity = source.velocity;
-		this.parameters = source.parameters;
 	}
 
 	private void move(double dt, Grid grid) {
