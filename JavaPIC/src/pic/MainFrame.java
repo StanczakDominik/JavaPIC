@@ -52,12 +52,10 @@ class MainFrame {
 
         //Zrobiony na szybko schemat zatrzymywania
 
-        //noinspection InfiniteLoopStatement
         while (true) {
 
             //reaguje na enter w konsoli
             try {
-                //noinspection ResultOfMethodCallIgnored
                 System.in.read();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -67,7 +65,6 @@ class MainFrame {
             loop.stop();
 
             try {
-                //noinspection ResultOfMethodCallIgnored
                 System.in.read();
             } catch (IOException e) {
                 e.printStackTrace();

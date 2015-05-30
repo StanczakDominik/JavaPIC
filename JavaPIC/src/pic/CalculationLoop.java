@@ -23,8 +23,8 @@ class CalculationLoop {
     }
 
     public void stop() {
-        started = true;
-        worker.cancel(true);
+        started = false;
+        //worker.cancel(true);
     }
 
     private void scheduleWorkerIteration() {
