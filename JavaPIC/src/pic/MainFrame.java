@@ -110,6 +110,7 @@ class MainFrame {
     public void takeSnapshots() {
         fieldPlot.saveChartAsPng();
         energyPlot.saveChartAsPng();
+        phasePlot.saveChartAsPng();
     }
 
 }

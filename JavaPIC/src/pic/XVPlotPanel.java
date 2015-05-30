@@ -1,7 +1,11 @@
 package pic;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 class XVPlotPanel extends JPanel {
@@ -14,6 +18,8 @@ class XVPlotPanel extends JPanel {
 	private double maxX;
 	private double minV;
 	private double maxV;
+	private int snapshotsTaken = 0;
+
 	public XVPlotPanel(SimulationEngine engine)
 	{
 		super();
@@ -40,6 +46,20 @@ class XVPlotPanel extends JPanel {
 			velocities2[i] = (int) ((engine.listOfSpecies[1].velocity[i] / (maxV - minV)+0.5) * getHeight());
 		}
 		repaint();
+	}
+
+	public void saveChartAsPng() {
+		BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics2D graphics2D = image.createGraphics();
+		graphics2D.setBackground(Color.WHITE);
+		paint(graphics2D);
+		String fileName = "XVPlot" + snapshotsTaken + ".png";
+		try {
+			ImageIO.write(image, "png", new File(fileName));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		snapshotsTaken++;
 	}
 
 	protected void paintComponent(Graphics g) {
