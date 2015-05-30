@@ -2,18 +2,24 @@ package pic;
 
 public class SimulationEngine {
 
-	Grid grid = new Grid();
-	Species[] listOfSpecies = new Species[2];
-	private double[] velocities1 = Parameters.uniformVelocity(Parameters.numberOfParticles, Parameters.initialVelocity);
-	private double[] velocities2 = Parameters.uniformVelocity(Parameters.numberOfParticles, -Parameters.initialVelocity);
-	private double[] positions1 = Parameters.randomPosition(Parameters.numberOfParticles, Parameters.perturbationAmplitude);
-	private double[] positions2 = Parameters.randomPosition(Parameters.numberOfParticles, -Parameters.perturbationAmplitude);
+	public Parameters parameters;
+	public Grid grid;
+	Species[] listOfSpecies;
 
-	public SimulationEngine()
+	public SimulationEngine(Parameters parameters)
 	{
-		Species beam1 = new Species(Parameters.numberOfParticles, Parameters.charge, positions1, velocities1);
+		this.parameters = parameters;
+		grid = new Grid(parameters);
+		listOfSpecies = new Species[2];
+		double[] velocities1 = Parameters.uniformVelocity(parameters.numberOfParticles, parameters.initialVelocity);
+		double[] velocities2 = Parameters.uniformVelocity(parameters.numberOfParticles, -parameters.initialVelocity);
+		double[] positions1 = Parameters.randomPosition(parameters.numberOfParticles, Parameters.perturbationAmplitude);
+		double[] positions2 = Parameters.randomPosition(parameters.numberOfParticles, -Parameters.perturbationAmplitude);
+
+
+		Species beam1 = new Species(parameters.numberOfParticles, parameters.charge, positions1, velocities1, parameters);
 		listOfSpecies[0] = beam1;
-		Species beam2 = new Species(Parameters.numberOfParticles, Parameters.charge, positions2, velocities2);
+		Species beam2 = new Species(parameters.numberOfParticles, parameters.charge, positions2, velocities2, parameters);
 		listOfSpecies[1] = beam2;
 		grid.update(listOfSpecies);
 	}
