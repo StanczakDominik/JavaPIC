@@ -5,7 +5,7 @@ import java.awt.*;
 import java.io.IOException;
 
 /**
- * Autor: jak dotπd Dominik ALE WEè SI  TU WPISZ OK? :)
+ * Autor: Mateusz Kaczorek, Dominik StaÒczak
  * GUI o ktÛrym jeszcze chyba nie bÍdÍ wiele pisa≥. :D
  */
 class MainFrame {
