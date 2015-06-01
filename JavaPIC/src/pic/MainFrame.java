@@ -27,28 +27,54 @@ class MainFrame {
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
         frame.setSize(1000, 1000);
-        frame.setLayout(new GridLayout(3, 1));
+        frame.setLayout(new BorderLayout());
+        frame.setLocationRelativeTo(null);
+
+        JPanel ChartPanel = new JPanel(new GridLayout(2, 0));
+        frame.add(ChartPanel, BorderLayout.CENTER);
+
 
         phasePlot = new XVPlotPanel(engine);
-        frame.add(phasePlot);
+        ChartPanel.add(phasePlot);
         phasePlot.setSize(new Dimension(1500, 300));
         phasePlot.update(engine);
         phasePlot.setVisible(true);
 
+
+        JPanel EnergyAndFieldPanel = new JPanel(new GridLayout(2, 0));
+        ChartPanel.add(EnergyAndFieldPanel);
+
         fieldPlot = new FieldJFreeChartPlot(engine);
-        frame.add(fieldPlot);
+        EnergyAndFieldPanel.add(fieldPlot);
         fieldPlot.setSize(new Dimension(1500, 300));
         fieldPlot.update(engine);
         fieldPlot.setVisible(true);
 
         energyPlot = new EnergyPlot();
-        frame.add(energyPlot);
+        EnergyAndFieldPanel.add(energyPlot);
         energyPlot.setSize(new Dimension(1500, 300));
         energyPlot.setVisible(true);
 
+        JPanel ButtonPanel = new JPanel(new GridLayout(3, 1));
+        frame.add(ButtonPanel, BorderLayout.WEST);
+
+        JPanel SimulationControl = new JPanel(new GridLayout(3, 1));
+        ButtonPanel.add(SimulationControl);
+
+        JButton Start = new JButton(">");
+        SimulationControl.add(Start);
+
+        JButton Stop = new JButton("||");
+        SimulationControl.add(Stop);
+
+        JButton Restart = new JButton("R");
+        SimulationControl.add(Restart);
+
+        JButton LanguageChange = new JButton("EN");
+        ButtonPanel.add(LanguageChange);
+
         frame.setTitle("Two stream instability");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setVisible(true);
     }
 
