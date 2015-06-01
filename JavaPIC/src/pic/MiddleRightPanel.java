@@ -1,7 +1,5 @@
 package pic;
 
-import javafx.stage.Screen;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -57,9 +55,10 @@ public class MiddleRightPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(LanguageChange.getText()=="PL"){
+                if (LanguageChange.getText().equals("PL")) {
                     LanguageChange.setText("EN");
                     ScreenCapture.setText("Zdjecie");
+
 
                     mainFrame.UpperRightPanel.mass1label.setText("Masa 1");
                     mainFrame.UpperRightPanel.mass2label.setText("Masa 2");
@@ -75,7 +74,7 @@ public class MiddleRightPanel extends JPanel {
                 else{
                     LanguageChange.setText("PL");
                     ScreenCapture.setText("PrintScreen");
-
+                    mainFrame.energyPlot.lineGraph.setTitle("BOOYAH");
                     mainFrame.UpperRightPanel.mass1label.setText("Mass 1");
                     mainFrame.UpperRightPanel.mass2label.setText("Mass 2");
                     mainFrame.UpperRightPanel.charge1label.setText("Charge 1");

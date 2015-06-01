@@ -22,7 +22,7 @@ import java.io.IOException;
  * Metoda saveChartAsPng zapisuje wykres fazowy do pliku EnergyPlot#.png, gdzie # jest numerem zdjêcia
  */
 class EnergyPlot extends JPanel {
-    private JFreeChart lineGraph;
+    JFreeChart lineGraph;
     private XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
     private int snapshotsTaken = 0;
 
