@@ -1,0 +1,9 @@
+Ten wykres to tzw. wykres fazowy. Na poziomej osi zaznaczone jest położenie cząstek, zaś na pionowej - ich prędkości. Możemy go wyświetlić głównie dlatego, że mamy uproszczoną, jednowymiarową sytuację - wykres fazowy przestrzeni dwuwymiarowej wymagałby czterech prostopadłych osi.
+
+Jak widać, układ zaczyna z dokładnie określonymi prędkościami i jednorodnym (z dokładnością do niewielkiego zaburzenia) rozkładem położeń - stąd cienka pozioma linia przez całą długość układu. Jest to niestabilna równowaga - jak kulka ustawiona na czubku dużej powierzchni, każde wystarczająco silne drganie powoduje wypchnięcie jej z tego położenia.
+
+Początkowa faza działania symulacji to okres liniowych oscylacji - w tym czasie działanie układu można opisać poprzez rozpisanie drgań na szereg Taylora, co pozostawiamy jako ćwiczenie Czytelnikowi.
+
+Po pewnym czasie można zaobserwować wybrzuszenie się wykresu w jednym rejonie, a ściśnięcie go w drugiej - jest to punkt przełomu, gdzie liniowe przybliżenie przestaje działać. Układ wchodzi w rejon niestabilności.
+
+Z ważnych cech, na które warto zwrócić szczególną uwagę - rozkład prędkości jest w przybliżeniu gaussowski wokół średniej ważonej prędkości. Niestabilność wystrzeliwuje pewną część cząstek na ogromne prędkości (tzw. ogon dystrybucji), nawet pięciokrotnie większe od początkowej prędkości. Często pojawia się "dziura" w przestrzeni fazowej, stabilna struktura wolna od przepływu cząstek.
