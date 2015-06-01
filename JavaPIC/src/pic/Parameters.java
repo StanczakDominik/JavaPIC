@@ -67,17 +67,17 @@ class Parameters {
 		System.out.println("C1:" + charge1 + "C2:" + charge2 + "BC:" + backgroundCharge);
 	}
 
-	public Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
+	public Parameters(double timeStep, int cellParticleDensityI, double initialVelocity, int gridPointNumberI,
 					  double fieldErrorTolerance, double perturbationAmplitude, double charge1I, double charge2I, double mass1, double mass2) {
 		this.timeStep = timeStep;
-		this.cellParticleDensity = cellParticleDensity;
+		this.cellParticleDensity = cellParticleDensityI;
 		this.initialVelocity = initialVelocity;
-		this.gridPointNumber = gridPointNumber;
+		this.gridPointNumber = gridPointNumberI;
 		this.fieldErrorTolerance = fieldErrorTolerance;
 		this.perturbationAmplitude = perturbationAmplitude;
 
 		this.gridStep = gridSize / (double) gridPointNumber;
-		numberOfParticles = gridPointNumber * cellParticleDensity;
+		numberOfParticles = gridPointNumberI * cellParticleDensityI;
 
 		this.charge1 = charge1I * gridSize / numberOfParticles;
 		this.charge2 = charge2I * gridSize / numberOfParticles;

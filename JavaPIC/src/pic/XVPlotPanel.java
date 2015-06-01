@@ -41,6 +41,10 @@ class XVPlotPanel extends JPanel {
 		N = engine.parameters.numberOfParticles;
 	}
 
+	public void changeN(Parameters parameters) {
+		N = parameters.numberOfParticles;
+	}
+
 	public void update(SimulationEngine engine)
 	{
 
