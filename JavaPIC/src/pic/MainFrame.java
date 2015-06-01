@@ -38,7 +38,7 @@ class MainFrame {
         JPanel ChartPanel = new JPanel(new GridLayout(2, 0));
         frame.add(ChartPanel, BorderLayout.CENTER);
 
-        JPanel RightPanel = new JPanel();
+        JPanel RightPanel = new JPanel(new GridLayout(3,0));
         frame.add(RightPanel, BorderLayout.EAST);
 
         phasePlot = new XVPlotPanel(engine);

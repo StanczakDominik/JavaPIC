@@ -12,9 +12,9 @@ public class MiddleRightPanel extends JPanel {
 
 
     MiddleRightPanel(MainFrame mainFrame) {
-        setLayout(new GridLayout(3, 1));
+        setLayout(new GridLayout(1, 1));
 
-        JPanel SimulationControl = new JPanel(new GridLayout(3, 1, 0, 20));
+        JPanel SimulationControl = new JPanel(new GridLayout(5, 1, 0, 20));
         this.add(SimulationControl);
 
         JButton Start = new JButton(">");
@@ -44,8 +44,12 @@ public class MiddleRightPanel extends JPanel {
             }
         });
 
+
         JButton LanguageChange = new JButton("EN");
-        this.add(LanguageChange);
+        SimulationControl.add(LanguageChange);
+
+        JButton ScreenCapture = new JButton("PrintScreen");
+        SimulationControl.add(ScreenCapture);
 
         LanguageChange.addActionListener(new ActionListener() {
             @Override
