@@ -1,6 +1,7 @@
 package pic;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
 
@@ -17,6 +18,8 @@ class MainFrame {
     private XVPlotPanel phasePlot;
     private FieldJFreeChartPlot fieldPlot;
     private EnergyPlot energyPlot;
+    public MiddleRightPanel MiddleRightPanel;
+    public UpperRightPanel UpperRightPanel;
 
     private MainFrame()
     {
@@ -35,6 +38,8 @@ class MainFrame {
         JPanel ChartPanel = new JPanel(new GridLayout(2, 0));
         frame.add(ChartPanel, BorderLayout.CENTER);
 
+        JPanel RightPanel = new JPanel();
+        frame.add(RightPanel, BorderLayout.EAST);
 
         phasePlot = new XVPlotPanel(engine);
         ChartPanel.add(phasePlot);
@@ -57,12 +62,13 @@ class MainFrame {
         energyPlot.setSize(new Dimension(1500, 300));
         energyPlot.setVisible(true);
 
-        LeftPanel leftPanel = new LeftPanel(this);
-        frame.add(leftPanel, BorderLayout.WEST);
 
-        RightPanel rightPanel = new RightPanel(this);
+        UpperRightPanel = new UpperRightPanel(this);
         //settingsPanel.setPreferredSize(new Dimension(100, 1000));
-        frame.add(rightPanel, BorderLayout.EAST);
+        RightPanel.add(UpperRightPanel, BorderLayout.EAST);
+
+        MiddleRightPanel = new MiddleRightPanel(this);
+        RightPanel.add(MiddleRightPanel, BorderLayout.EAST);
 
         frame.setTitle("Two stream instability");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

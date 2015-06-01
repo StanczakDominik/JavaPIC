@@ -8,13 +8,13 @@ import java.awt.event.ActionListener;
 /**
  * Autor: Mateusz Kaczorek
  */
-public class LeftPanel extends JPanel {
+public class MiddleRightPanel extends JPanel {
 
 
-    LeftPanel(MainFrame mainFrame) {
+    MiddleRightPanel(MainFrame mainFrame) {
         setLayout(new GridLayout(3, 1));
 
-        JPanel SimulationControl = new JPanel(new GridLayout(3, 1));
+        JPanel SimulationControl = new JPanel(new GridLayout(3, 1, 0, 20));
         this.add(SimulationControl);
 
         JButton Start = new JButton(">");
@@ -46,6 +46,21 @@ public class LeftPanel extends JPanel {
 
         JButton LanguageChange = new JButton("EN");
         this.add(LanguageChange);
+
+        LanguageChange.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(LanguageChange.getText()=="PL"){
+                    LanguageChange.setText("EN");
+                }
+                else{
+                    LanguageChange.setText("PL");
+                    mainFrame.UpperRightPanel.mass1label.setText("Mass 1");
+                }
+            }
+        });
+
     }
 
 }
