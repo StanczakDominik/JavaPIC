@@ -37,7 +37,7 @@ class EnergyPlot extends JPanel {
         xySeriesCollection.addSeries(kineticEnergy1);
         xySeriesCollection.addSeries(kineticEnergy2);
         xySeriesCollection.addSeries(totalEnergy);
-        lineGraph = ChartFactory.createXYLineChart("Energies", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        lineGraph = ChartFactory.createXYLineChart("Wykres Energii", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
 

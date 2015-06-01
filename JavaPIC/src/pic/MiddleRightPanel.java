@@ -59,6 +59,9 @@ public class MiddleRightPanel extends JPanel {
                     LanguageChange.setText("EN");
                     ScreenCapture.setText("Zdjecie");
 
+                    mainFrame.energyPlot.lineGraph.setTitle("Wykres Energii");
+                    mainFrame.fieldPlot.lineGraph.setTitle("Wykres Pol");
+                    mainFrame.UpperRightPanel.runButton.setText("Inicjuj");
 
                     mainFrame.UpperRightPanel.mass1label.setText("Masa 1");
                     mainFrame.UpperRightPanel.mass2label.setText("Masa 2");
@@ -70,11 +73,16 @@ public class MiddleRightPanel extends JPanel {
                     mainFrame.UpperRightPanel.gridPointNumberlabel.setText("N Siatki");
                     mainFrame.UpperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
                     mainFrame.UpperRightPanel.perturbationAmplitudelabel.setText("Scatter");
+
                 }
                 else{
                     LanguageChange.setText("PL");
                     ScreenCapture.setText("PrintScreen");
-                    mainFrame.energyPlot.lineGraph.setTitle("BOOYAH");
+
+                    mainFrame.energyPlot.lineGraph.setTitle("Energies Chart");
+                    mainFrame.fieldPlot.lineGraph.setTitle("Fields Chart");
+                    mainFrame.UpperRightPanel.runButton.setText("Initiate");
+
                     mainFrame.UpperRightPanel.mass1label.setText("Mass 1");
                     mainFrame.UpperRightPanel.mass2label.setText("Mass 2");
                     mainFrame.UpperRightPanel.charge1label.setText("Charge 1");
@@ -86,6 +94,13 @@ public class MiddleRightPanel extends JPanel {
                     mainFrame.UpperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
                     mainFrame.UpperRightPanel.perturbationAmplitudelabel.setText("Scatter");
                 }
+            }
+        });
+
+        ScreenCapture.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
 

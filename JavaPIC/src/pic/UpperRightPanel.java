@@ -12,6 +12,7 @@ public class UpperRightPanel extends JPanel {
 
     JTextField mass1, mass2, timeStep, cellParticleDensity, initialVelocity, gridPointNumber, fieldErrorTolerance, perturbationAmplitude, charge1, charge2;
     JLabel mass1label, mass2label, timeSteplabel, cellParticleDensitylabel, initialVelocitylabel, gridPointNumberlabel, fieldErrorTolerancelabel, perturbationAmplitudelabel, charge1label, charge2label;
+    JButton runButton;
 
     UpperRightPanel(MainFrame mainFrame) {
         setPreferredSize(new Dimension(100, 1000));
@@ -77,7 +78,7 @@ public class UpperRightPanel extends JPanel {
         perturbationAmplitudelabel = new JLabel("Scatter");
         this.add(perturbationAmplitudelabel);
 
-        JButton runButton = new JButton("Hit it!");
+        runButton = new JButton("Inicjuj");
         this.add(runButton);
         runButton.addActionListener(new ActionListener() {
             @Override

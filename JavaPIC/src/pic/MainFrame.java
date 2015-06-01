@@ -1,6 +1,7 @@
 package pic;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
 
@@ -10,15 +11,15 @@ import java.io.IOException;
  */
 class MainFrame {
 
-    public MiddleRightPanel MiddleRightPanel;
-    public UpperRightPanel UpperRightPanel;
     int iteration = 0;
     SimulationEngine engine;
     CalculationLoop loop;
     Parameters parameters;
-    EnergyPlot energyPlot;
     private XVPlotPanel phasePlot;
-    private FieldJFreeChartPlot fieldPlot;
+    FieldJFreeChartPlot fieldPlot;
+    EnergyPlot energyPlot;
+    public MiddleRightPanel MiddleRightPanel;
+    public UpperRightPanel UpperRightPanel;
 
     private MainFrame()
     {
