@@ -60,10 +60,15 @@ class Parameters {
 		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji. jest ustawiony
 		//silowo na 10, bo inaczej po prostu byloby za wolno
 		backgroundCharge = -(charge1 + charge2);
+
+		System.out.println("Timestep" + timeStep + "CPD" + cellParticleDensity + "initvel" + initialVelocity);
+		System.out.println("GPN" + gridPointNumber + "FET" + fieldErrorTolerance + "PA" + perturbationAmplitude);
+		System.out.println("GStep" + gridStep + "NOP" + numberOfParticles + "m1:" + mass1 + "m2:" + mass2);
+		System.out.println("C1:" + charge1 + "C2:" + charge2 + "BC:" + backgroundCharge);
 	}
 
 	public Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
-					  double fieldErrorTolerance, double perturbationAmplitude, double charge1, double charge2, double mass1, double mass2) {
+					  double fieldErrorTolerance, double perturbationAmplitude, double charge1I, double charge2I, double mass1, double mass2) {
 		this.timeStep = timeStep;
 		this.cellParticleDensity = cellParticleDensity;
 		this.initialVelocity = initialVelocity;
@@ -71,15 +76,21 @@ class Parameters {
 		this.fieldErrorTolerance = fieldErrorTolerance;
 		this.perturbationAmplitude = perturbationAmplitude;
 
-		this.gridStep = gridSize / ((double) gridPointNumber);
+		this.gridStep = gridSize / (double) gridPointNumber;
 		numberOfParticles = gridPointNumber * cellParticleDensity;
 
-		this.charge1 = charge1 * gridSize / numberOfParticles;
-		this.charge2 = charge2 * gridSize / numberOfParticles;
+		this.charge1 = charge1I * gridSize / numberOfParticles;
+		this.charge2 = charge2I * gridSize / numberOfParticles;
 		this.mass1 = mass1;
 		this.mass2 = mass2;
 
 		backgroundCharge = -(charge1 + charge2);
+		System.out.println("Custom");
+		System.out.println("Timestep" + timeStep + "CPD" + cellParticleDensity + "initvel" + initialVelocity);
+		System.out.println("GPN" + gridPointNumber + "FET" + fieldErrorTolerance + "PA" + perturbationAmplitude);
+		System.out.println("GStep" + gridStep + "NOP" + numberOfParticles + "m1:" + mass1 + "m2:" + mass2);
+		System.out.println("C1:" + charge1 + "C2:" + charge2 + "BC:" + backgroundCharge);
+
 	}
 
 
