@@ -115,17 +115,17 @@ class MainFrame {
     }
 
     public void restart() {
-        iteration = 0;
         loop.stop();
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        iteration = 0;
         engine = new SimulationEngine(parameters);
         energyPlot.clear();
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

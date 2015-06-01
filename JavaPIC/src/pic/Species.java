@@ -29,6 +29,7 @@ class Species {
 
 	public Species(int numberOfParticlesI, double chargeI, double massI, double[] positionI, double[] velocityI, Parameters parameters)
 	{
+		totalKineticEnergy = 0;
 		mass = massI;
 		charge = chargeI;
 		numberOfParticles = numberOfParticlesI;

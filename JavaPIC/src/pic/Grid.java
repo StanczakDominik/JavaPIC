@@ -26,6 +26,7 @@ class Grid {
 	private Parameters parameters;
 
 	public Grid(Parameters parameters) {
+		totalFieldEnergy = 0;
 		this.parameters = parameters;
 		gridSize = Parameters.gridSize;
 		gridPointNumber = parameters.gridPointNumber;
