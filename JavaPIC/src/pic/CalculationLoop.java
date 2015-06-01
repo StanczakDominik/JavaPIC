@@ -36,8 +36,10 @@ class CalculationLoop {
 
     public void start()
     {
-        started = true;
-        scheduleWorkerIteration();
+        if (!started) {
+            started = true;
+            scheduleWorkerIteration();
+        }
     }
 
     public void stop() {

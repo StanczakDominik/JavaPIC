@@ -63,6 +63,13 @@ class EnergyPlot extends JPanel {
         repaint();
     }
 
+    public void clear() {
+        fieldEnergy.clear();
+        kineticEnergy2.clear();
+        kineticEnergy1.clear();
+        totalEnergy.clear();
+    }
+
     public void saveChartAsPng() {
         try {
             FileOutputStream output = new FileOutputStream("EnergyPlot" + snapshotsTaken + ".png");

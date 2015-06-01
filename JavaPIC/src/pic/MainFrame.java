@@ -11,8 +11,10 @@ import java.io.IOException;
 class MainFrame {
 
     int iteration = 0;
+    SimulationEngine engine;
+    CalculationLoop loop;
+    Parameters parameters;
     private XVPlotPanel phasePlot;
-    private SimulationEngine engine;
     private FieldJFreeChartPlot fieldPlot;
     private EnergyPlot energyPlot;
 
@@ -20,13 +22,13 @@ class MainFrame {
     {
 
         //ma wbudowane defaultowe parametry
-        Parameters parameters = new Parameters();
+        parameters = new Parameters();
         //a tak bym to widzia³ przy restartowaniu z ró¿nymi parametrami:
         //parameters = new Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
         //double fieldErrorTolerance, double perturbationAmplitude, double charge1, double charge2, double mass1, double mass2) {
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
-        frame.setSize(1000, 1000);
+        frame.setSize(1100, 1000);
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
 
@@ -55,35 +57,25 @@ class MainFrame {
         energyPlot.setSize(new Dimension(1500, 300));
         energyPlot.setVisible(true);
 
-        JPanel ButtonPanel = new JPanel(new GridLayout(3, 1));
-        frame.add(ButtonPanel, BorderLayout.WEST);
+        LeftPanel leftPanel = new LeftPanel(this);
+        frame.add(leftPanel, BorderLayout.WEST);
 
-        JPanel SimulationControl = new JPanel(new GridLayout(3, 1));
-        ButtonPanel.add(SimulationControl);
-
-        JButton Start = new JButton(">");
-        SimulationControl.add(Start);
-
-        JButton Stop = new JButton("||");
-        SimulationControl.add(Stop);
-
-        JButton Restart = new JButton("R");
-        SimulationControl.add(Restart);
-
-        JButton LanguageChange = new JButton("EN");
-        ButtonPanel.add(LanguageChange);
+        RightPanel rightPanel = new RightPanel(this);
+        //settingsPanel.setPreferredSize(new Dimension(100, 1000));
+        frame.add(rightPanel, BorderLayout.EAST);
 
         frame.setTitle("Two stream instability");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
+        loop = new CalculationLoop(this);
+        loop.start();
     }
 
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
         //ten fragment kodu odpowiada za ca³¹ symulacjê
         //czy calculationloop jest do przerobienia?
-        CalculationLoop loop = new CalculationLoop(mainFrame);
-        loop.start();
         ///
 
         //Zrobiony na szybko schemat zatrzymywania
@@ -120,6 +112,25 @@ class MainFrame {
 //            //restartu jeszcze nie mam
         }
 
+    }
+
+    public void restart() {
+        iteration = 0;
+        loop.stop();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        engine = new SimulationEngine(parameters);
+        energyPlot.clear();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        loop = new CalculationLoop(this);
+        loop.start();
     }
 
     public SimulationEngine getEngine() {

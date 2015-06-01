@@ -46,12 +46,12 @@ class Parameters {
 
 	public Parameters() //default
 	{
-		this.perturbationAmplitude = 1e-2d;
 		this.timeStep = 5e-1d;
 		this.cellParticleDensity = 60;
 		this.initialVelocity = 0.1d;//0.1d;
 		this.gridPointNumber = 64;
 		this.fieldErrorTolerance = 1e-10;
+		this.perturbationAmplitude = 1e-2d;
 
 		this.gridStep = gridSize / ((double) gridPointNumber);
 		numberOfParticles = gridPointNumber * cellParticleDensity;
@@ -64,12 +64,12 @@ class Parameters {
 
 	public Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
 					  double fieldErrorTolerance, double perturbationAmplitude, double charge1, double charge2, double mass1, double mass2) {
-		this.perturbationAmplitude = perturbationAmplitude;
 		this.timeStep = timeStep;
 		this.cellParticleDensity = cellParticleDensity;
 		this.initialVelocity = initialVelocity;
 		this.gridPointNumber = gridPointNumber;
 		this.fieldErrorTolerance = fieldErrorTolerance;
+		this.perturbationAmplitude = perturbationAmplitude;
 
 		this.gridStep = gridSize / ((double) gridPointNumber);
 		numberOfParticles = gridPointNumber * cellParticleDensity;
