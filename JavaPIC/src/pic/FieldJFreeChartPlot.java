@@ -25,7 +25,7 @@ import java.io.IOException;
  */
 
 class FieldJFreeChartPlot extends JPanel {
-    private JFreeChart lineGraph;
+    public JFreeChart lineGraph;
     private XYSeries dataSetDensity, dataSetField; // --Commented out by Inspection (2015-06-01 10:17):dataSetPotential
     private int snapshotsTaken = 0;
 
