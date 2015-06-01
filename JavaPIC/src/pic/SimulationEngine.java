@@ -24,13 +24,13 @@ public class SimulationEngine {
 		listOfSpecies = new Species[2];
 		double[] velocities1 = Parameters.uniformVelocity(parameters.numberOfParticles, parameters.initialVelocity);
 		double[] velocities2 = Parameters.uniformVelocity(parameters.numberOfParticles, -parameters.initialVelocity);
-		double[] positions1 = Parameters.randomPosition(parameters.numberOfParticles, Parameters.perturbationAmplitude);
-		double[] positions2 = Parameters.randomPosition(parameters.numberOfParticles, -Parameters.perturbationAmplitude);
+		double[] positions1 = Parameters.randomPosition(parameters.numberOfParticles, parameters.perturbationAmplitude);
+		double[] positions2 = Parameters.randomPosition(parameters.numberOfParticles, -parameters.perturbationAmplitude);
 
 
-		Species beam1 = new Species(parameters.numberOfParticles, parameters.charge, positions1, velocities1, parameters);
+		Species beam1 = new Species(parameters.numberOfParticles, parameters.charge1, parameters.mass1, positions1, velocities1, parameters);
 		listOfSpecies[0] = beam1;
-		Species beam2 = new Species(parameters.numberOfParticles, parameters.charge, positions2, velocities2, parameters);
+		Species beam2 = new Species(parameters.numberOfParticles, parameters.charge2, parameters.mass2, positions2, velocities2, parameters);
 		listOfSpecies[1] = beam2;
 		grid.update(listOfSpecies);
 	}

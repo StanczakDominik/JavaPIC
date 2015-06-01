@@ -22,8 +22,8 @@ class MainFrame {
         //ma wbudowane defaultowe parametry
         Parameters parameters = new Parameters();
         //a tak bym to widzia³ przy restartowaniu z ró¿nymi parametrami:
-        //parameters = new Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,double fieldErrorTolerance);
-
+        //parameters = new Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
+        //double fieldErrorTolerance, double perturbationAmplitude, double charge1, double charge2, double mass1, double mass2) {
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
         frame.setSize(1000, 1000);

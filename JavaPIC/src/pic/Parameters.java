@@ -22,28 +22,49 @@ class Parameters {
 	public static boolean printGridConvergence = false;
 	//na sztywno
 	public static double gridSize = 2d * Math.PI;
-	public static double plotMaxVMultiplier = 25d;
+	public static double plotMaxVMultiplier = 5d;
 	public static double epsilonZero = 1d;            // F/m
 	public static int fieldCalculationIterations=50000;
 	public static int fieldCalculationStep=100;
 	public static double fieldPlotMaximumValue=1d;
-	public static double chargeToMassRatio = -1d;
-	public static double perturbationAmplitude=1e-4d;
 	//do podania
 	public double timeStep;
 	public int cellParticleDensity;
 	public double initialVelocity;
 	public int gridPointNumber;
 	public double fieldErrorTolerance;
+	public double charge1;
+	public double charge2;
+	public double mass1;
+	public double mass2;
+	public double perturbationAmplitude;
 	//obliczane
 	public double gridStep;
 	public int numberOfParticles;
-	public double charge;
 	public double backgroundCharge;
 
 
+	public Parameters() //default
+	{
+		this.perturbationAmplitude = 1e-2d;
+		this.timeStep = 5e-1d;
+		this.cellParticleDensity = 60;
+		this.initialVelocity = 0.1d;//0.1d;
+		this.gridPointNumber = 64;
+		this.fieldErrorTolerance = 1e-10;
+
+		this.gridStep = gridSize / ((double) gridPointNumber);
+		numberOfParticles = gridPointNumber * cellParticleDensity;
+
+		mass1 = mass2 = 1;
+		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji. jest ustawiony
+		//silowo na 10, bo inaczej po prostu byloby za wolno
+		backgroundCharge = -(charge1 + charge2);
+	}
+
 	public Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
-					  double fieldErrorTolerance) {
+					  double fieldErrorTolerance, double perturbationAmplitude, double charge1, double charge2, double mass1, double mass2) {
+		this.perturbationAmplitude = perturbationAmplitude;
 		this.timeStep = timeStep;
 		this.cellParticleDensity = cellParticleDensity;
 		this.initialVelocity = initialVelocity;
@@ -52,22 +73,13 @@ class Parameters {
 
 		this.gridStep = gridSize / ((double) gridPointNumber);
 		numberOfParticles = gridPointNumber * cellParticleDensity;
-		charge = gridSize / numberOfParticles;
-		backgroundCharge = -2 * charge;
-	}
 
-	public Parameters() //default
-	{
-		this.timeStep = 3e-1d;
-		this.cellParticleDensity = 60;
-		this.initialVelocity = 0.1d;
-		this.gridPointNumber = 64;
-		this.fieldErrorTolerance = 1e-10;
+		this.charge1 = charge1 * gridSize / numberOfParticles;
+		this.charge2 = charge2 * gridSize / numberOfParticles;
+		this.mass1 = mass1;
+		this.mass2 = mass2;
 
-		this.gridStep = gridSize / ((double) gridPointNumber);
-		numberOfParticles = gridPointNumber * cellParticleDensity;
-		charge = gridSize / numberOfParticles;
-		backgroundCharge = -2 * charge;
+		backgroundCharge = -(charge1 + charge2);
 	}
 
 

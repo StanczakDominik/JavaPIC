@@ -21,8 +21,8 @@ class Grid {
 	double[] gridPoints;
 	double[] eField;
 	double[] density;
-	double[] potential;
 	double totalFieldEnergy;
+	private double[] potential;
 	private Parameters parameters;
 
 	public Grid(Parameters parameters) {
@@ -69,10 +69,10 @@ class Grid {
 		for (int i = 0; i < gridPointNumber; i++) {
 			density[i] += parameters.cellParticleDensity * parameters.backgroundCharge;
 		}
-		density[gridPointNumber - 1] += density[0];
+		density[gridPointNumber - 1] = (density[gridPointNumber - 1] + density[0]) / 2;
 		density[0] = density[gridPointNumber - 1];
 
-		//Gauss Seidel Method
+		//Gauss Seidel Method used to calculate electric potential
 		potential = new double[gridPointNumber];
 		int forwardIndex, backwardIndex;
 		double oldPotential, delta, maxChange;
@@ -100,13 +100,22 @@ class Grid {
 				if (Parameters.printGridConvergence) System.out.println("May not have converged!");
 			}
 		}
+
+
+		//electric field and field energy calculation
 		for (int i = 0; i < gridPointNumber; i++) {
 			forwardIndex = i + 1;
 			if (forwardIndex == gridPointNumber) forwardIndex = 1;
 			backwardIndex = i - 1;
 			if (backwardIndex == -1) backwardIndex = gridPointNumber - 2;
+
+			//calculate field by a central finite difference scheme
 			eField[i] = (potential[backwardIndex] - potential[forwardIndex]) / (2d * gridStep);
-			totalFieldEnergy += 0.5 * potential[i] * density[i] * gridStep;
+
+
+			//totalFieldEnergy += 0.5 * potential[i] * density[i];// * gridStep;
+			totalFieldEnergy += 0.5 * Parameters.epsilonZero * eField[i] * eField[i];//*gridStep;
+			//debug
 			if (Parameters.printFields) System.out.println(i + "\t" + potential[i] + "\t" + eField[i]);
 		}
 	}

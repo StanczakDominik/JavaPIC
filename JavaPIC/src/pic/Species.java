@@ -24,10 +24,12 @@ class Species {
 	double[] position;
 	double[] velocity;
 	double totalKineticEnergy;
+	private double mass;
 	private Parameters parameters;
 
-	public Species(int numberOfParticlesI, double chargeI, double[] positionI, double[] velocityI, Parameters parameters)
+	public Species(int numberOfParticlesI, double chargeI, double massI, double[] positionI, double[] velocityI, Parameters parameters)
 	{
+		mass = massI;
 		charge = chargeI;
 		numberOfParticles = numberOfParticlesI;
 		position = positionI;
@@ -95,9 +97,9 @@ class Species {
 			}
 			field /= grid.gridStep;
 			double oldVelocity = velocity[i];
-			velocity[i] += field * dt * Parameters.chargeToMassRatio;
+			velocity[i] += field * dt * charge / mass;
 			//TODO: Does this need a mass term?
-			totalKineticEnergy += oldVelocity * 0.5 * velocity[i] / Parameters.chargeToMassRatio * parameters.charge;
+			totalKineticEnergy += oldVelocity * 0.5 * velocity[i] * mass;
 			sum += velocity[i];
 			if (Parameters.printMovement) {
 				if (Math.abs(velocity[i]) > max) {
