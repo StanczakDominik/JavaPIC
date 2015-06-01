@@ -1,0 +1,7 @@
+Problem obliczeniowy
+
+Symulacje złożonych układów, takich jak właśnie plazma, są wyjątkowo wymagające obliczeniowo. Prosty układ taki jak ten dla domyślnych wartości wymaga symulacji siedmiu i pół tysiąca różnych cząstek. Symulacja sił w takiej sytuacji jest bardzo skomplikowana - dla prostego oddziałowywania kulombowskiego, licząc wkłady do sił od każdego z ciał, należałoby w jednej iteracji przeliczyć 59 milionów interakcji.
+
+Oczywiście, jest to raczej niewykonalne. Dlatego też symulacje PIC stosują cwane uproszczenie - dyskretną siatkę. Obszar symulacji - w naszym przypadku, jednowymiarowa linia o długości 2 pi - zostaje podzielony na dyskretne "komórki". W każdej iteracji podliczany jest ładunek zawarty w każdej z nich. To daje nam gęstość ładunku w każdej z - domyślnie - 64 komórek. Na tej podstawie zaś, mając odpowiednie warunki brzegowe, można rozwiązać dowolnie wybranym algorytmem równanie Poissona - i otrzymujemy wartości potencjału i pola elektrycznego w każdej z komórek! Stąd nazwa - Particle in Cell, cząstka w komórce.
+
+Oczywiście, pola na krawędziach komórek nie są dokładnie polami w położeniach cząstek. Ale jako że rozmiar komórek jest niewielki w porównaniu z obszarem symulacji, całkiem niezłym przybliżeniem jest obliczanie pól w położeniach częstek poprzez liniową interpolację pól z sąsiadujących granic komórek.
