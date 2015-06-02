@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
  */
 public class UpperRightPanel extends JPanel {
 
-    JTextField mass1, mass2, timeStep, cellParticleDensity, initialVelocity, gridPointNumber, fieldErrorTolerance, perturbationAmplitude, charge1, charge2;
     JLabel mass1label, mass2label, timeSteplabel, cellParticleDensitylabel, initialVelocitylabel, gridPointNumberlabel, fieldErrorTolerancelabel, perturbationAmplitudelabel, charge1label, charge2label;
     JButton runButton;
+    private JTextField mass1, mass2, timeStep, cellParticleDensity, initialVelocity, gridPointNumber, fieldErrorTolerance, perturbationAmplitude, charge1, charge2;
 
     UpperRightPanel(MainFrame mainFrame) {
         setPreferredSize(new Dimension(100, 1000));
@@ -89,15 +89,15 @@ public class UpperRightPanel extends JPanel {
         });
     }
 
-    double getDouble(JTextField field) {
+    private double getDouble(JTextField field) {
         return Double.parseDouble(field.getText());
     }
 
-    int getInt(JTextField field) {
+    private int getInt(JTextField field) {
         return Integer.parseInt(field.getText());
     }
 
-    Parameters generateParameters() {
+    private Parameters generateParameters() {
         return new Parameters(getDouble(timeStep), getInt(cellParticleDensity), getDouble(initialVelocity), getInt(gridPointNumber), getDouble(fieldErrorTolerance), getDouble(perturbationAmplitude), getDouble(charge1), getDouble(charge2), getDouble(mass1), getDouble(mass2));
     }
 }
