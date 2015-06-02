@@ -2,7 +2,10 @@ package pic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.Buffer;
+import java.nio.charset.Charset;
 
 /**
  * Autor: Mateusz Kaczorek, Dominik Stañczak

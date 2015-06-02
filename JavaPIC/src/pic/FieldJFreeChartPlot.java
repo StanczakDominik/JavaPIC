@@ -38,7 +38,7 @@ class FieldJFreeChartPlot extends JPanel {
         XYSeriesCollection xySeriesCollection = new XYSeriesCollection(dataSetDensity);
         //xySeriesCollection.addSeries(dataSetPotential);
         xySeriesCollection.addSeries(dataSetField);
-        lineGraph = ChartFactory.createXYLineChart("Wykres Pol", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        lineGraph = ChartFactory.createXYLineChart("Fields Chart", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
 

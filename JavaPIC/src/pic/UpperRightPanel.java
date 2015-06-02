@@ -1,9 +1,12 @@
 package pic;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.nio.charset.Charset;
 
 /**
  * Autor: Dominik Stañczak
@@ -16,70 +19,73 @@ public class UpperRightPanel extends JPanel {
 
     UpperRightPanel(MainFrame mainFrame) {
         setPreferredSize(new Dimension(100, 1000));
-        setLayout(new FlowLayout());
+        setLayout(new BorderLayout());
+
+        JPanel ParametersChangePanel = new JPanel(new GridLayout(10,2));
+        this.add(ParametersChangePanel, BorderLayout.CENTER);
 
         mass1 = new JTextField("1");
         mass1.setPreferredSize(new Dimension(40, 20));
-        this.add(mass1);
+        ParametersChangePanel.add(mass1);
         mass1label = new JLabel("Masa 1");
-        this.add(mass1label);
+        ParametersChangePanel.add(mass1label);
 
         mass2 = new JTextField("1");
         mass2.setPreferredSize(new Dimension(40, 20));
-        this.add(mass2);
+        ParametersChangePanel.add(mass2);
         mass2label = new JLabel("Masa 2");
-        this.add(mass2label);
+        ParametersChangePanel.add(mass2label);
 
         charge1 = new JTextField("-10");
         charge1.setPreferredSize(new Dimension(40, 20));
-        this.add(charge1);
+        ParametersChangePanel.add(charge1);
         charge1label = new JLabel("Lad. 1");
-        this.add(charge1label);
+        ParametersChangePanel.add(charge1label);
 
         charge2 = new JTextField("-10");
         charge2.setPreferredSize(new Dimension(40, 20));
-        this.add(charge2);
+        ParametersChangePanel.add(charge2);
         charge2label = new JLabel("Lad. 2");
-        this.add(charge2label);
+        ParametersChangePanel.add(charge2label);
 
         timeStep = new JTextField("0.5");
         timeStep.setPreferredSize(new Dimension(40, 20));
-        this.add(timeStep);
+        ParametersChangePanel.add(timeStep);
         timeSteplabel = new JLabel("Krok T");
-        this.add(timeSteplabel);
+        ParametersChangePanel.add(timeSteplabel);
 
         cellParticleDensity = new JTextField("60");
         cellParticleDensity.setPreferredSize(new Dimension(40, 20));
-        this.add(cellParticleDensity);
+        ParametersChangePanel.add(cellParticleDensity);
         cellParticleDensitylabel = new JLabel("N/dx");
-        this.add(cellParticleDensitylabel);
+        ParametersChangePanel.add(cellParticleDensitylabel);
 
         initialVelocity = new JTextField("0.1");
         initialVelocity.setPreferredSize(new Dimension(40, 20));
-        this.add(initialVelocity);
+        ParametersChangePanel.add(initialVelocity);
         initialVelocitylabel = new JLabel("Vinit");
-        this.add(initialVelocitylabel);
+        ParametersChangePanel.add(initialVelocitylabel);
 
         gridPointNumber = new JTextField("64");
         gridPointNumber.setPreferredSize(new Dimension(40, 20));
-        this.add(gridPointNumber);
+        ParametersChangePanel.add(gridPointNumber);
         gridPointNumberlabel = new JLabel("N siatki");
-        this.add(gridPointNumberlabel);
+        ParametersChangePanel.add(gridPointNumberlabel);
 
         fieldErrorTolerance = new JTextField("1e-10");
         fieldErrorTolerance.setPreferredSize(new Dimension(40, 20));
-        this.add(fieldErrorTolerance);
+        ParametersChangePanel.add(fieldErrorTolerance);
         fieldErrorTolerancelabel = new JLabel("DeltaE");
-        this.add(fieldErrorTolerancelabel);
+        ParametersChangePanel.add(fieldErrorTolerancelabel);
 
         perturbationAmplitude = new JTextField("0.01");
         perturbationAmplitude.setPreferredSize(new Dimension(40, 20));
-        this.add(perturbationAmplitude);
+        ParametersChangePanel.add(perturbationAmplitude);
         perturbationAmplitudelabel = new JLabel("Scatter");
-        this.add(perturbationAmplitudelabel);
+        ParametersChangePanel.add(perturbationAmplitudelabel);
 
-        runButton = new JButton("Inicjuj");
-        this.add(runButton);
+        runButton = new JButton("Initiate");
+        this.add(runButton, BorderLayout.SOUTH);
         runButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
