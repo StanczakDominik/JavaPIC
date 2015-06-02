@@ -17,21 +17,21 @@ public class MiddleRightPanel extends JPanel {
         JPanel SimulationControl = new JPanel(new GridLayout(5, 1, 0, 20));
         this.add(SimulationControl);
 
-        JButton Start = new JButton(">");
-        SimulationControl.add(Start);
-        Start.addActionListener(new ActionListener() {
+        JButton StartAndStop = new JButton("||");
+        SimulationControl.add(StartAndStop);
+        StartAndStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainFrame.loop.start();
-            }
-        });
 
-        JButton Stop = new JButton("||");
-        SimulationControl.add(Stop);
-        Stop.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.loop.stop();
+                if(StartAndStop.getText()=="||"){
+
+                    StartAndStop.setText(">");
+                    mainFrame.loop.stop();
+                }
+                else{
+                    StartAndStop.setText("||");
+                    mainFrame.loop.start();
+                }
             }
         });
 
