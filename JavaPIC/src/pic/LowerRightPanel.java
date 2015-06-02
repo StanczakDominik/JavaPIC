@@ -35,7 +35,8 @@ public class LowerRightPanel extends JPanel {
         PhaseChart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                PhaseChartFrame frame = new PhaseChartFrame();
+                frame.setVisible(true);
             }
         });
     }
