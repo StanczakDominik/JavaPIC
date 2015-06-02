@@ -42,8 +42,11 @@ class XVPlotPanel extends JPanel {
 		N = engine.parameters.numberOfParticles;
 	}
 
-	public void changeN(Parameters parameters) {
+	public void refresh(Parameters parameters) {
 		N = parameters.numberOfParticles;
+		minV = -Parameters.plotMaxVMultiplier * parameters.initialVelocity;
+		maxV = Parameters.plotMaxVMultiplier * parameters.initialVelocity;
+		initialVelocity = parameters.initialVelocity;
 	}
 
 	public void update(SimulationEngine engine)
