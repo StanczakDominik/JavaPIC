@@ -35,7 +35,7 @@ public class MiddleRightPanel extends JPanel {
             }
         });
 
-        JButton Restart = new JButton("R");
+        JButton Restart = new JButton("Restart");
         SimulationControl.add(Restart);
         Restart.addActionListener(new ActionListener() {
             @Override
@@ -100,7 +100,7 @@ public class MiddleRightPanel extends JPanel {
         ScreenCapture.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mainFrame.takeSnapshots();
             }
         });
 

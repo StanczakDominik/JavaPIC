@@ -26,7 +26,7 @@ class Parameters {
 	public static double epsilonZero = 1d;            // F/m
 	public static int fieldCalculationIterations=50000;
 	public static int fieldCalculationStep=100;
-	public static double fieldPlotMaximumValue=1d;
+	public static double fieldPlotMaximumValue = 2d;
 	//do podania
 	public double timeStep;
 	public int cellParticleDensity;
@@ -60,11 +60,6 @@ class Parameters {
 		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji. jest ustawiony
 		//silowo na 10, bo inaczej po prostu byloby za wolno
 		backgroundCharge = -(charge1 + charge2);
-
-		System.out.println("Timestep" + timeStep + "CPD" + cellParticleDensity + "initvel" + initialVelocity);
-		System.out.println("GPN" + gridPointNumber + "FET" + fieldErrorTolerance + "PA" + perturbationAmplitude);
-		System.out.println("GStep" + gridStep + "NOP" + numberOfParticles + "m1:" + mass1 + "m2:" + mass2);
-		System.out.println("C1:" + charge1 + "C2:" + charge2 + "BC:" + backgroundCharge);
 	}
 
 	public Parameters(double timeStep, int cellParticleDensityI, double initialVelocity, int gridPointNumberI,
@@ -85,12 +80,6 @@ class Parameters {
 		this.mass2 = mass2;
 
 		backgroundCharge = -(charge1 + charge2);
-		System.out.println("Custom");
-		System.out.println("Timestep" + timeStep + "CPD" + cellParticleDensity + "initvel" + initialVelocity);
-		System.out.println("GPN" + gridPointNumber + "FET" + fieldErrorTolerance + "PA" + perturbationAmplitude);
-		System.out.println("GStep" + gridStep + "NOP" + numberOfParticles + "m1:" + mass1 + "m2:" + mass2);
-		System.out.println("C1:" + charge1 + "C2:" + charge2 + "BC:" + backgroundCharge);
-
 	}
 
 

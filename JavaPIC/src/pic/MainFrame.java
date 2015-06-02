@@ -1,7 +1,6 @@
 package pic;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.io.IOException;
 
@@ -11,15 +10,15 @@ import java.io.IOException;
  */
 class MainFrame {
 
+    public UpperRightPanel UpperRightPanel;
     int iteration = 0;
-    SimulationEngine engine;
     CalculationLoop loop;
     Parameters parameters;
-    private XVPlotPanel phasePlot;
     FieldJFreeChartPlot fieldPlot;
     EnergyPlot energyPlot;
-    public MiddleRightPanel MiddleRightPanel;
-    public UpperRightPanel UpperRightPanel;
+    private SimulationEngine engine;
+    private XVPlotPanel phasePlot;
+    private MiddleRightPanel MiddleRightPanel;
 
     private MainFrame()
     {
@@ -151,7 +150,7 @@ class MainFrame {
         energyPlot.update(data, iteration);
     }
 
-    private void takeSnapshots() {
+    public void takeSnapshots() {
         fieldPlot.saveChartAsPng();
         energyPlot.saveChartAsPng();
         phasePlot.saveChartAsPng();
