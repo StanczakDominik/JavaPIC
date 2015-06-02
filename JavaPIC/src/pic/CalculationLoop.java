@@ -44,7 +44,6 @@ class CalculationLoop {
 
     public void stop() {
         started = false;
-        //worker.cancel(true);
     }
 
     private void scheduleWorkerIteration() {

@@ -26,17 +26,15 @@ import java.io.IOException;
 
 class FieldJFreeChartPlot extends JPanel {
     JFreeChart lineGraph;
-    XYSeries dataSetDensity, dataSetField; // --Commented out by Inspection (2015-06-01 10:17):dataSetPotential
+    XYSeries dataSetDensity, dataSetField;
     private int snapshotsTaken = 0;
 
     public FieldJFreeChartPlot(SimulationEngine engine) {
         setSize(1000, 240);
         dataSetDensity = new XYSeries("Charge Density");
-        //dataSetPotential = new XYSeries("Potential");
         dataSetField = new XYSeries("Electric Field");
         update(engine);
         XYSeriesCollection xySeriesCollection = new XYSeriesCollection(dataSetDensity);
-        //xySeriesCollection.addSeries(dataSetPotential);
         xySeriesCollection.addSeries(dataSetField);
         lineGraph = ChartFactory.createXYLineChart("Fields Chart", "X axis (grid)", "Field magnitude", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
@@ -57,13 +55,11 @@ class FieldJFreeChartPlot extends JPanel {
 
     public void update(SimulationEngine engine)
     {
-        //dataSetPotential.clear();
         dataSetDensity.clear();
         dataSetField.clear();
         for (int i = 0; i < engine.grid.gridPointNumber; i++)
         {
             dataSetDensity.add(engine.grid.gridPoints[i], engine.grid.density[i]);
-            //dataSetPotential.add(engine.grid.gridPoints[i], engine.grid.potential[i]);
             dataSetField.add(engine.grid.gridPoints[i], engine.grid.eField[i]);
         }
         repaint();
@@ -80,13 +76,4 @@ class FieldJFreeChartPlot extends JPanel {
         snapshotsTaken++;
     }
 
-//    @Override
-//    public void run() {
-//        repaint();
-//        try {
-//            Thread.sleep(30);
-//        } catch (InterruptedException e) {
-//            return;
-//        }
-//    }
 }

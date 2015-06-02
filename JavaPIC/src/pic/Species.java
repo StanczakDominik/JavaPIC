@@ -99,7 +99,6 @@ class Species {
 			field /= grid.gridStep;
 			double oldVelocity = velocity[i];
 			velocity[i] += field * dt * charge / mass;
-			//TODO: Does this need a mass term?
 			totalKineticEnergy += oldVelocity * 0.5 * velocity[i] * mass;
 			sum += velocity[i];
 			if (Parameters.printMovement) {

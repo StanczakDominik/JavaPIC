@@ -32,7 +32,6 @@ class EnergyPlot extends JPanel {
         kineticEnergy1 = new XYSeries("Species 1 kinetic energy");
         kineticEnergy2 = new XYSeries("Species 2 kinetic energy");
         totalEnergy = new XYSeries("Total energy");
-//        update(engine);
         XYSeriesCollection xySeriesCollection = new XYSeriesCollection(fieldEnergy);
         xySeriesCollection.addSeries(kineticEnergy1);
         xySeriesCollection.addSeries(kineticEnergy2);
@@ -40,14 +39,6 @@ class EnergyPlot extends JPanel {
         lineGraph = ChartFactory.createXYLineChart("Energies Chart", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
-
-//        XYPlot xyPlot = (XYPlot) lineGraph.getPlot();
-//        xAxis=xyPlot.getDomainAxis();
-//        xAxis.setLowerBound(0);
-//        xAxis.setUpperBound(Parameters.gridSize);
-//        yAxis=xyPlot.getRangeAxis();
-//        yAxis.setLowerBound(-Parameters.fieldPlotMaximumValue);
-//        yAxis.setUpperBound(Parameters.fieldPlotMaximumValue);
 
         add(chartPanel);
         chartPanel.setVisible(true);
@@ -81,13 +72,4 @@ class EnergyPlot extends JPanel {
         snapshotsTaken++;
     }
 
-//    @Override
-//    public void run() {
-//        repaint();
-//        try {
-//            Thread.sleep(30);
-//        } catch (InterruptedException e) {
-//            return;
-//        }
-//    }
 }

@@ -2,7 +2,6 @@ package pic;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * Autor: Mateusz Kaczorek, Dominik Stañczak
@@ -23,11 +22,7 @@ class MainFrame {
     private MainFrame()
     {
 
-        //ma wbudowane defaultowe parametry
         parameters = new Parameters();
-        //a tak bym to widzia³ przy restartowaniu z ró¿nymi parametrami:
-        //parameters = new Parameters(double timeStep, int cellParticleDensity, double initialVelocity, int gridPointNumber,
-        //double fieldErrorTolerance, double perturbationAmplitude, double charge1, double charge2, double mass1, double mass2) {
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
         frame.setSize(1100, 1000);
@@ -63,7 +58,6 @@ class MainFrame {
 
 
         upperRightPanel = new UpperRightPanel(this);
-        //settingsPanel.setPreferredSize(new Dimension(100, 1000));
         RightPanel.add(upperRightPanel, BorderLayout.EAST);
 
         middleRightPanel = new MiddleRightPanel(this);
@@ -79,44 +73,6 @@ class MainFrame {
 
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
-        //ten fragment kodu odpowiada za ca³¹ symulacjê
-        //czy calculationloop jest do przerobienia?
-        ///
-
-        //Zrobiony na szybko schemat zatrzymywania
-
-        //noinspection InfiniteLoopStatement
-        while (true) {
-
-            //reaguje na enter w konsoli
-            try {
-                //noinspection ResultOfMethodCallIgnored
-                System.in.read();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            //Robi screenshoty
-            mainFrame.takeSnapshots();
-
-
-//          //Odkomentuj ten blok ¿eby przetestowaæ play\pause
-//            //ta linijka zatrzymuje animacjê - takie pause
-//            loop.stop();
-//
-//            try {
-//                //noinspection ResultOfMethodCallIgnored
-//                System.in.read();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            //mo¿na j¹ na bie¿¹co z powrotem puœciæ
-//            loop.start();
-//            //restartu jeszcze nie mam
-        }
-
     }
 
     public void restart() {

@@ -113,8 +113,6 @@ class Grid {
 			//calculate field by a central finite difference scheme
 			eField[i] = (potential[backwardIndex] - potential[forwardIndex]) / (2d * gridStep);
 
-
-			//totalFieldEnergy += 0.5 * potential[i] * density[i];// * gridStep;
 			totalFieldEnergy += 0.5 * Parameters.epsilonZero * eField[i] * eField[i];//*gridStep;
 			//debug
 			if (Parameters.printFields) System.out.println(i + "\t" + potential[i] + "\t" + eField[i]);

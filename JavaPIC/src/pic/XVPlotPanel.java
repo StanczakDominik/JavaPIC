@@ -97,13 +97,5 @@ class XVPlotPanel extends JPanel {
 		}
 	}
 
-//	@Override
-//	public void run() {
-//		while(true)
-//		{
-//			repaint();
-//			try{Thread.sleep(30);} catch (InterruptedException e) {return;}
-//		}
-//	}
 }
 
