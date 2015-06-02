@@ -27,7 +27,7 @@ class EnergyPlot extends JPanel {
     private int snapshotsTaken = 0;
 
     public EnergyPlot() {
-        setSize(1000, 300);
+        setSize(1000, 240);
         fieldEnergy = new XYSeries("Field energy");
         kineticEnergy1 = new XYSeries("Species 1 kinetic energy");
         kineticEnergy2 = new XYSeries("Species 2 kinetic energy");

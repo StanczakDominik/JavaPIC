@@ -30,7 +30,7 @@ class FieldJFreeChartPlot extends JPanel {
     private int snapshotsTaken = 0;
 
     public FieldJFreeChartPlot(SimulationEngine engine) {
-        setSize(1000, 300);
+        setSize(1000, 240);
         dataSetDensity = new XYSeries("Density");
         //dataSetPotential = new XYSeries("Potential");
         dataSetField = new XYSeries("Field");
