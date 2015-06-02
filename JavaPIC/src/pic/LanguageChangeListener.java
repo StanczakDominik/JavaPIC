@@ -3,11 +3,11 @@ package pic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by MATEUSZ on 2015-06-02.
+/** Autor: Mateusz Kaczorek
+ *
  */
-public class LanguageChangeListener implements ActionListener {
-    final MainFrame mainFrame;
+class LanguageChangeListener implements ActionListener {
+    private final MainFrame mainFrame;
 
     public LanguageChangeListener(MainFrame mainFrame) {
         this.mainFrame = mainFrame;

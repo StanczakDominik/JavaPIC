@@ -2,13 +2,11 @@ package pic;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Autor: Mateusz Kaczorek
  */
-public class MiddleRightPanel extends JPanel {
+class MiddleRightPanel extends JPanel {
 
     JButton LanguageChange, ScreenCapture;
 
@@ -20,30 +18,21 @@ public class MiddleRightPanel extends JPanel {
 
         JButton StartAndStop = new JButton("||");
         SimulationControl.add(StartAndStop);
-        StartAndStop.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        StartAndStop.addActionListener(e -> {
 
-                if(StartAndStop.getText().equals("||")){
+            if (StartAndStop.getText().equals("||")) {
 
-                    StartAndStop.setText(">");
-                    mainFrame.loop.stop();
-                }
-                else{
-                    StartAndStop.setText("||");
-                    mainFrame.loop.start();
-                }
+                StartAndStop.setText(">");
+                mainFrame.loop.stop();
+            } else {
+                StartAndStop.setText("||");
+                mainFrame.loop.start();
             }
         });
 
         JButton Restart = new JButton("Restart");
         SimulationControl.add(Restart);
-        Restart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.restart();
-            }
-        });
+        Restart.addActionListener(e -> mainFrame.restart());
 
 
         LanguageChange = new JButton("PL");
@@ -54,12 +43,7 @@ public class MiddleRightPanel extends JPanel {
 
         LanguageChange.addActionListener(new LanguageChangeListener(mainFrame));
 
-        ScreenCapture.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.takeSnapshots();
-            }
-        });
+        ScreenCapture.addActionListener(e -> mainFrame.takeSnapshots());
 
     }
 

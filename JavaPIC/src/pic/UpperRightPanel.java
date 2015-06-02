@@ -1,12 +1,7 @@
 package pic;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.nio.charset.Charset;
 
 /**
  * Autor: Dominik Stañczak
@@ -86,12 +81,9 @@ public class UpperRightPanel extends JPanel {
 
         runButton = new JButton("Initiate");
         this.add(runButton, BorderLayout.SOUTH);
-        runButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainFrame.parameters = generateParameters();
-                mainFrame.restart();
-            }
+        runButton.addActionListener(e -> {
+            mainFrame.parameters = generateParameters();
+            mainFrame.restart();
         });
     }
 

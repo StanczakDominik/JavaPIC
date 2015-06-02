@@ -2,10 +2,7 @@ package pic;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.Buffer;
-import java.nio.charset.Charset;
 
 /**
  * Autor: Mateusz Kaczorek, Dominik Stañczak
@@ -19,9 +16,9 @@ class MainFrame {
     Parameters parameters;
     FieldJFreeChartPlot fieldPlot;
     EnergyPlot energyPlot;
+    MiddleRightPanel middleRightPanel;
     private SimulationEngine engine;
     private XVPlotPanel phasePlot;
-    MiddleRightPanel middleRightPanel;
 
     private MainFrame()
     {
