@@ -4,18 +4,19 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Autor: Mateusz Kaczorek, Dominik Stañczak
+ * Author: Mateusz Kaczorek, Dominik Stañczak
  * GUI o którym jeszcze chyba nie bêdê wiele pisa³. :D
  */
 class MainFrame {
 
-    public UpperRightPanel upperRightPanel;
+    UpperRightPanel upperRightPanel;
+    MiddleRightPanel middleRightPanel;
+    LowerRightPanel lowerRightPanel;
     int iteration = 0;
     CalculationLoop loop;
     Parameters parameters;
     FieldJFreeChartPlot fieldPlot;
     EnergyPlot energyPlot;
-    MiddleRightPanel middleRightPanel;
     private SimulationEngine engine;
     private XVPlotPanel phasePlot;
 
@@ -41,7 +42,6 @@ class MainFrame {
         phasePlot.update(engine);
         phasePlot.setVisible(true);
 
-
         JPanel EnergyAndFieldPanel = new JPanel(new GridLayout(2, 0));
         ChartPanel.add(EnergyAndFieldPanel);
 
@@ -62,6 +62,9 @@ class MainFrame {
 
         middleRightPanel = new MiddleRightPanel(this);
         RightPanel.add(middleRightPanel, BorderLayout.EAST);
+
+        lowerRightPanel = new LowerRightPanel();
+        RightPanel.add(lowerRightPanel, BorderLayout.EAST);
 
         frame.setTitle("Two stream instability");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

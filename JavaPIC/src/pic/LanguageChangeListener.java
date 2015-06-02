@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-//TEST
-/** Autor: Mateusz Kaczorek
+
+/** Author: Mateusz Kaczorek
  *
  */
 class LanguageChangeListener implements ActionListener {

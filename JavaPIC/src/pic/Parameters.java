@@ -1,7 +1,7 @@
 package pic;
 
 /**
- * Autor: Dominik
+ * Author: Dominik
  * Klasa zawieraj¹ca parametry programu - symulacji i wykresów.
  * Wiêkszoœæ zmiennych ustawionych na sztywno jest generowana jako zmienne statyczne
  * Zmienne kontrolowane przez u¿ytkownika s¹ tworzone w konstruktorze

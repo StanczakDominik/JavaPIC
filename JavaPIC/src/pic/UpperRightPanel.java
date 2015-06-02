@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Autor: Dominik Stañczak
+ * Author: Dominik Stañczak
  */
 public class UpperRightPanel extends JPanel {
 

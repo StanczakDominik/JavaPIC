@@ -1,7 +1,7 @@
 package pic;
 
 /**
- * Autor: Dominik
+ * Author: Dominik
  * Klasa Grid odpowiada za jednowymiarow¹ siatkê, na której rozwi¹zywane s¹ jednowymiarowe równania Maxwella przy u¿yciu
  * danych czastek (po³o¿eñ -> gêstoœci ³adunków)
  * <p>

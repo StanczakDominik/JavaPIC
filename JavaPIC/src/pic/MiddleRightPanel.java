@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Autor: Mateusz Kaczorek
+ * Author: Mateusz Kaczorek
  */
 class MiddleRightPanel extends JPanel {
 

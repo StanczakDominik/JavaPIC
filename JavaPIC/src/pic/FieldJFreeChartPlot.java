@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Autor: Dominik
+ * Author: Dominik
  * Wykres pola elektrycznego, gêstoœci ³adunku oraz potencja³u (potencja³ ma tendencjê do bycia wysokim i znikania) w
  * zale¿noœci od po³o¿enia na siatce
  * Oparty na JFreeCharcie
