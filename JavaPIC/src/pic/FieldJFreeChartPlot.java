@@ -26,14 +26,14 @@ import java.io.IOException;
 
 class FieldJFreeChartPlot extends JPanel {
     JFreeChart lineGraph;
-    private XYSeries dataSetDensity, dataSetField; // --Commented out by Inspection (2015-06-01 10:17):dataSetPotential
+    XYSeries dataSetDensity, dataSetField; // --Commented out by Inspection (2015-06-01 10:17):dataSetPotential
     private int snapshotsTaken = 0;
 
     public FieldJFreeChartPlot(SimulationEngine engine) {
         setSize(1000, 240);
-        dataSetDensity = new XYSeries("Density");
+        dataSetDensity = new XYSeries("Charge Density");
         //dataSetPotential = new XYSeries("Potential");
-        dataSetField = new XYSeries("Field");
+        dataSetField = new XYSeries("Electric Field");
         update(engine);
         XYSeriesCollection xySeriesCollection = new XYSeriesCollection(dataSetDensity);
         //xySeriesCollection.addSeries(dataSetPotential);

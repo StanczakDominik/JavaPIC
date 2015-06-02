@@ -23,7 +23,7 @@ import java.io.IOException;
  */
 class EnergyPlot extends JPanel {
     JFreeChart lineGraph;
-    private XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
+    XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
     private int snapshotsTaken = 0;
 
     public EnergyPlot() {

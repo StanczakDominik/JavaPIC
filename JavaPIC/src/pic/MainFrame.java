@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
  */
 class MainFrame {
 
-    public UpperRightPanel UpperRightPanel;
+    public UpperRightPanel upperRightPanel;
     int iteration = 0;
     CalculationLoop loop;
     Parameters parameters;
@@ -21,7 +21,7 @@ class MainFrame {
     EnergyPlot energyPlot;
     private SimulationEngine engine;
     private XVPlotPanel phasePlot;
-    private MiddleRightPanel MiddleRightPanel;
+    MiddleRightPanel middleRightPanel;
 
     private MainFrame()
     {
@@ -65,12 +65,12 @@ class MainFrame {
         energyPlot.setVisible(true);
 
 
-        UpperRightPanel = new UpperRightPanel(this);
+        upperRightPanel = new UpperRightPanel(this);
         //settingsPanel.setPreferredSize(new Dimension(100, 1000));
-        RightPanel.add(UpperRightPanel, BorderLayout.EAST);
+        RightPanel.add(upperRightPanel, BorderLayout.EAST);
 
-        MiddleRightPanel = new MiddleRightPanel(this);
-        RightPanel.add(MiddleRightPanel, BorderLayout.EAST);
+        middleRightPanel = new MiddleRightPanel(this);
+        RightPanel.add(middleRightPanel, BorderLayout.EAST);
 
         frame.setTitle("Two stream instability");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
