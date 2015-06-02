@@ -29,12 +29,13 @@ class XVPlotPanel extends JPanel {
 	private double minV;
 	private double maxV;
 	private int snapshotsTaken = 0;
+	private double initialVelocity;
 
 	public XVPlotPanel(SimulationEngine engine)
 	{
 		super();
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
+		initialVelocity = engine.parameters.initialVelocity;
 		maxX = Parameters.gridSize;
 		minV = -Parameters.plotMaxVMultiplier * engine.parameters.initialVelocity;
 		maxV = Parameters.plotMaxVMultiplier * engine.parameters.initialVelocity;
@@ -79,6 +80,13 @@ class XVPlotPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		g.setColor(Color.white);
 		g.clearRect(0, 0, getWidth(), getHeight());
+		g.setColor(Color.black);
+		g.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2);
+		g.drawLine(getWidth() / 100, 0, getWidth() / 100, getHeight());
+		g.drawString("x", (int) (getWidth() * 0.99), getHeight() / 2 - 3);
+		g.drawString("V0", getWidth() / 100 + 2, -2 + (int) ((-initialVelocity / (maxV - minV) + 0.5) * getHeight()));
+		g.drawString((int) Parameters.plotMaxVMultiplier + "V0", getWidth() / 100 + 2, 10);
+
 		for (int i = 0; i < N; i++) {
 			g.setColor(Color.BLUE);
 			int radius = 2;
