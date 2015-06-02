@@ -1,0 +1,7 @@
+The computational problem
+
+Simulating complex systems such as plasmas is very demanding computationally. Even a simple system such as this one requires - for default values - modelling the behavior of seven and a half thousand different particles. If you were to calculate Coulomb forces between each and every particle, it would take 59 million interactions. In every iteration.
+
+That's rather impractical. Thus, PIC type simulations use a clever simplification - a discrete grid. The simulation region - in our case, a one dimensional line of length 2 pi - is separated in discrete "cells". In each iteration, after movement, the charge in every one of these cells is summed up. This gives us charge density in each of the - by default - 64 cells. Given that and the appropriate boundary conditions (in this case, periodic), Poisson's equation can be solved with any algorithm you like (personally we enjoy Gauss-Seidel) - and you get the values of the electric potential and (by differentiation) electric field in each cell! Thus the name, Particle in Cell.
+
+Of course, fields are calculated on the edges of cells, not quite at the locations of particles. But since the size of each cell is small compared to the size of the entire simulation region, linearly interpolating from the fields at cell edges to fields at particles is a very good approximation.

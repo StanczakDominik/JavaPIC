@@ -1,4 +1,4 @@
-Opis kolejnych pól
+Jak obsługiwać symulację
 
 Prawy górny panel pozwala na sterowanie parametrami symulacji (w znormalizowanych, bezwymiarowych jednostkach).
 
@@ -17,6 +17,8 @@ N siatki - liczba komórek na siatce, na której liczone są pola. Większa licz
 DeltaE - dopuszczalny błąd potencjału w każdej iteracji. Mniejsza wartość zwolni wykonywanie symulacji.
 
 Scatter - amplituda początkowego zaburzenia jednorodnego rozkładu cząstek. Większa wartość przyśpieszy rozpoczęcie fazy niestabilnej. Może znacznie wpływać na liczbę tworzących się w układzie wirów.
+
+
 
 Zmień parametry - uruchamia symulację od początku, z parametrami ustawionymi powyżej. 
 

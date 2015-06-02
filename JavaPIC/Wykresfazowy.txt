@@ -1,6 +1,6 @@
 Ten wykres to tzw. wykres fazowy. Na poziomej osi zaznaczone jest położenie cząstek, zaś na pionowej - ich prędkości. Możemy go wyświetlić głównie dlatego, że mamy uproszczoną, jednowymiarową sytuację - wykres fazowy przestrzeni dwuwymiarowej wymagałby czterech prostopadłych osi.
 
-Jak widać, układ zaczyna z dokładnie określonymi prędkościami i jednorodnym (z dokładnością do niewielkiego zaburzenia) rozkładem położeń - stąd cienka pozioma linia przez całą długość układu. Jest to niestabilna równowaga - jak kulka ustawiona na czubku dużej powierzchni, każde wystarczająco silne drganie powoduje wypchnięcie jej z tego położenia.
+Jak widać, układ zaczyna z dokładnie określonymi prędkościami i jednorodnym (z dokładnością do niewielkiego zaburzenia) rozkładem położeń - stąd cienka pozioma linia przez całą długość układu. Jest to niestabilna równowaga - jak piłeczka pingpongowa ustawiona na czubku piłki nożnej, każde wystarczająco silne drganie powoduje wypchnięcie jej z tego położenia.
 
 Początkowa faza działania symulacji to okres liniowych oscylacji - w tym czasie działanie układu można opisać poprzez rozpisanie drgań na szereg Taylora, co pozostawiamy jako ćwiczenie Czytelnikowi.
 
