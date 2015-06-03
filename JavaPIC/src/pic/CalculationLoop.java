@@ -5,20 +5,20 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Autor: Dominik
- * Klasa odpowiadaj¹ca za cykl obliczeniowy - w ka¿dym cyklu rozpoczyna wykonywanie obliczeñ i aktualizuje wykresy
+ * Klasa odpowiadajÄ…ca za cykl obliczeniowy - w kaÅ¼dym cyklu rozpoczyna wykonywanie obliczeÅ„ i aktualizuje wykresy
  * dla animacji.
- * Opiera siê to na SwingWorkerze wykonuj¹cym jedn¹ iteracjê cyklu obliczeniowego, w du¿ej mierze oparte na
+ * Opiera siÄ™ to na SwingWorkerze wykonujÄ…cym jednÄ… iteracjÄ™ cyklu obliczeniowego, w duÅ¼ej mierze oparte na
  * https://github.com/jbzdak/pojava-unittest/blob/master/src/main/java/cx/ath/jbzdak/pojava/
  * zderzenia/SwingWorkerAnimationProvider.java
- * (z podziêkowaniami za udostêpnienie kodu)
+ * (z podziÄ™kowaniami za udostÄ™pnienie kodu)
  * <p>
  * Metody:
- * konstruktor, jaki jest ka¿dy widzi
- * start - uruchamia pêtlê obliczeniow¹ przez odwo³anie do scheduleWorkerIteration
- * stop - przerywa pêtle obliczeniow¹ bez przerywania obecnego cyklu obliczeniowego (zapobiega rozpoczynaniu kolejnych)
+ * konstruktor, jaki jest kaÅ¼dy widzi
+ * start - uruchamia pÄ™tlÄ™ obliczeniowÄ… przez odwoÅ‚anie do scheduleWorkerIteration
+ * stop - przerywa pÄ™tle obliczeniowÄ™ bez przerywania obecnego cyklu obliczeniowego (zapobiega rozpoczynaniu kolejnych)
  * scheduleWorkerIteration - rozpoczyna przy pomocy swingworkera kolejny cykl obliczeniowy (w DoInBackground)
- * po zakoñczeniu (w Done) popycha czas (liczbê iteracji) o 1 do przodu (wa¿ne dla wykresu energii
- * i rozpoczyna kolejn¹ iteracjê
+ * po zakoÅ„czeniu (w Done) popycha czas (liczbÄ™ iteracji) o 1 do przodu (waÅ¼ne dla wykresu energii)
+ * i rozpoczyna kolejnÄ… iteracjÄ™
  */
 class CalculationLoop {
 

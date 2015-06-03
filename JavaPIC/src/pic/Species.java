@@ -2,13 +2,13 @@ package pic;
 
 /**
  * Autor: Dominik
- * Klasa Species zawiera informacje o ka¿dym ze strumieni cz¹stek. Tu odbywa siê interpolacja pól do po³o¿eñ czastek
- * oraz ich przypieszanie i przesuwanie.
+ * Klasa Species zawiera informacje o każdym ze strumieni cząstek. Tu odbywa siê interpolacja pól do położeń cząstek
+ * oraz ich przyśpieszanie i przesuwanie.
  * <p>
- * Metody (bior¹ jako argument Grid - potrzebuje danych o polu)
- * move przesuwa cz¹stki
- * accelerate przypiesza je
- * step ³¹czy oba powy¿sze
+ * Metody (biorą jako argument Grid - potrzebuje danych o polu)
+ * move przesuwa cząstki
+ * accelerate przyśpiesza je
+ * step łączy oba powyższe
  */
 class Species {
 	//Class containing information for a set of particles

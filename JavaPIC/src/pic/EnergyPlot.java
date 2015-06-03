@@ -15,11 +15,11 @@ import java.io.IOException;
 
 /**
  * Autor: Dominik
- * Klasa oparta na JFreeCharcie odpowiadaj¹ca za wykres energii symulacji
- * Nale¿y zauwa¿yæ, ¿e model PIC przez u¿yte przybli¿enia nawet nie powinien zachowywaæ energii tak, jak robi to np.
- * algorytm leapfrog (który zachowuje j¹ w 100% przez swoj¹ symetriê czasow¹).
- * Generalnie wszystko dzia³a podobnie jak w FieldPlocie.
- * Metoda saveChartAsPng zapisuje wykres fazowy do pliku EnergyPlot#.png, gdzie # jest numerem zdjêcia
+ * Klasa oparta na JFreeCharcie odpowiadajÄ…ca za wykres energii symulacji
+ * NaleÅ¼y zauwaÅ¼yÄ‡, Å¼e model PIC przez uÅ¼yte przybliÅ¼enia nawet nie powinien zachowywaÄ‡ energii tak, jak robi to np.
+ * algorytm leapfrog (ktÃ³ry zachowuje jÄ… w 100% przez swojÄ… symetriÄ™ czasowÄ…).
+ * Generalnie wszystko dziaÅ‚a podobnie jak w FieldPlocie.
+ * Metoda saveChartAsPng zapisuje wykres fazowy do pliku EnergyPlot#.png, gdzie # jest numerem zdjÄ™cia
  */
 class EnergyPlot extends JPanel {
     JFreeChart lineGraph;
@@ -36,7 +36,8 @@ class EnergyPlot extends JPanel {
         xySeriesCollection.addSeries(kineticEnergy1);
         xySeriesCollection.addSeries(kineticEnergy2);
         xySeriesCollection.addSeries(totalEnergy);
-        lineGraph = ChartFactory.createXYLineChart("Energies Chart", "Time", "Energy", xySeriesCollection, PlotOrientation.VERTICAL, true, true, true);
+        lineGraph = ChartFactory.createXYLineChart("Energies Chart", "Time", "Energy", xySeriesCollection,
+                PlotOrientation.VERTICAL, true, true, true);
         ChartPanel chartPanel = new ChartPanel(lineGraph);
         chartPanel.setPreferredSize(new Dimension(getWidth(), (int) (0.95 * getHeight())));
 
@@ -50,7 +51,8 @@ class EnergyPlot extends JPanel {
         fieldEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy);
         kineticEnergy1.add(iteration * engine.parameters.timeStep, engine.listOfSpecies[0].totalKineticEnergy);
         kineticEnergy2.add(iteration * engine.parameters.timeStep, engine.listOfSpecies[1].totalKineticEnergy);
-        totalEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy + engine.listOfSpecies[0].totalKineticEnergy + engine.listOfSpecies[1].totalKineticEnergy);
+        totalEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy +
+                engine.listOfSpecies[0].totalKineticEnergy + engine.listOfSpecies[1].totalKineticEnergy);
         repaint();
     }
 

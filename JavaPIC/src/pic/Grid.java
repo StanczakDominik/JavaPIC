@@ -2,17 +2,24 @@ package pic;
 
 /**
  * Author: Dominik
- * Klasa Grid odpowiada za jednowymiarow¹ siatkê, na której rozwi¹zywane s¹ jednowymiarowe równania Maxwella przy u¿yciu
- * danych czastek (po³o¿eñ -> gêstoœci ³adunków)
+ * Klasa Grid odpowiada za jednowymiarowÄ… siatkÄ™, na ktÃ³rej rozwiÄ…zywane sÄ… jednowymiarowe rÃ³wnania Maxwella przy uÅ¼yciu
+ * danych czastek (poÅ‚oÅ¼eÅ„ -> gÄ™stoÅ›ci Å‚adunkÃ³w)
  * <p>
- * Metoda update wykonuje miêcho obliczeniowe
- * Gêstoœæ ³adunków jest obliczana na podstawie liniowej interpolacji (model CIC - Cloud In Cell. Cz¹stki maj¹ w tym
- * modelu w przybli¿eniu trójk¹tny kszta³t).
- * Potencja³ obliczany jest przy pomocy metody Gaussa-Seidela.
- * Pole w komórce i obliczane jest jako minus gradient potencja³u, wykorzystuj¹c potencja³ w komórkach i+1, i-1
- * (dziêki temu b³¹d obliczenia pola ~gridstep^2 zamiast ^1)
+ * Metoda update wykonywaÅ‚a ongiÅ› miÄ™cho obliczeniowe. Teraz wykonuje jeno poszczegÃ³lne metody.
+ *
+ * Metoda calculateDensity - bierze poÅ‚oÅ¼enia czÄ…stek i liczy z nich gÄ™stoÅ›Ä‡ Å‚adunkÃ³w.
+ * GÄ™stoÅ›Ä‡ Å‚adunkÃ³w jest obliczana na podstawie liniowej interpolacji (model CIC - Cloud In Cell. CzÄ…stki majÄ… w tym
+ * modelu w przybliÅ¼eniu trÃ³jkÄ…tny ksztaÅ‚t).
+ *
+ * Metoda calculatePotential - na podstawie bieÅ¼Ä…cej gÄ™stoÅ›ci Å‚adunkÃ³w liczy potencjaÅ‚
+ * PotencjaÅ‚ obliczany jest przy pomocy metody Gaussa-Seidela.
+ *
+ * Metoda calculateFieldAndEnergy - na podstawie bieÅ¼Ä…cego potencjaÅ‚u liczy pole elektryczne oraz jego energiÄ™.
+ * Liczy jednoczeÅ›nie pole i energiÄ™, dlatego jest zrobiona voidem, nie double[]m.
+ * Pole w komÃ³rce i obliczane jest jako minus gradient potencjaÅ‚u, wykorzystujÄ…c potencjaÅ‚ w komÃ³rkach i+1, i-1
+ * (dziÄ™ki temu bÅ‚Ä…d obliczenia pola ~gridstep^2 zamiast ^1)
  * <p>
- * Metoda getIndexOnGrid zwraca pozycjê (indeks) danej cz¹stki na siatce)
+ * Metoda getIndexOnGrid zwraca pozycjÄ™ (indeks) danej czÄ…stki na siatce)
  */
 class Grid {
 	public double gridSize;
@@ -43,13 +50,10 @@ class Grid {
 		return (int) (Math.floor(position / gridStep));
 	}
 
-	public void update(Species[] listofspecies)
-	{
+	double[] calculateDensity(Species[] listofspecies) {
+		double[] density = new double[gridPointNumber];
 		int index;
-		density = new double[gridPointNumber];
-		totalFieldEnergy = 0;
 		double[] speciesDensity;
-
 		//calculate density
 		for (Species species : listofspecies) {
 			speciesDensity = new double[gridPointNumber];
@@ -73,8 +77,11 @@ class Grid {
 		density[gridPointNumber - 1] = (density[gridPointNumber - 1] + density[0]) / 2;
 		density[0] = density[gridPointNumber - 1];
 
-		//Gauss Seidel Method used to calculate electric potential
-		potential = new double[gridPointNumber];
+		return density;
+	}
+
+	double[] calculatePotential() {
+		double[] potential = new double[gridPointNumber];
 		int forwardIndex, backwardIndex;
 		double oldPotential, delta, maxChange;
 		for (int iter = 0; iter < Parameters.fieldCalculationIterations; iter++) {
@@ -102,8 +109,11 @@ class Grid {
 			}
 		}
 
+		return potential;
+	}
 
-		//electric field and field energy calculation
+	void calculateFieldAndEnergy() {
+		int forwardIndex, backwardIndex;
 		for (int i = 0; i < gridPointNumber; i++) {
 			forwardIndex = i + 1;
 			if (forwardIndex == gridPointNumber) forwardIndex = 1;
@@ -117,6 +127,15 @@ class Grid {
 			//debug
 			if (Parameters.printFields) System.out.println(i + "\t" + potential[i] + "\t" + eField[i]);
 		}
+	}
+
+	public void update(Species[] listofspecies)
+	{
+		totalFieldEnergy = 0;
+		//calculate density
+		density = calculateDensity(listofspecies);
+		potential = calculatePotential();
+		calculateFieldAndEnergy();
 	}
 
 }

@@ -2,16 +2,16 @@ package pic;
 
 /**
  * Author: Dominik
- * Klasa zawieraj¹ca parametry programu - symulacji i wykresów.
- * Wiêkszoæ zmiennych ustawionych na sztywno jest generowana jako zmienne statyczne
- * Zmienne kontrolowane przez u¿ytkownika s¹ tworzone w konstruktorze
+ * Klasa zawierajaca parametry programu - symulacji i wykresów.
+ * Wiêkszość zmiennych ustawionych na sztywno jest generowana jako zmienne statyczne
+ * Zmienne kontrolowane przez użytkownika są tworzone w konstruktorze
  * <p>
- * Parametry wykorzystywane all over the symulacja s¹ podawane jako obiekt klasy Parameters
+ * Parametry wykorzystywane all over the symulacja są podawane jako obiekt klasy Parameters
  * <p>
- * Zawiera kilka pomocniczych metod zwi¹zanych z inicjalizacj¹ symulacji
- * jednorodny rozk³ad po³o¿eñ
- * ustawienie ustalonej pocz¹tkowej prêdkoci dla ka¿dej z cz¹stek
- * jednorodny z losowym zaburzeniem rozk³ad po³o¿eñ
+ * Zawiera kilka pomocniczych metod związanych z inicjalizacją symulacji
+ * jednorodny rozkład położeń
+ * ustawienie ustalonej początkowej prędkości dla każdej z cząstek
+ * jednorodny z losowym zaburzeniem rozkład położeń
  */
 class Parameters {
 	//"global variables" for the whole simulation
@@ -57,7 +57,8 @@ class Parameters {
 		numberOfParticles = gridPointNumber * cellParticleDensity;
 
 		mass1 = mass2 = 1;
-		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji. jest ustawiony
+		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji.
+		// jest ustawiony
 		//silowo na 10, bo inaczej po prostu byloby za wolno
 		backgroundCharge = -(charge1 + charge2);
 	}

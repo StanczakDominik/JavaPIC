@@ -4,15 +4,19 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Author: Dominik Stañczak
+ * Author: Dominik Stańczak
  */
 public class UpperRightPanel extends JPanel {
 
-    JLabel mass1label, mass2label, timeSteplabel, cellParticleDensitylabel, initialVelocitylabel, gridPointNumberlabel, fieldErrorTolerancelabel, perturbationAmplitudelabel, charge1label, charge2label;
+    JLabel mass1label, mass2label, timeSteplabel, cellParticleDensitylabel, initialVelocitylabel, gridPointNumberlabel,
+            fieldErrorTolerancelabel, perturbationAmplitudelabel, charge1label, charge2label;
     JButton runButton;
-    private JTextField mass1, mass2, timeStep, cellParticleDensity, initialVelocity, gridPointNumber, fieldErrorTolerance, perturbationAmplitude, charge1, charge2;
+    private JTextField mass1, mass2, timeStep, cellParticleDensity, initialVelocity, gridPointNumber,
+            fieldErrorTolerance, perturbationAmplitude, charge1, charge2;
 
     UpperRightPanel(MainFrame mainFrame) {
+        // Ta klasa jest ponad rozmiar, ale nie bardzo widzę jak to można zrobić inaczej bez robienia czegoś głupiego
+        // jak dodawanie ich wszystkich do pola jedną metodą. To by było kontrproduktywne i proponuję to zostawić.
         setPreferredSize(new Dimension(100, 1000));
         setLayout(new BorderLayout());
 
@@ -96,6 +100,8 @@ public class UpperRightPanel extends JPanel {
     }
 
     private Parameters generateParameters() {
-        return new Parameters(getDouble(timeStep), getInt(cellParticleDensity), getDouble(initialVelocity), getInt(gridPointNumber), getDouble(fieldErrorTolerance), getDouble(perturbationAmplitude), getDouble(charge1), getDouble(charge2), getDouble(mass1), getDouble(mass2));
+        return new Parameters(getDouble(timeStep), getInt(cellParticleDensity), getDouble(initialVelocity),
+                getInt(gridPointNumber), getDouble(fieldErrorTolerance), getDouble(perturbationAmplitude),
+                getDouble(charge1), getDouble(charge2), getDouble(mass1), getDouble(mass2));
     }
 }

@@ -17,11 +17,11 @@ import java.io.IOException;
 
 /**
  * Author: Dominik
- * Wykres pola elektrycznego, gÍstoúci ≥adunku oraz potencja≥u (potencja≥ ma tendencjÍ do bycia wysokim i znikania) w
- * zaleønoúci od po≥oøenia na siatce
+ * Wykres pola elektrycznego oraz gƒôsto≈õci ≈Çadunku
+ * w zale≈ºno≈õci od po≈Ço≈ºenia na siatce
  * Oparty na JFreeCharcie
- * Metoda update czyúci zbiory danych i wype≥nia je obecnymi
- * Metoda saveChartAsPng zapisuje wykres fazowy do pliku FieldJFreeChart#.png, gdzie # jest numerem zdjÍcia
+ * Metoda update czy≈õci zbiory danych i wype≈Çnia je obecnymi
+ * Metoda saveChartAsPng zapisuje wykres fazowy do pliku FieldJFreeChart#.png, gdzie # jest numerem zdjƒôcia
  */
 
 class FieldJFreeChartPlot extends JPanel {
