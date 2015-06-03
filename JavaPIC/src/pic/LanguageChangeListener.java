@@ -23,7 +23,7 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.middleRightPanel.ScreenCapture.setText("Zdjecie");
 
             mainFrame.energyPlot.lineGraph.setTitle("Wykres Energii");
-            mainFrame.fieldPlot.lineGraph.setTitle("Wykres Pól");
+            mainFrame.fieldPlot.lineGraph.setTitle("Wykres PÃ³l");
             mainFrame.upperRightPanel.runButton.setText("Inicjuj");
 
             mainFrame.energyPlot.lineGraph.getXYPlot().getDomainAxis().setLabel("Czas");
@@ -31,12 +31,12 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.energyPlot.kineticEnergy1.setKey("Energia kinetyczna 1");
             mainFrame.energyPlot.kineticEnergy2.setKey("Energia kinetyczna 2");
             mainFrame.energyPlot.fieldEnergy.setKey("Energia pola elektrycznego");
-            mainFrame.energyPlot.totalEnergy.setKey("Ca³kowita energia");
+            mainFrame.energyPlot.totalEnergy.setKey("CaÅ‚kowita energia");
 
-            mainFrame.fieldPlot.lineGraph.getXYPlot().getDomainAxis().setLabel("Po³o¿enie na siatce");
+            mainFrame.fieldPlot.lineGraph.getXYPlot().getDomainAxis().setLabel("PoÅ‚oÅ¼enie na siatce");
             mainFrame.fieldPlot.lineGraph.getXYPlot().getRangeAxis().setLabel("Amplituda");
             mainFrame.fieldPlot.dataSetField.setKey("Pole elektryczne");
-            mainFrame.fieldPlot.dataSetDensity.setKey("Gêstoœæ ³adunku");
+            mainFrame.fieldPlot.dataSetDensity.setKey("GÄ™stoÅ›Ä‡ Å‚adunku");
 
             mainFrame.upperRightPanel.mass1label.setText("Masa 1");
             mainFrame.upperRightPanel.mass2label.setText("Masa 2");

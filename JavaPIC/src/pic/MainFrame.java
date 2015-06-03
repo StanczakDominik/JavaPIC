@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Author: Mateusz Kaczorek, Dominik Stañczak
- * GUI o którym jeszcze chyba nie bêdê wiele pisa³. :D
+ * Author: Mateusz Kaczorek, Dominik StaÃ±czak
+ * GUI o ktÃ³rym jeszcze chyba nie bÃªdÃª wiele pisaÂ³. :D
  */
 class MainFrame {
 

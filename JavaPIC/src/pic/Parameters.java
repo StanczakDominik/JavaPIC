@@ -2,16 +2,16 @@ package pic;
 
 /**
  * Author: Dominik
- * Klasa zawieraj¹ca parametry programu - symulacji i wykresów.
- * Wiêkszoœæ zmiennych ustawionych na sztywno jest generowana jako zmienne statyczne
- * Zmienne kontrolowane przez u¿ytkownika s¹ tworzone w konstruktorze
+ * Klasa zawierajÂ¹ca parametry programu - symulacji i wykresÃ³w.
+ * WiÃªkszoÂœÃ¦ zmiennych ustawionych na sztywno jest generowana jako zmienne statyczne
+ * Zmienne kontrolowane przez uÂ¿ytkownika sÂ¹ tworzone w konstruktorze
  * <p>
- * Parametry wykorzystywane all over the symulacja s¹ podawane jako obiekt klasy Parameters
+ * Parametry wykorzystywane all over the symulacja sÂ¹ podawane jako obiekt klasy Parameters
  * <p>
- * Zawiera kilka pomocniczych metod zwi¹zanych z inicjalizacj¹ symulacji
- * jednorodny rozk³ad po³o¿eñ
- * ustawienie ustalonej pocz¹tkowej prêdkoœci dla ka¿dej z cz¹stek
- * jednorodny z losowym zaburzeniem rozk³ad po³o¿eñ
+ * Zawiera kilka pomocniczych metod zwiÂ¹zanych z inicjalizacjÂ¹ symulacji
+ * jednorodny rozkÂ³ad poÂ³oÂ¿eÃ±
+ * ustawienie ustalonej poczÂ¹tkowej prÃªdkoÂœci dla kaÂ¿dej z czÂ¹stek
+ * jednorodny z losowym zaburzeniem rozkÂ³ad poÂ³oÂ¿eÃ±
  */
 class Parameters {
 	//"global variables" for the whole simulation

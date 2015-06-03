@@ -2,8 +2,8 @@ package pic;
 
 /**
  * Autor: Dominik
- * Klasa - silnik obliczeniowy. Zawiera jednowymiarow¹ siatkê Grid oraz dwa strumienie elektronów Species
- * Odpowiada za ich inicjalizacjê z ustalonymi parametrami oraz odwo³uj¹c siê do metod klas Species i Grid
+ * Klasa - silnik obliczeniowy. Zawiera jednowymiarowÂ¹ siatkÃª Grid oraz dwa strumienie elektronÃ³w Species
+ * Odpowiada za ich inicjalizacjÃª z ustalonymi parametrami oraz odwoÂ³ujÂ¹c siÃª do metod klas Species i Grid
  * wykonuje na nich obliczenia.
  * <p>
  * metody:
