@@ -2,24 +2,24 @@ package pic;
 
 /**
  * Author: Dominik
- * Klasa Grid odpowiada za jednowymiarowÄ… siatkÄ™, na ktĂłrej rozwiÄ…zywane sÄ… jednowymiarowe rĂłwnania Maxwella przy uĹĽyciu
- * danych czastek (poĹ‚oĹĽeĹ„ -> gÄ™stoĹ›ci Ĺ‚adunkĂłw)
+ * Klasa Grid odpowiada za jednowymiarową siatkę, na której rozwiązywane są jednowymiarowe równania Maxwella przy użyciu
+ * danych czastek (położeń -> gęstości ładunków)
  * <p>
- * Metoda update wykonywaĹ‚a ongiĹ› miÄ™cho obliczeniowe. Teraz wykonuje jeno poszczegĂłlne metody.
+ * Metoda update wykonywała ongiś mięcho obliczeniowe. Teraz wykonuje jeno poszczególne metody.
  *
- * Metoda calculateDensity - bierze poĹ‚oĹĽenia czÄ…stek i liczy z nich gÄ™stoĹ›Ä‡ Ĺ‚adunkĂłw.
- * GÄ™stoĹ›Ä‡ Ĺ‚adunkĂłw jest obliczana na podstawie liniowej interpolacji (model CIC - Cloud In Cell. CzÄ…stki majÄ… w tym
- * modelu w przybliĹĽeniu trĂłjkÄ…tny ksztaĹ‚t).
+ * Metoda calculateDensity - bierze położenia cząstek i liczy z nich gęstość ładunków.
+ * Gęstość ładunków jest obliczana na podstawie liniowej interpolacji (model CIC - Cloud In Cell. Cząstki mają w tym
+ * modelu w przybliżeniu trójkątny kształt).
  *
- * Metoda calculatePotential - na podstawie bieĹĽÄ…cej gÄ™stoĹ›ci Ĺ‚adunkĂłw liczy potencjaĹ‚
- * PotencjaĹ‚ obliczany jest przy pomocy metody Gaussa-Seidela.
+ * Metoda calculatePotential - na podstawie bieżącej gęstości ładunków liczy potencjał
+ * Potencjał obliczany jest przy pomocy metody Gaussa-Seidela.
  *
- * Metoda calculateFieldAndEnergy - na podstawie bieĹĽÄ…cego potencjaĹ‚u liczy pole elektryczne oraz jego energiÄ™.
- * Liczy jednoczeĹ›nie pole i energiÄ™, dlatego jest zrobiona voidem, nie double[]m.
- * Pole w komĂłrce i obliczane jest jako minus gradient potencjaĹ‚u, wykorzystujÄ…c potencjaĹ‚ w komĂłrkach i+1, i-1
- * (dziÄ™ki temu bĹ‚Ä…d obliczenia pola ~gridstep^2 zamiast ^1)
+ * Metoda calculateFieldAndEnergy - na podstawie bieżącego potencjału liczy pole elektryczne oraz jego energię.
+ * Liczy jednocześnie pole i energię, dlatego jest zrobiona voidem, nie double[]m.
+ * Pole w komórce i obliczane jest jako minus gradient potencjału, wykorzystując potencjał w komórkach i+1, i-1
+ * (dzięki temu błąd obliczenia pola ~gridstep^2 zamiast ^1)
  * <p>
- * Metoda getIndexOnGrid zwraca pozycjÄ™ (indeks) danej czÄ…stki na siatce)
+ * Metoda getIndexOnGrid zwraca pozycję (indeks) danej cząstki na siatce)
  */
 class Grid {
 	public double gridSize;
