@@ -26,7 +26,7 @@ class MainFrame {
         parameters = new Parameters();
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
-        frame.setSize(1100, 1000);
+        frame.setSize(1200, 1000);
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
 

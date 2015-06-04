@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/LanguageChangeListener.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/LowerRightPanel.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/MainFrame.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/MiddleRightPanel.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/Parameters.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/PhaseChartFrame.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/PlasmaPhysicsFrame.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/SimulationEngine.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/Species.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/UpperRightPanel.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/XVPlotPanel.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/Grid.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic/TextFrameConstructor.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

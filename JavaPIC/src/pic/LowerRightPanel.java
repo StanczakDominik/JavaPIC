@@ -1,6 +1,7 @@
 package pic;
 
 import javax.swing.*;
+import javax.xml.soap.Text;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,12 +33,9 @@ public class LowerRightPanel extends JPanel {
         Designers = new JButton("Designers");
         this.add(Designers);
 
-        PhaseChart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PhaseChartFrame frame = new PhaseChartFrame();
-                frame.setVisible(true);
-            }
+        PhaseChart.addActionListener(e -> {
+            TextFrameConstructor textFrameConstructor = new TextFrameConstructor("Fizyka Plazmy");
+            textFrameConstructor.setVisible(true);
         });
     }
 }

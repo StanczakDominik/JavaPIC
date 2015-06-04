@@ -10,13 +10,11 @@ import java.awt.*;
 public class PhaseChartFrame extends JFrame {
 
    public PhaseChartFrame() throws HeadlessException{
-//       JFrame chartFrame = new JFrame();
-//       chartFrame.setTitle("Phase Chart Information");
-//       chartFrame.setSize(250,200);
-//       chartFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
        setTitle("Phase chart information");
        setSize(600, 600);
        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+       setLocationRelativeTo(null);
 
        JTextArea text = new JTextArea("The upper plot is called a phase plot. On the horizontal axis, we have marked" +
                " the position of each particle, and on the vertical axis, its velocity. Our simulation is one" +
@@ -49,6 +47,7 @@ public class PhaseChartFrame extends JFrame {
        text.setLineWrap(true); //zawijanie czcionek
        text.setEditable(false); //wyłącza edycję tekstu
        text.setVisible(true);
+       text.setWrapStyleWord(true);
    }
 
     public static void main(String[] args) {

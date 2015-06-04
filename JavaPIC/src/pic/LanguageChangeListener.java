@@ -23,7 +23,7 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.middleRightPanel.ScreenCapture.setText("Zdjecie");
 
             mainFrame.energyPlot.lineGraph.setTitle("Wykres Energii");
-            mainFrame.fieldPlot.lineGraph.setTitle("Wykres PÃ³l");
+            mainFrame.fieldPlot.lineGraph.setTitle("Wykres Pól");
             mainFrame.upperRightPanel.runButton.setText("Inicjuj");
 
             mainFrame.energyPlot.lineGraph.getXYPlot().getDomainAxis().setLabel("Czas");
@@ -31,12 +31,12 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.energyPlot.kineticEnergy1.setKey("Energia kinetyczna 1");
             mainFrame.energyPlot.kineticEnergy2.setKey("Energia kinetyczna 2");
             mainFrame.energyPlot.fieldEnergy.setKey("Energia pola elektrycznego");
-            mainFrame.energyPlot.totalEnergy.setKey("CaÅ‚kowita energia");
+            mainFrame.energyPlot.totalEnergy.setKey("Ca³kowita energia");
 
-            mainFrame.fieldPlot.lineGraph.getXYPlot().getDomainAxis().setLabel("PoÅ‚oÅ¼enie na siatce");
+            mainFrame.fieldPlot.lineGraph.getXYPlot().getDomainAxis().setLabel("Po³o¿enie na siatce");
             mainFrame.fieldPlot.lineGraph.getXYPlot().getRangeAxis().setLabel("Amplituda");
             mainFrame.fieldPlot.dataSetField.setKey("Pole elektryczne");
-            mainFrame.fieldPlot.dataSetDensity.setKey("GÄ™stoÅ›Ä‡ Å‚adunku");
+            mainFrame.fieldPlot.dataSetDensity.setKey("Gêstoœæ ³adunku");
 
             mainFrame.upperRightPanel.mass1label.setText("Masa 1");
             mainFrame.upperRightPanel.mass2label.setText("Masa 2");
@@ -48,6 +48,12 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.upperRightPanel.gridPointNumberlabel.setText("N Siatki");
             mainFrame.upperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
             mainFrame.upperRightPanel.perturbationAmplitudelabel.setText("Scatter");
+
+            mainFrame.lowerRightPanel.PhaseChart.setText("Wykres Fazowy");
+            mainFrame.lowerRightPanel.Designers.setText("Autorzy");
+            mainFrame.lowerRightPanel.Instructions.setText("Instrukcja");
+            mainFrame.lowerRightPanel.FieldCalculations.setText("Metody obliczeniowe");
+            mainFrame.lowerRightPanel.PlasmaPhysics.setText("Fizyka plazmy");
 
         } else {
             mainFrame.middleRightPanel.LanguageChange.setText("PL");
@@ -79,6 +85,12 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.upperRightPanel.gridPointNumberlabel.setText("Grid N");
             mainFrame.upperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
             mainFrame.upperRightPanel.perturbationAmplitudelabel.setText("Scatter");
+
+            mainFrame.lowerRightPanel.PhaseChart.setText("Phase Chart");
+            mainFrame.lowerRightPanel.Designers.setText("Designers");
+            mainFrame.lowerRightPanel.Instructions.setText("Instructions");
+            mainFrame.lowerRightPanel.FieldCalculations.setText("Field Calculations");
+            mainFrame.lowerRightPanel.PlasmaPhysics.setText("Plasma Physics");
         }
     }
 }
