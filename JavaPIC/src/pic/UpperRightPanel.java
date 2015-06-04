@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Author: Dominik Stańczak
  */
-public class UpperRightPanel extends JPanel {
+class UpperRightPanel extends JPanel {
 
     JLabel mass1label, mass2label, timeSteplabel, cellParticleDensitylabel, initialVelocitylabel, gridPointNumberlabel,
             fieldErrorTolerancelabel, perturbationAmplitudelabel, charge1label, charge2label;

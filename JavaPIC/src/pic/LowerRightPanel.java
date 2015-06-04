@@ -2,42 +2,84 @@ package pic;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 /**
  * Author: Mateusz
  */
-public class LowerRightPanel extends JPanel {
+class LowerRightPanel extends JPanel {
 
-    JButton Instructions, Designers, FieldCalculations, PlasmaPhysics, PhaseChart;
+    String Language = "en";
+    JButton Instructions, Authors, FieldCalculations, PlasmaPhysics, PhaseChart;
 
     LowerRightPanel(){
 
         setLayout(new GridLayout(5,0,10,10));
 
-        PhaseChart = new JButton("Phase Chart");
+        PhaseChart = new JButton("Phase plot");
         this.add(PhaseChart);
 
-        FieldCalculations = new JButton("Field Calculations");
+        FieldCalculations = new JButton("Field calculations");
         this.add(FieldCalculations);
 
-        PlasmaPhysics = new JButton("Plasma Physics");
+        PlasmaPhysics = new JButton("Plasma physics");
         this.add(PlasmaPhysics);
 
         Instructions = new JButton("Instructions");
         this.add(Instructions);
 
-        Designers = new JButton("Designers");
-        this.add(Designers);
+        Authors = new JButton("Authors");
+        this.add(Authors);
 
-        PhaseChart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PhaseChartFrame frame = new PhaseChartFrame();
-                frame.setVisible(true);
+        PhaseChart.addActionListener(e -> {
+            TextFrameConstructor phase;
+            if (Language.equals("en")) {
+                phase = new TextFrameConstructor(3);
+            } else {
+                phase = new TextFrameConstructor(2);
+
             }
+            phase.setVisible(true);
+        });
+        FieldCalculations.addActionListener(e -> {
+            TextFrameConstructor field;
+            if (Language.equals("en")) {
+                field = new TextFrameConstructor(5);
+            } else {
+                field = new TextFrameConstructor(4);
+
+            }
+            field.setVisible(true);
+        });
+        PlasmaPhysics.addActionListener(e -> {
+            TextFrameConstructor plasma;
+            if (Language.equals("en")) {
+                plasma = new TextFrameConstructor(1);
+            } else {
+                plasma = new TextFrameConstructor(0);
+
+            }
+            plasma.setVisible(true);
+        });
+        Instructions.addActionListener(e -> {
+            TextFrameConstructor instructions;
+            if (Language.equals("en")) {
+                instructions = new TextFrameConstructor(7);
+            } else {
+                instructions = new TextFrameConstructor(6);
+
+            }
+            instructions.setVisible(true);
+        });
+        Authors.addActionListener(e -> {
+            TextFrameConstructor auth;
+            if (Language.equals("en")) {
+                auth = new TextFrameConstructor(9);
+            } else {
+                auth = new TextFrameConstructor(8);
+
+            }
+            auth.setVisible(true);
         });
     }
 }

@@ -50,7 +50,7 @@ class Grid {
 		return (int) (Math.floor(position / gridStep));
 	}
 
-	double[] calculateDensity(Species[] listofspecies) {
+	private double[] calculateDensity(Species[] listofspecies) {
 		double[] density = new double[gridPointNumber];
 		int index;
 		double[] speciesDensity;
@@ -80,7 +80,7 @@ class Grid {
 		return density;
 	}
 
-	double[] calculatePotential() {
+	private double[] calculatePotential() {
 		double[] potential = new double[gridPointNumber];
 		int forwardIndex, backwardIndex;
 		double oldPotential, delta, maxChange;
@@ -112,7 +112,7 @@ class Grid {
 		return potential;
 	}
 
-	void calculateFieldAndEnergy() {
+	private void calculateFieldAndEnergy() {
 		int forwardIndex, backwardIndex;
 		for (int i = 0; i < gridPointNumber; i++) {
 			forwardIndex = i + 1;

@@ -26,7 +26,7 @@ class MainFrame {
         parameters = new Parameters();
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
-        frame.setSize(1100, 1000);
+        frame.setSize(1200, 1000);
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
 
@@ -34,11 +34,12 @@ class MainFrame {
         frame.add(ChartPanel, BorderLayout.CENTER);
 
         JPanel RightPanel = new JPanel(new GridLayout(3,0));
+        RightPanel.setPreferredSize(new Dimension(140, 1000));
         frame.add(RightPanel, BorderLayout.EAST);
 
         phasePlot = new XVPlotPanel(engine);
         ChartPanel.add(phasePlot);
-        phasePlot.setSize(new Dimension(1500, 300));
+        phasePlot.setSize(new Dimension(1200, 300));
         phasePlot.update(engine);
         phasePlot.setVisible(true);
 
@@ -47,13 +48,13 @@ class MainFrame {
 
         fieldPlot = new FieldJFreeChartPlot(engine);
         EnergyAndFieldPanel.add(fieldPlot);
-        fieldPlot.setSize(new Dimension(1500, 300));
+        fieldPlot.setSize(new Dimension(1200, 300));
         fieldPlot.update(engine);
         fieldPlot.setVisible(true);
 
         energyPlot = new EnergyPlot();
         EnergyAndFieldPanel.add(energyPlot);
-        energyPlot.setSize(new Dimension(1500, 300));
+        energyPlot.setSize(new Dimension(1200, 300));
         energyPlot.setVisible(true);
 
 
@@ -75,7 +76,7 @@ class MainFrame {
     }
 
     public static void main(String[] args) {
-        MainFrame mainFrame = new MainFrame();
+        @SuppressWarnings("UnusedAssignment") MainFrame mainFrame = new MainFrame();
     }
 
     public void restart() {

@@ -49,10 +49,11 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.upperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
             mainFrame.upperRightPanel.perturbationAmplitudelabel.setText("Scatter");
 
-            mainFrame.lowerRightPanel.PhaseChart.setText("Wykres Fazowy");
-            mainFrame.lowerRightPanel.Designers.setText("Autorzy");
+            mainFrame.lowerRightPanel.Language = "pl";
+            mainFrame.lowerRightPanel.PhaseChart.setText("Wykres fazowy");
+            mainFrame.lowerRightPanel.Authors.setText("Autorzy");
             mainFrame.lowerRightPanel.Instructions.setText("Instrukcja");
-            mainFrame.lowerRightPanel.FieldCalculations.setText("Metody obliczeniowe");
+            mainFrame.lowerRightPanel.FieldCalculations.setText("Obliczanie pól");
             mainFrame.lowerRightPanel.PlasmaPhysics.setText("Fizyka plazmy");
 
         } else {
@@ -86,11 +87,12 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.upperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
             mainFrame.upperRightPanel.perturbationAmplitudelabel.setText("Scatter");
 
-            mainFrame.lowerRightPanel.PhaseChart.setText("Phase Chart");
-            mainFrame.lowerRightPanel.Designers.setText("Designers");
+            mainFrame.lowerRightPanel.Language = "en";
+            mainFrame.lowerRightPanel.PhaseChart.setText("Phase plot");
+            mainFrame.lowerRightPanel.Authors.setText("Authors");
             mainFrame.lowerRightPanel.Instructions.setText("Instructions");
-            mainFrame.lowerRightPanel.FieldCalculations.setText("Field Calculations");
-            mainFrame.lowerRightPanel.PlasmaPhysics.setText("Plasma Physics");
+            mainFrame.lowerRightPanel.FieldCalculations.setText("Field calculations");
+            mainFrame.lowerRightPanel.PlasmaPhysics.setText("Plasma physics");
         }
     }
 }
