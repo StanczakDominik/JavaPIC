@@ -1,7 +1,0 @@
-Plasma physics - what's that all about?
-
-Plasma is the so called fourth state of matter. Simply put, it's a ionized gas which appears at high energies - at high temperatures or under intense electromagnetic fields. Some examples include 99% of visible matter in the Universe (the Sun is a miasma of incandescent plasma composed of ionized hydrogen and helium), lightning (the air gets ionized by an initially small number of highly energetic ions).
-
-How's that different from a simple gas? As it turns out, the difference is enormous. What characterises plasmas are long-range interactions. In an everyday gas, most interactions are binary - they occur in collisions between individual atoms. In a plasma, ionized particles with a non-zero electric charge interact simultaneously with each other through Coulomb forces and magnetic fields. These are called "collective interaction".
-
-As a result, plasma physics on the theoretical side starts with electrodynamics, quickly turns into fluid dynamics, gets nonlinear, turns complex, dresses up in chaos theory and shakes energetics to the core - but that's a story for another day.
