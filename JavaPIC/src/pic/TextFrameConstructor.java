@@ -109,8 +109,34 @@ class TextFrameConstructor extends JFrame {
             "PL\\EN - changes the language.\n" +
             "\n" +
             "PrintScreen - saves the current state of the three plots at the localization of the .jar file. The names are generated automatically and should not get overwritten in each run.";
-    private String AuthorsPL = "Napisali: Dominik Stańczak & Mateusz Kaczorek";
-    private String AuthorsENG = "Created by Dominik Stańczak & Mateusz Kaczorek";
+    private String AuthorsPL = "TWO STREAM INSTABILITY\n" +
+            "\n" +
+            "Jednowymiarowa elektrostatyczna symulacja Particle in Cell\n" +
+            "\n" +
+            "Napisali: Dominik Stańczak & Mateusz Kaczorek\n" +
+            "na potrzeby zajęć projektowych Programowania Obiektowego Politechniki Warszawskiej\n" +
+            "\n" +
+            "w ramach ponoszenia konsekwencji swoich błędów\njak na przykład myślenia, że byłoby fajnie napisać PICa w javie\n" +
+            "\n" +
+            "Copylefty: na licencji GNU GPL v2, którą można wygooglać\n" +
+            "\n" +
+            "Kod projektu dostępny na https://github.com/Twostreaminstabilitypolitechnika/JavaPIC\n"
+            + "po wsze czasy, dopóki serwery githuba nie eksplodują";
+    private String AuthorsENG = "TWO STREAM INSTABILITY\n" +
+            "\n" +
+            "A one dimensional electrostatic Particle in Cell simulation\n" +
+            "\n" +
+            "a tragedy in four acts and 13 classes\n" +
+            "\n" +
+            "Written by Dominik Stańczak & Mateusz Kaczorek\n" +
+            "for an Object-Oriented Programming project at the Warsaw University of Technology\n" +
+            "\n" +
+            "as a consequence of their mistake of thinking, hey, it'd be neat to write a PIC in java\n" +
+            "\n" +
+            "Copylefts: on the GNU GPL v2 license, which can be readily googled \n" +
+            "\n" +
+            "Code available at https://github.com/Twostreaminstabilitypolitechnika/JavaPIC\n"
+            + "until the very Sun burns down to a cold dead cinder\nor ITER gets finished, whichever comes first!";
 
     public TextFrameConstructor(int switcher) throws HeadlessException {
 
@@ -175,7 +201,7 @@ class TextFrameConstructor extends JFrame {
 
 
     public static void main(String[] args) {
-        TextFrameConstructor textFrame = new TextFrameConstructor(0);
+        TextFrameConstructor textFrame = new TextFrameConstructor(9);
         textFrame.setVisible(true);
     }
 }
