@@ -43,12 +43,17 @@ public class PhaseChartFrame extends JFrame {
                " the distribution). A frequent phenomenon is a \"hole\" in phase space, a stable structure" +
                " devoid of particles.");
        add(text);
+
+       //funkcjonalność wyświetlania tekstu informacyjnego
+       text.setFont(new Font("Sans Serif", Font.PLAIN, 16));
+       text.setLineWrap(true); //zawijanie czcionek
+       text.setEditable(false); //wyłącza edycję tekstu
        text.setVisible(true);
    }
 
     public static void main(String[] args) {
 
         PhaseChartFrame phaseChartFrame = new PhaseChartFrame();
-        //phaseChartFrame.setVisible(true);
+        phaseChartFrame.setVisible(true);
     }
 }
