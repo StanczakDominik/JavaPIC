@@ -16,11 +16,11 @@ class LanguageChangeListener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-       
-        if (mainFrame.middleRightPanel.LanguageChange.getText().equals("PL")) {
 
-            mainFrame.middleRightPanel.LanguageChange.setText("EN");
-            mainFrame.middleRightPanel.ScreenCapture.setText("Zdjecie");
+        if (mainFrame.middleRightPanel.languageChange.getText().equals("PL")) {
+
+            mainFrame.middleRightPanel.languageChange.setText("EN");
+            mainFrame.middleRightPanel.screenCapture.setText("Zdjecie");
 
             mainFrame.energyPlot.lineGraph.setTitle("Wykres Energii");
             mainFrame.fieldPlot.lineGraph.setTitle("Wykres Pól");
@@ -49,16 +49,16 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.upperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
             mainFrame.upperRightPanel.perturbationAmplitudelabel.setText("Scatter");
 
-            mainFrame.lowerRightPanel.Language = "pl";
-            mainFrame.lowerRightPanel.PhaseChart.setText("Wykres fazowy");
-            mainFrame.lowerRightPanel.Authors.setText("Autorzy");
-            mainFrame.lowerRightPanel.Instructions.setText("Instrukcja");
-            mainFrame.lowerRightPanel.FieldCalculations.setText("Obliczanie pól");
-            mainFrame.lowerRightPanel.PlasmaPhysics.setText("Fizyka plazmy");
+            mainFrame.lowerRightPanel.language = "pl";
+            mainFrame.lowerRightPanel.phaseChart.setText("Wykres fazowy");
+            mainFrame.lowerRightPanel.authors.setText("Autorzy");
+            mainFrame.lowerRightPanel.instructions.setText("Instrukcja");
+            mainFrame.lowerRightPanel.fieldCalculations.setText("Obliczanie pól");
+            mainFrame.lowerRightPanel.plasmaPhysics.setText("Fizyka plazmy");
 
         } else {
-            mainFrame.middleRightPanel.LanguageChange.setText("PL");
-            mainFrame.middleRightPanel.ScreenCapture.setText("PrintScreen");
+            mainFrame.middleRightPanel.languageChange.setText("PL");
+            mainFrame.middleRightPanel.screenCapture.setText("PrintScreen");
 
             mainFrame.energyPlot.lineGraph.setTitle("Energies Chart");
             mainFrame.fieldPlot.lineGraph.setTitle("Fields Chart");
@@ -87,12 +87,12 @@ class LanguageChangeListener implements ActionListener {
             mainFrame.upperRightPanel.fieldErrorTolerancelabel.setText("DeltaE");
             mainFrame.upperRightPanel.perturbationAmplitudelabel.setText("Scatter");
 
-            mainFrame.lowerRightPanel.Language = "en";
-            mainFrame.lowerRightPanel.PhaseChart.setText("Phase plot");
-            mainFrame.lowerRightPanel.Authors.setText("Authors");
-            mainFrame.lowerRightPanel.Instructions.setText("Instructions");
-            mainFrame.lowerRightPanel.FieldCalculations.setText("Field calculations");
-            mainFrame.lowerRightPanel.PlasmaPhysics.setText("Plasma physics");
+            mainFrame.lowerRightPanel.language = "en";
+            mainFrame.lowerRightPanel.phaseChart.setText("Phase plot");
+            mainFrame.lowerRightPanel.authors.setText("Authors");
+            mainFrame.lowerRightPanel.instructions.setText("Instructions");
+            mainFrame.lowerRightPanel.fieldCalculations.setText("Field calculations");
+            mainFrame.lowerRightPanel.plasmaPhysics.setText("Plasma physics");
         }
     }
 }

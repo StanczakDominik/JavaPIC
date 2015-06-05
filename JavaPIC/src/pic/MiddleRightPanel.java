@@ -8,7 +8,7 @@ import java.awt.*;
  */
 class MiddleRightPanel extends JPanel {
 
-    JButton LanguageChange, ScreenCapture;
+    JButton languageChange, screenCapture;
 
     MiddleRightPanel(MainFrame mainFrame) {
         setLayout(new GridLayout(1, 1));
@@ -35,15 +35,15 @@ class MiddleRightPanel extends JPanel {
         Restart.addActionListener(e -> mainFrame.restart());
 
 
-        LanguageChange = new JButton("PL");
-        SimulationControl.add(LanguageChange);
+        languageChange = new JButton("PL");
+        SimulationControl.add(languageChange);
 
-        ScreenCapture = new JButton("Print Screen");
-        SimulationControl.add(ScreenCapture);
+        screenCapture = new JButton("Print Screen");
+        SimulationControl.add(screenCapture);
 
-        LanguageChange.addActionListener(new LanguageChangeListener(mainFrame));
+        languageChange.addActionListener(new LanguageChangeListener(mainFrame));
 
-        ScreenCapture.addActionListener(e -> mainFrame.takeSnapshots());
+        screenCapture.addActionListener(e -> mainFrame.takeSnapshots());
 
     }
 
