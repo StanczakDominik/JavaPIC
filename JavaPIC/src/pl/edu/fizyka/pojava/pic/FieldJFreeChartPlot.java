@@ -1,4 +1,4 @@
-package pic;
+package pl.edu.fizyka.pojava.pic;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

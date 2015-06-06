@@ -1,4 +1,4 @@
-package pic;
+package pl.edu.fizyka.pojava.pic;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

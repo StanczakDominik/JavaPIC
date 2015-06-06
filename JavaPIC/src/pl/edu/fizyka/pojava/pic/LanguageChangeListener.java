@@ -1,4 +1,4 @@
-package pic;
+package pl.edu.fizyka.pojava.pic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

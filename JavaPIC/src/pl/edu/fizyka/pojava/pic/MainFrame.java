@@ -1,4 +1,4 @@
-package pic;
+package pl.edu.fizyka.pojava.pic;
 
 import javax.swing.*;
 import java.awt.*;
