@@ -6,6 +6,9 @@ import java.awt.*;
 
 /**
  * Author: Mateusz
+ * Panel zawierający przyciski z wytłumaczeniami, co tu się w tym programie w ogóle dzieje.
+ *
+ * addListeners nadaje sens klikaniu w te przyciski.
  */
 class LowerRightPanel extends JPanel {
 

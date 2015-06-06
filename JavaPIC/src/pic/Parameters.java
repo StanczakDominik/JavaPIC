@@ -23,7 +23,7 @@ class Parameters {
 	//na sztywno
 	public static double gridSize = 2d * Math.PI;
 	public static double plotMaxVMultiplier = 5d;
-	public static double epsilonZero = 1d;            // F/m
+	public static double epsilonZero = 1d; //normalizacja
 	public static int fieldCalculationIterations=50000;
 	public static int fieldCalculationStep=100;
 	public static double fieldPlotMaximumValue = 2d;
@@ -48,7 +48,7 @@ class Parameters {
 	{
 		this.timeStep = 5e-1d;
 		this.cellParticleDensity = 60;
-		this.initialVelocity = 0.1d;//0.1d;
+		this.initialVelocity = 0.1d;
 		this.gridPointNumber = 64;
 		this.fieldErrorTolerance = 1e-10;
 		this.perturbationAmplitude = 1e-2d;
@@ -57,9 +57,8 @@ class Parameters {
 		numberOfParticles = gridPointNumber * cellParticleDensity;
 
 		mass1 = mass2 = 1;
-		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji.
-		// jest ustawiony
-		//silowo na 10, bo inaczej po prostu byloby za wolno
+		charge1 = charge2 = -gridSize / numberOfParticles * 10; //parametr kontroluje szybkosc interakcji. Jest ustawio-
+		//ny silowo na 10, bo inaczej po prostu byloby za wolno
 		backgroundCharge = -(charge1 + charge2);
 	}
 

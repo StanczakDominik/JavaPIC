@@ -13,8 +13,11 @@ import java.io.IOException;
  * Klasa odpowiadająca za wykres fazowy - na osi poziomej znajdują się położenia, na osi pionowej - prędkości
  * <p>
  * Metoda update aktualizuje tablice położeń i prędkości, a następnie odwołuje się do paintComponent
- * Gdzie następuje rysowanie kropek odpowiadających cząstkom
+ * 				gdzie następuje rysowanie kropek odpowiadających cząstkom
  * Metoda saveChartAsPng zapisuje wykres fazowy do pliku XVPlot#.png, gdzie # jest numerem zdjęcia
+ * Metoda refresh służy zmianie parametrów wykresu (liczby cząstek, granic wykresu...) przy zmianie parametrów symulacji
+ *
+ *
  * Rozmiar wykresu zależy od rozmiaru okienka
  */
 

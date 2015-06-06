@@ -5,6 +5,13 @@ import java.awt.*;
 
 /**
  * Author: Dominik Stańczak
+ *
+ * Klasa odpowiadająca za ustawianie i generację obiektu parametrów symulacji. Prawy górny panel w oknie programu.
+ *
+ * Metody:
+ * getDouble, getInt wyciągają odpowiednio double i inty z pól JTextField.
+ * generateParameters wyciąga te parametry z wszystkich pól tekstowych i tworzy obiekt klasy Parameters, który jest
+ * podawany do MainFrame przy restarcie symulacji.
  */
 class UpperRightPanel extends JPanel {
 

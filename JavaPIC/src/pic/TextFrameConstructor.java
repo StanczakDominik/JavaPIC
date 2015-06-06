@@ -5,6 +5,11 @@ import java.awt.*;
 
 /**
  * Autor: Mateusz Kaczorek, Dominik Stańczak
+ *
+ * Klasa tworząca wszystkie okienka tekstowe na podstawie treści zamieszczonych jako stringi z braku lepszego pomysłu.
+ * Zrealizowana switchem o liczbowym argumencie, również z braku lepszego pomysłu. Rozwiązanie ma niewiele zalet, ale
+ * pomiędzy nimi jest ta, że działa.
+ *
  */
 class TextFrameConstructor extends JFrame {
 
@@ -185,7 +190,6 @@ class TextFrameConstructor extends JFrame {
             case 9:
                 text = new JTextArea(authorsEng);
                 setTitle("Authors");
-                break;
         }
 
         //noinspection ConstantConditions

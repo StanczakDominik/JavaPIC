@@ -5,6 +5,9 @@ import java.awt.*;
 
 /**
  * Author: Mateusz Kaczorek
+ *
+ * Środkowy panel z przyciskami odpowiadającymi za robienie zdjęć, zmianę języka, restartowanie całej symulacji
+ *              bez zmiany parametrów.
  */
 class MiddleRightPanel extends JPanel {
 

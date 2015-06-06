@@ -5,7 +5,16 @@ import java.awt.*;
 
 /**
  * Author: Mateusz Kaczorek, Dominik Stañczak
- * GUI o którym jeszcze chyba nie bêdê wiele pisa³. :D
+ * Klasa - rdzeń programu. Tędy się to wszystko odpala.
+ *
+ * Metody:
+ * main - tworzy obiekt głównego okna
+ * restart - przerywa pętlę obliczeniową, resetuje wykresy i silnik obliczeniowy, po czym
+ *      ponownie uruchamia pętlę obliczeniową na nowych danych (przy użyciu obecnych wartości
+ *      parametrów w polu parameters).
+ * updatePlots - bierze dane silnika obliczeniowego i wykorzystuje je do zmiany danych
+ *              wyświetlanych na wykresie
+ * takeSnapshots - robi zdjęcia ze wszystkich trzech wykresów.
  */
 class MainFrame {
 
@@ -22,7 +31,6 @@ class MainFrame {
 
     private MainFrame()
     {
-
         parameters = new Parameters();
         engine = new SimulationEngine(parameters);
         JFrame frame = new JFrame();
@@ -56,7 +64,6 @@ class MainFrame {
         EnergyAndFieldPanel.add(energyPlot);
         energyPlot.setSize(new Dimension(1200, 300));
         energyPlot.setVisible(true);
-
 
         upperRightPanel = new UpperRightPanel(this);
         RightPanel.add(upperRightPanel, BorderLayout.EAST);
