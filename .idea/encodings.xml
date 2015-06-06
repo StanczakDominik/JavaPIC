@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/JavaPIC/src/pic" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JavaPIC/src/pl/edu/fizyka/pojava/pic/LanguageChangeListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JavaPIC/src/pl/edu/fizyka/pojava/pic/LowerRightPanel.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JavaPIC/src/pl/edu/fizyka/pojava/pic/MainFrame.java" charset="UTF-8" />
