@@ -23,6 +23,7 @@ class LanguageChangeListener implements ActionListener {
     {
         mainFrame.middleRightPanel.languageChange.setText("EN");
         mainFrame.middleRightPanel.screenCapture.setText("Zdjecie");
+        mainFrame.middleRightPanel.plotsToTxtExport.setText("Eksportuj Dane");
 
         mainFrame.energyPlot.lineGraph.setTitle("Wykres Energii");
         mainFrame.fieldPlot.lineGraph.setTitle("Wykres Pól");
@@ -62,6 +63,7 @@ class LanguageChangeListener implements ActionListener {
     {
         mainFrame.middleRightPanel.languageChange.setText("PL");
         mainFrame.middleRightPanel.screenCapture.setText("PrintScreen");
+        mainFrame.middleRightPanel.plotsToTxtExport.setText("Export Data");
 
         mainFrame.energyPlot.lineGraph.setTitle("Energies Chart");
         mainFrame.fieldPlot.lineGraph.setTitle("Fields Chart");

@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Formatter;
 
 /**
  * Autor: Dominik

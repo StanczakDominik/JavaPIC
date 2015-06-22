@@ -26,8 +26,8 @@ class MainFrame {
     Parameters parameters;
     FieldJFreeChartPlot fieldPlot;
     EnergyPlot energyPlot;
-    private SimulationEngine engine;
-    private XVPlotPanel phasePlot;
+    SimulationEngine engine;
+    XVPlotPanel phasePlot;
 
     private MainFrame()
     {
@@ -83,7 +83,8 @@ class MainFrame {
     }
 
     public static void main(String[] args) {
-        @SuppressWarnings("UnusedAssignment") MainFrame mainFrame = new MainFrame();
+        MainFrame mainFrame = new MainFrame();
+
     }
 
     public void restart() {
@@ -122,5 +123,7 @@ class MainFrame {
         energyPlot.saveChartAsPng();
         phasePlot.saveChartAsPng();
     }
+
+
 
 }

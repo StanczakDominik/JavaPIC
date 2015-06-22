@@ -2,6 +2,8 @@ package pl.edu.fizyka.pojava.pic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Author: Mateusz Kaczorek
@@ -11,7 +13,7 @@ import java.awt.*;
  */
 class MiddleRightPanel extends JPanel {
 
-    JButton languageChange, screenCapture;
+    JButton languageChange, screenCapture, plotsToTxtExport;
 
     MiddleRightPanel(MainFrame mainFrame) {
         setLayout(new GridLayout(1, 1));
@@ -37,16 +39,31 @@ class MiddleRightPanel extends JPanel {
         SimulationControl.add(Restart);
         Restart.addActionListener(e -> mainFrame.restart());
 
-
         languageChange = new JButton("PL");
         SimulationControl.add(languageChange);
 
         screenCapture = new JButton("Print Screen");
         SimulationControl.add(screenCapture);
 
+        plotsToTxtExport = new JButton("Export Data");
+        SimulationControl.add(plotsToTxtExport);
+
         languageChange.addActionListener(new LanguageChangeListener(mainFrame));
 
         screenCapture.addActionListener(e -> mainFrame.takeSnapshots());
+
+        ActionListener plotsToTxtExportButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PhaseToTxt file = new PhaseToTxt();
+                file.openFile();
+                file.addData(mainFrame.engine.velocities1,mainFrame.engine.velocities2, mainFrame.engine.positions1,mainFrame.engine.positions2, mainFrame.parameters.numberOfParticles);
+                file.closeFile();
+            }
+        };
+        plotsToTxtExport.addActionListener(plotsToTxtExportButtonListener);
+
+
 
     }
 

@@ -16,17 +16,20 @@ public class SimulationEngine {
 	public Parameters parameters;
 	public Grid grid;
 	Species[] listOfSpecies;
+	double[] velocities1;
+	double[] velocities2;
+	double[] positions1;
+	double[] positions2;
 
 	public SimulationEngine(Parameters parameters)
 	{
 		this.parameters = parameters;
 		grid = new Grid(parameters);
 		listOfSpecies = new Species[2];
-		double[] velocities1 = Parameters.uniformVelocity(parameters.numberOfParticles, parameters.initialVelocity);
-		double[] velocities2 = Parameters.uniformVelocity(parameters.numberOfParticles, -parameters.initialVelocity);
-		double[] positions1 = Parameters.randomPosition(parameters.numberOfParticles, parameters.perturbationAmplitude);
-		double[] positions2 = Parameters.randomPosition(parameters.numberOfParticles, -parameters.perturbationAmplitude);
-
+		velocities1 = Parameters.uniformVelocity(parameters.numberOfParticles, parameters.initialVelocity);
+		velocities2 = Parameters.uniformVelocity(parameters.numberOfParticles, -parameters.initialVelocity);
+		positions1 = Parameters.randomPosition(parameters.numberOfParticles, parameters.perturbationAmplitude);
+		positions2 = Parameters.randomPosition(parameters.numberOfParticles, -parameters.perturbationAmplitude);
 
 		Species beam1 = new Species(parameters.numberOfParticles, parameters.charge1, parameters.mass1, positions1,
 				velocities1, parameters);
@@ -46,4 +49,5 @@ public class SimulationEngine {
 		}
 		grid.update(listOfSpecies);
 	}
+
 }
