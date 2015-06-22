@@ -10,7 +10,7 @@ import java.io.IOException;
  * Author: Mateusz Kaczorek
  *
  * Środkowy panel z przyciskami odpowiadającymi za robienie zdjęć, zmianę języka, restartowanie całej symulacji
- *              bez zmiany parametrów.
+ *              bez zmiany parametrów oraz eksportowanie danych z wykresów.
  */
 class MiddleRightPanel extends JPanel {
 
