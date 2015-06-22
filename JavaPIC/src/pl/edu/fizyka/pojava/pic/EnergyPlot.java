@@ -8,11 +8,12 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Formatter;
+import java.util.*;
 
 /**
  * Autor: Dominik
@@ -25,6 +26,11 @@ import java.util.Formatter;
 class EnergyPlot extends JPanel {
     JFreeChart lineGraph;
     XYSeries kineticEnergy1, kineticEnergy2, fieldEnergy, totalEnergy;
+    ArrayList<Double> fieldEnergyToExport = new ArrayList<Double>();
+    ArrayList<Double> kineticEnergyToExport1= new ArrayList<Double>();
+    ArrayList<Double> kineticEnergyToExport2 = new ArrayList<Double>();
+    ArrayList<Double> totalEnergyToExport = new ArrayList<Double>();
+    ArrayList<Double> timeStepToExport = new ArrayList<Double>();
     private int snapshotsTaken = 0;
 
     public EnergyPlot() {
@@ -54,6 +60,13 @@ class EnergyPlot extends JPanel {
         kineticEnergy2.add(iteration * engine.parameters.timeStep, engine.listOfSpecies[1].totalKineticEnergy);
         totalEnergy.add(iteration * engine.parameters.timeStep, engine.grid.totalFieldEnergy +
                 engine.listOfSpecies[0].totalKineticEnergy + engine.listOfSpecies[1].totalKineticEnergy);
+
+        fieldEnergyToExport.add(engine.grid.totalFieldEnergy);
+        kineticEnergyToExport1.add(engine.listOfSpecies[0].totalKineticEnergy);
+        kineticEnergyToExport2.add(engine.listOfSpecies[1].totalKineticEnergy);
+        totalEnergyToExport.add(engine.grid.totalFieldEnergy +
+                engine.listOfSpecies[0].totalKineticEnergy + engine.listOfSpecies[1].totalKineticEnergy);
+        timeStepToExport.add(iteration * engine.parameters.timeStep);
         repaint();
     }
 
